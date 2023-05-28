@@ -244,7 +244,7 @@ def goToEncounter():
             log.info(f"goToEncounter - retour = {retour}")
             time.sleep(1)
             if retour == "win":
-                log.info("goToEncounter : battle won")
+                log.info("goToEncounter : Battle won")
                 while True:
                     if not find_ellement(
                         UIElement.take_grey.filename, Action.screenshot
@@ -279,7 +279,7 @@ def goToEncounter():
                         collect()
                         travelEnd = True
                         break
-            elif retour == "loose":
+            elif retour == "lose":
                 travelEnd = True
                 send_notification({"message": "goToEncounter : Battle lost"})
                 send_slack_notification(

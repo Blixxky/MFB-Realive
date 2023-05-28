@@ -553,7 +553,7 @@ def battle(zoneLog=None):
 
             break
         elif find_ellement(UIElement.lose.filename, Action.screenshot):
-            retour = "loose"
+            retour = "lose"
             move_mouse_and_click(
                 windowMP(),
                 windowMP()[2] / 2,

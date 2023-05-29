@@ -22,7 +22,9 @@ MFB fork : https://github.com/Blixxky/Mercenaries_Farm_Bot-Realive
 ### Windows
 1. Install [Python 3.11](https://www.python.org/ftp/python/3.11.0/python-3.11.0-amd64-webinstall.exe) (⚠️ select the "Add Python 3.11 to PATH" during installation) 
 2. Download the project
-3. Open *`conf/user/config.py`* or *`conf/user/config.pyw`* and set your preferred settings using the GUI. 
+   - [Original Mercenary Farm Bot](https://github.com/Efemache/Mercenaries-Farm-bot) <sub>no longer maintained.</sub>
+   - [Realive fork](https://github.com/Blixxky/Mercenaries_Farm_Bot-Realive) <sub>currently being developed as of 5/29/23</sub>
+4. Open *`conf/user/config.py`* or *`conf/user/config.pyw`* and set your preferred settings using the GUI. 
    - Set Game Dir if Config Engine doesn't detect it for you.
    - Create your Hearthstone *`log.config`* file if it wasn't created by Config Engine.
 6. Start Hearthstone with same resolution as set in *`settings.ini`*, Config Engine creates settings with default 1920x1080.

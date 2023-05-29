@@ -7,7 +7,7 @@ from typing import List
 from .platforms import windowMP
 from .mouse_utils import move_mouse_and_click, move_mouse, mouse_click  # , mouse_scroll
 
-from .image_utils import find_ellement
+from .image_utils import find_element
 from .constants import UIElement, Button, Action
 from .game import countdown, waitForItOrPass
 
@@ -287,7 +287,7 @@ def didnt_find_a_name_for_this_one(name, minionSection, turn, defaultAbility=0):
             int(windowMP()[0] + abilitiesPositionX[0]),
         ]
         if (
-            find_ellement(
+            find_element(
                 UIElement.hourglass.filename,
                 Action.get_coords,
                 new_screen=abilityScreenshot,
@@ -508,7 +508,7 @@ def find_mol_enemy(ns=True):
 
 
 def find_enemy(enemy_role, ns=True):
-    enemy = find_ellement(
+    enemy = find_element(
         getattr(UIElement, enemy_role).filename, Action.get_coords, new_screen=ns
     )
     # find_element: Can be changed to return None or actual coords if exists
@@ -540,11 +540,11 @@ def battle(zoneLog=None):
         #   are put back on battlefield with a "ready" button
         #       but the bot is waiting for a victory / defeat /
         #   ... or the yellow button ready
-        find_ellement(Button.allready.filename, Action.move_and_click)
+        find_element(Button.allready.filename, Action.move_and_click)
 
-        find_ellement(Button.onedie.filename, Action.move_and_click)
+        find_element(Button.onedie.filename, Action.move_and_click)
 
-        if find_ellement(UIElement.win.filename, Action.screenshot) or find_ellement(
+        if find_element(UIElement.win.filename, Action.screenshot) or find_element(
             UIElement.win_final.filename, Action.screenshot
         ):
             retour = "win"
@@ -552,8 +552,8 @@ def battle(zoneLog=None):
             zoneLog.cleanBoard()
 
             break
-        elif find_ellement(UIElement.lose.filename, Action.screenshot):
-            retour = "lose"
+        elif find_element(UIElement.lose.filename, Action.screenshot):
+            retour = "loose"
             move_mouse_and_click(
                 windowMP(),
                 windowMP()[2] / 2,
@@ -561,10 +561,9 @@ def battle(zoneLog=None):
             )
             zoneLog.cleanBoard()
             break
-        elif find_ellement(
+        elif find_element(
             Button.fight.filename, Action.screenshot
-        ):  # or find_ellement(Button.startbattle1.filename, Action.screenshot):
-
+        ):  # or find_element(Button.startbattle1.filename, Action.screenshot):
             # looks for your enemies on board thanks to log file
             enemies = zoneLog.getEnemyBoard()
             log.info(f"Round {raund} : enemy board {enemies}")
@@ -622,11 +621,11 @@ def battle(zoneLog=None):
                 time.sleep(0.1)
 
             i = 0
-            while not find_ellement(Button.allready.filename, Action.move_and_click):
+            while not find_element(Button.allready.filename, Action.move_and_click):
                 if i > 5:
                     move_mouse(windowMP(), windowMP()[2] // 1.2, windowMP()[3] // 3)
                     mouse_click("right")
-                    find_ellement(Button.fight.filename, Action.move_and_click)
+                    find_element(Button.fight.filename, Action.move_and_click)
                     break
                 time.sleep(0.2)
                 i += 1
@@ -649,11 +648,11 @@ def selectCardsInHand(zL=None):
     retour = True
     global ability_section
 
-    # while not find_ellement(Button.num.filename, Action.screenshot):
+    # while not find_element(Button.num.filename, Action.screenshot):
     #    time.sleep(2)
     waitForItOrPass(Button.num, 60, 2)
 
-    if find_ellement(Button.num.filename, Action.screenshot):
+    if find_element(Button.num.filename, Action.screenshot):
         zL = LogHSMercs(settings_dict["zonelog"])
         # check if Zone.log was erased so we need to go back
         zL.find_battle_start_log()
@@ -692,14 +691,14 @@ def selectCardsInHand(zL=None):
 
             for merc in ability_order[ability_section]["_handselection"].split("+"):
                 cards.send_to_board(merc)
-                if find_ellement(Button.allready.filename, Action.screenshot):
+                if find_element(Button.allready.filename, Action.screenshot):
                     break
 
         # let the "while". In future release,
         #   we could add a function to select specifics cards
         while not (
-            find_ellement(Button.num.filename, Action.move_and_click)
-            or find_ellement(Button.allready.filename, Action.move_and_click)
+            find_element(Button.num.filename, Action.move_and_click)
+            or find_element(Button.allready.filename, Action.move_and_click)
         ):
             move_mouse(windowMP(), x1, y1)
             move_mouse(windowMP(), x2, y2)

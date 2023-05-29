@@ -11,7 +11,7 @@ try:
     HAS_AHK = True
 except ImportError:
     HAS_AHK = False
-    if find_os()=="windows":
+    if find_os() == "windows":
         log.debug("AHK Not Installed")
 
 

@@ -69,7 +69,7 @@ def get_gray_image(file):
     return get_gray_image.imagesInMemory[file]
 
 
-def find_ellement(
+def find_element(
     file, action, threshold="-", new_screen=True, speed=settings_dict["bot_speed"]
 ):
     """Find an object ('file') on the screen (UI, Button, ...)

@@ -1,11 +1,10 @@
 import random
 import time
-
 import pyautogui
 
 from .settings import settings_dict
 
-mouse_range = 2
+MOUSE_RANGE = 2
 
 
 def mouse_click(btn="left"):
@@ -32,8 +31,8 @@ def move_mouse_and_click(window, x, y):
 
 
 def move_mouse(window, x, y, with_random=False):
-    p = random.randint(-mouse_range, mouse_range) if with_random else 0
-    s = random.randint(-mouse_range, mouse_range) if with_random else 0
+    p = random.randint(-MOUSE_RANGE, MOUSE_RANGE) if with_random else 0
+    s = random.randint(-MOUSE_RANGE, MOUSE_RANGE) if with_random else 0
 
     try:
         pyautogui.moveTo(
@@ -53,7 +52,7 @@ def move_mouse(window, x, y, with_random=False):
 
 
 def mouse_random_movement():
-    """define function to use several mouse movements on Windows & Linux"""
+    """Define a function to use several mouse movements on Windows & Linux"""
     return random.choices(
         [pyautogui.easeInQuad, pyautogui.easeOutQuad, pyautogui.easeInOutQuad]
     )[0]

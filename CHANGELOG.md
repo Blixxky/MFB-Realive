@@ -1,4 +1,21 @@
 
+2023-05-28
+----------
+New:
+-  Added MFB Config Engine. A GUI for settings.ini configuration. Run conf/user/config.py or config.pyw (no console)
+		1. Loads settings.ini file if it exists, creates it with defaults if it does not.
+		2. If combo.ini doesn't exist, it's created with defaults.
+		3. If it can locate hearthstone.exe at the default game directory for Windows (C:\Program Files (x86)\Hearthstone), it will use it as the Game Dir automatically.
+		4. If it locates the "%LocalAppData%/Blizzard/Hearthstone" directory, it checks for log.config and creates one if it does not exist. 
+		5. It will only show the appropriate levels for each Zone and Mode, and uses the same naming convention as MFB. i.e. Winterspring Heroic 30, 30b, 30c, ...
+		6. If you are missing all the files, it may not create all of them and configure all of the settings first launch, launch it a second time (known).
+
+Bug Fixes/Misc:
+- Fixed some typos and case issues (bounty.py, encounter.py)
+- Fixed some typos (image_utils.py, game.py, bounty.py, campfire.py, travelpoint.py, treasure.py, encounter.py, gameloop.py, battlenetloop.py)
+- Removed tests/unit directory.
+- Changed setup.cfg to max line length of 100 for flake8, since some comments triggered it with 88.
+
 2023-03-15
 ----------
 

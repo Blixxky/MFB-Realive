@@ -1,7 +1,7 @@
 import sys
 import time
 
-from .image_utils import find_ellement
+from .image_utils import find_element
 from .constants import Action, UIElement, Button
 from .settings import jposition
 from .mouse_utils import move_mouse, move_mouse_and_click, mouse_position
@@ -35,7 +35,7 @@ def waitForItOrPass(image, duration, step=0.5):
     for _ in range(int(duration / step)):
         time.sleep(step)
         # time.sleep(0.5)
-        if find_ellement(image.filename, Action.screenshot):
+        if find_element(image.filename, Action.screenshot):
             retour = True
             break
 
@@ -45,7 +45,7 @@ def waitForItOrPass(image, duration, step=0.5):
 def defaultCase():
     """Clicking on the right edge of the screen to click away popups"""
     """Saving x,y to move back into previous position"""
-    if find_ellement(UIElement.quests.filename, Action.screenshot) or find_ellement(
+    if find_element(UIElement.quests.filename, Action.screenshot) or find_element(
         UIElement.encounter_card.filename, Action.screenshot
     ):
         x, y = mouse_position(windowMP())
@@ -54,8 +54,8 @@ def defaultCase():
         my = jposition["mouse.neutral.y"]
         move_mouse_and_click(windowMP(), windowMP()[2] / mx, windowMP()[3] / my)
         move_mouse(windowMP(), x, y)
-    elif find_ellement(Button.reconnect.filename, Action.move_and_click):
+    elif find_element(Button.reconnect.filename, Action.move_and_click):
         # Handle the disconnect case
         log.info("Game disconnected")
     # To Do: Is "else" needed to skip other screens ?
-    # To Do: need to add a 'find_ellement' on the "Closed HS" screen
+    # To Do: need to add a 'find_element' on the "Closed HS" screen

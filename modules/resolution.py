@@ -49,7 +49,10 @@ def gen_images_new_resolution():
         log.debug(f"Resolution not changed : {orig_resolution}")
     else:
         # test if directory already exists so we don't generate images file
-        if not os.path.isdir(f"{BASEDIR}/{new_resolution}") or settings_dict["gen_img_res_at_each_startup"]:
+        if (
+            not os.path.isdir(f"{BASEDIR}/{new_resolution}")
+            or settings_dict["gen_img_res_at_each_startup"]
+        ):
             # Resolution modified so we need to generate images
             # we check it's the same ratio as the original images
             if round(int(ox) / int(oy), 2) == round(int(nx) / int(ny), 2):

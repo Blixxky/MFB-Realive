@@ -6,11 +6,12 @@ import logging
 
 log = logging.getLogger(__name__)
 
+
 def send_notification(message: dict):
     """Send notification message to a webhook url from `notificationURL` config."""
-    if 'notificationurl' not in settings_dict or not settings_dict['notificationurl']:
+    if "notificationurl" not in settings_dict or not settings_dict["notificationurl"]:
         return
-    url = settings_dict['notificationurl']
+    url = settings_dict["notificationurl"]
     try:
         data = parse.urlencode(message).encode()
         req = request.Request(url, data, method="POST")
@@ -26,13 +27,16 @@ def send_notification(message: dict):
 
 def send_slack_notification(message):
     """Send notification message to a webhook url from `notificationURL` config."""
-    if 'slacknotificationurl' not in settings_dict or not settings_dict['slacknotificationurl']:
+    if (
+        "slacknotificationurl" not in settings_dict
+        or not settings_dict["slacknotificationurl"]
+    ):
         return
-    url = settings_dict['slacknotificationurl']
-    headers = {'content-type': 'application/json --data'}
+    url = settings_dict["slacknotificationurl"]
+    headers = {"content-type": "application/json --data"}
 
     try:
-        data = bytes(message, 'utf-8')
+        data = bytes(message, "utf-8")
         req = request.Request(url, data, headers=headers, method="POST")
         request.urlopen(req)
         log.info(f"notification sent: {message}")

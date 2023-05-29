@@ -1,178 +1,370 @@
-# Mercenaries Farm Bot (for Hearthstone)
+# Mercenaries Farm Bot (for Hearthstone) by [@Efemache](https://github.com/Efemache)
 MFB official URL : https://github.com/Efemache/Mercenaries-Farm-bot/
+# Mercenaries Farm Bot Realive fork
+MFB fork : https://github.com/Blixxky/Mercenaries_Farm_Bot-Realive
 
-# Free & Tip: 2 ways starting 2022-11-07
-<details><summary>Click here if you want some context about Free & Tip version</summary>
+## Supported Resolutions
 
-## Context
-* I started to actively work on this bot (november 2021) because **I thought doing it open source, some devs would come** too to improve MFB so it would be a win/win
-* Too few devs came (**big thanks to those who participated**) and they, generally, added a feature or two or fixed a bug but none staied on a long term or to globally help
-* A lot of users asked for : features, doc update, videos, bugs fix (a lot of them didn't even impact me), help because they misconfigured MFB, help on their setup which wasn't even offically supported and I helped each time I could :
-  * **Only 4 people made a donation**
-  * A donation is like "Great job" or "Hey, you helped me, thanks, let me buy you a beer or a coffee" (especially when I spent 1 hour or more to help someone)
-* Finally, it was way too much work for me "alone" and a lose/win for me
+- For fullscreen mode, both the Hearthstone resolution and your screen resolution must match. For example, use **1920x1080** for both.
+- **1920x1080** in fullscreen mode ✔️✔️
+- **1920x1080** in windowed mode ✔️✔️
 
-## In conclusion 
+- To play in windowed mode, ensure that your monitor has a higher resolution than Hearthstone in both width and height.
+- **Any 16:9** aspect ratio with a minimum of 960x540, such as 960x540, 1024x576, 1280x720, 1600x900, and so on, in fullscreen mode ✔️
+- **Any 16:9** aspect ratio, including higher resolutions like 2560x1440, in windowed mode ✔️
+
+<sub>✔️✔️ tested and working</sub>
+
+<sub>✔️ reported as working</sub>
+
+## Installation
+
+### Windows
+1. Install [Python 3.11](https://www.python.org/ftp/python/3.11.0/python-3.11.0-amd64-webinstall.exe) (⚠️ select the "Add Python 3.11 to PATH" during installation) 
+2. Download the project
+3. Open *`conf/user/config.py`* or *`conf/user/config.pyw`* and set your preferred settings using the GUI. 
+   - Set Game Dir if Config Engine doesn't detect it for you.
+   - Create your Hearthstone *`log.config`* file if it wasn't created by Config Engine.
+6. Start Hearthstone with same resolution as set in *`settings.ini`*, Config Engine creates settings with default 1920x1080.
+7. Create a group of mercenaries named "Botwork"
+8. Run HSbotRunner.bat
+
+### Linux
+1. Install python3-venv *`sudo apt install python3.11-venv`*
+2. Install gir1.2-wnck-3.0 *`sudo apt install gir1.2-wnck-3.0`*
+3. Install - if needed - libharfbuzz-gobject0 *`sudo apt install libharfbuzz-gobject0`*
+4. Download the project
+   - [Original Mercenary Farm Bot](https://github.com/Efemache/Mercenaries-Farm-bot) <sub>no longer maintained.</sub>
+   - [Realive fork](https://github.com/Blixxky/Mercenaries_Farm_Bot-Realive) <sub>currently being developed as of 5/29/23</sub>
+5. Run *`conf/user/config.py`* or *`conf/user/config.pyw`* and set your preferences
+   - :bangbang: Set **GameDir** to your Hearthstone directory using the Browse button, it isn't set automatically on Linux.
+6. Create/Edit your Hearthstone [log.config file](https://github.com/Efemache/Mercenaries-Farm-bot/wiki/Settings#logconfig)
+   - :bangbang: On Linux, Config Engine doesn't know the path and does not create one in the conf/user folder like the other files.
+7. Start Hearthstone with same resolution as set in *`settings.ini`*, Config Engine creates settings with default 1920x1080.
+8. Create a group of mercenaries named "Botwork" 
+9. Run HSbotRunner.sh
+
+### While the bot is running...
+- Don't move the Hearthstone window
+- Don't put another window in front of Hearthstone
+- Don't touch your mouse unless you want to bypass the bot (drag it to the bottom corner until you get the resume alert)
+- Don't resize the Hearthstone window or change the resolution
+- Eat popcorn..
+
+## Features: 
+
+* Starts from Battle.net with a screen resolution of 1080.
+* Supports Up to "March of the Lich King" expansion and Returns to Naxxramas mini-set release.
+* Completes a lot of campfire tasks and some bounties.
+* Transitions to Travel point selection.
+* Transitions to Level/Bounty selection.
+* Smooth transitions between encounters.
+* Prioritizes the spirit healer.
+* Prioritizes the mysterious node.
+* Allows placement of mercenaries on the board.
+* Searches for suitable opponents.
+* Ability selection for each mercenary using combo.ini file.
+* Defaults to the first abilities if no configuration exists.
+* Ability targeting of friendly minions by Type, Faction, or Name.
+* Performs attacks against opponents when abilities require it.
+* Allows the choice of a treasure after passing a level.
+* Collects rewards for reaching the last level.
+* Claims packs, coins, and equipment from completed tasks.
+* Battle uses a simple AI which utilizes the Hearthstone RPS system <sup>(Protector > Fighter > Caster > Protector)</sup>
+* It doesn't know about taunt, divine shield, stealth, attack, health, ... yet
+
+## Configuration
+
+There are two ways to configure MFB now:
+1. You can use *`conf/user/config.py`*, the new Config Engine GUI. This will create *`settings.ini`* if it does not exist, *`combo.ini`* if it does not exist. 
+2. You can edit the *`conf/user/settings.ini`* file, the 'conf/user/combo.ini' file, and the 'log.config' file (WINE - *`USER\AppData\Local\Blizzard\Hearthstone\`* or Windows - *`%LocalAppData%/Blizzard/Hearthstone`*) in a text editor.
+   - :bangbang: Linux users will have to set the Game Dir where hearthstone.exe resides, Config Engine will likely detect it automatically on Windows.
+
+* "settings.ini" handles most of the bots settings and preferences. 
+<details><summary><i>Click here for a default settings.ini file</i></summary>
+[BotSettings]<br>
+monitor = 1<br>
+resolution = 1920x1080<br>
+logs = True<br>
+location = Felwood<br>
+mode = Normal<br>
+level = 25<br>
+preferelite = False<br>
+notificationurl =<br>
+MouseSpeed = 0.2<br>
+GameDir = C:\Program Files (x86)\Hearthstone<br>
+preferbooncaster = False<br>
+preferboonfighter = False<br>
+preferboonprotector = False<br>
+preferprotector = False<br>
+preferfighter = False<br>
+prefercaster = False<br>
+waitForEXP = True<br>
+quitBeforeBossFight = False<br>
+stopAtBossFight = False<br>
+preferPassiveTreasures = True<br>
 </details>
 
-To continue to work on and maintain the bot : 
-* MFB remains **free and open source** but updates will be **delivered 3-4 weeks later**
-* For those who **help** (in coding) **and** those who **[give a tip](#if-you-want-to-support-or-thank-us) (at least 10$)**, updates will be **delivered 3-4 weeks before others**
+* "combo.ini" is to configure Mercenary attack rotations.
+<details><summary><i>Click here for a default combo.ini file</i></summary>
+[Mercenary]<br>
+Alexstrasza=1,3<br>
+Anduin Wrynn=1,2<br>
+Antonidas=1<br>
+Aranna Starseeker=2,3,1<br>
+Baine Bloodhoof=1<br>
+Balinda Stonehearth=1,2,3:chooseone=2<br>
+Baron Geddon=2<br>
+Blademaster Samuro=1,3<br>
+Blink Fox=1,1,2<br>
+Brann Bronzebeard=1,2,3<br>
+Brightwing=1<br>
+Bru'kan=1,1,3<br>
+C'Thun=1,2<br>
+Cairne Bloodhoof=1<br>
+Captain Galvangar=1,3,2<br>
+Captain Hooktusk=1,2,3<br>
+Cariel Roame=2,1<br>
+Chi-Ji=1,1,3<br>
+Cookie, the Cook=1<br>
+Cornelius Roame=1,2,2<br>
+Deathwing=1,2,3<br>
+Diablo=1,2,3,2,3,2,3<br>
+Edwin, Defias Kingpin=1,2,3<br>
+Elise Starseeker=1,2,3<br>
+Eudora=1,2<br>
+Fathom-Lord Karathress=1,2<br>
+Kazakus, golem shaper=1<br>
+Garona Halforcen=1,2,3<br>
+Garrosh Hellscream=1,3<br>
+Genn Greymane=2,3,1<br>
+Gruul=1,2,3<br>
+Grommash Hellscream=2,3<br>
+Guff Runetotem=2<br>
+Illidan Stormrage=1,3,2<br>
+Jaina Proudmoore=1,3,2<br>
+King Krush=1,2,3<br>
+King Mukla=1,3<br>
+Kurtrus Ashfallen=1,3,2,3,2<br>
+Lady Anacondra=1<br>
+Lady Vashj=1,2,3<br>
+Leeroy Jenkins=1,2,3<br>
+Lokholar the Ice Lord=1<br>
+Long'xin=1<br>
+Lord Jaraxxus=3,2,1<br>
+Lord Slitherspear=1,2,3<br>
+Lorewalker Cho=1,2,3<br>
+Malfurion=1<br>
+Mannoroth=1,3<br>
+Millhouse Manastorm=1,1,2<br>
+Morgl the Oracle=1,2<br>
+Mr. Smite=1<br>
+Murky=1,3<br>
+Mutanus=1,2,2,2,2,2,2,2<br>
+Natalie Seline=1,3<br>
+Neeru Fireblade=1,1,3<br>
+Nefarian=1,3<br>
+Nemsy Necrofizzle=1,3,2<br>
+Niuzao=1,3<br>
+Patches the Pirate=1,2,3<br>
+Prince Malchezaar=1,2,3<br>
+Old Murk-Eye=1,2,3,2,3,2,3<br>
+Onyxia=1,3<br>
+Prophet Velen=1,3<br>
+Queen Azshara=1,2,3<br>
+Ragnaros=2<br>
+Rathorian=1,2,2,3<br>
+Rattlegore=1,2,3<br>
+Rokara=1,3<br>
+Scabbs Cutterbutter=1,2:chooseone=2<br>
+Sir Finley=1,3,2<br>
+Sinestra=1,3,2<br>
+Sky Admiral Rogers=1,3<br>
+Sneed=1,2<br>
+Sylvanas Windrunner=1,1,3<br>
+Tamsin Roame=1<br>
+Tavish Stormpike=1<br>
+Tess Greymane=1,2,3<br>
+The lich king=1,2<br>
+Thrall=1<br>
+Tidemistress Athissa=1,1,3,3<br>
+Trigore the Lasher=2<br>
+Tyrael=1,3,2<br>
+Tyrande Whisperwind=1,2<br>
+Valeera Sanguinar=1,2,3<br>
+Vanessa VanCleef=1<br>
+Vanndar Stormpike=1,1,3<br>
+Varden Dawngrasp=1<br>
+Varian Wrynn=3<br>
+Varok Saurfang=1,2<br>
+Vol'jin=1,2<br>
+War Master Voone=1,2,3<br>
+Wrathion=1,2,3<br>
+Yogg-Saron=1,2<br>
+Yu'lon=1,2<br>
+Xuen=1,3<br>
+Xyrella=1,3<br>
+Yrel=1,2,3<br>
+Ysera=1,2,3<br>
+Y'Shaarj=1,2<br>
+Uther Lightbringer=1,3,2<br>
+Zar'jira, the Sea Witch=1,3,2<br>
 
-> **Warning**:
-> Blizzard pushed the last major update for Mercenary mode (February 14, 2023) and it is well supported by MFB (even in community version).  
-> So there won't be new update on MFB. If you like (or liked) it, you can send a [tip](#if-you-want-to-support-or-thank-us)  
-> Perhpas the "Supporters" version will get a dedicated GUI (Graphical User Interface)  
+[Neutral]<br>
+Bladehand Berserker=1<br>
+Boggy=1<br>
+Devilsaur=1<br>
+Dragonmaw Poacher=1<br>
+Drakonid=1<br>
+Eudora's Cannon=1<br>
+Elementium Terror=1<br>
+Fathom Guard=1<br>
+Fel Infernal=1<br>
+Felfin Navigator=1<br>
+Giantfin=1<br>
+Greater Golem=1<br>
+Grounding Totem=1<br>
+Hozen Troublemaker=1<br>
+Huffer=1<br>
+Hulking Overfiend=1<br>
+Hungry Naga=1<br>
+Imp Familiar=2<br>
+Jade Golem=1<br>
+Lesser Fire Elemental=2<br>
+Lesser Water Elemental=1<br>
+Marching Murlocs=1<br>
+Misha=1<br>
+Mogu Conqueror=1<br>
+Mukla's big brother=1<br>
+Nightmare Viper=1<br>
+Patchling=1<br>
+Pufferfisher=1<br>
+Saurok Raider=1<br>
+Spawn of N'Zoth=1<br>
+Spud M.E.=1<br>
+Stonemaul Banner=2<br>
+Superior Golem=1<br>
+Void Consumer=1<br>
+Water Elemental=1<br>
+Warlord Parjesh=1<br>
+Wavethrasher=1<br>
 
+\# below, specific boss fight (ex: Air Elemental)
+\#[Air Elemental]<br>
+\#_handselection=Balinda Stonehearth+Baron Geddon+Ragnaros<br>
+\#Balinda Stonehearth=1<br>
+\#Baron Geddon=2<br>
+\#Ragnaros=2<br>
 
-# Purpose
-The purpose of this bot is to automatically pass the bounty levels to level up your mercenaries, win somes coins and complete campfire tasks.
+</details>
 
-There is a [```main```](https://github.com/Efemache/Mercenaries-Farm-bot) branch to use daily.  
-[```dev2```](https://github.com/Efemache/Mercenaries-Farm-bot/tree/dev2) branch is used for Pull Request (PR) only.  
-Tags are not used anymore (last one is 0.8.3 and is deprecated); instead, download and use main branch.
+* "log.config" helps us track what's on the board.
+<details><summary><i>Click here for a default log.config file</i></summary>
+[Power]<br>
+LogLevel=1<br>
+FilePrinting=True<br>
+ConsolePrinting=False<br>
+ScreenPrinting=False<br>
+Verbose=True<br>
+[Achievements]<br>
+LogLevel=1<br>
+FilePrinting=True<br>
+ConsolePrinting=False<br>
+ScreenPrinting=False<br>
+Verbose=False<br>
+[Arena]<br>
+LogLevel=1<br>
+FilePrinting=True<br>
+ConsolePrinting=False<br>
+ScreenPrinting=False<br>
+Verbose=False<br>
+[FullScreenFX]<br>
+LogLevel=1<br>
+FilePrinting=True<br>
+ConsolePrinting=False<br>
+ScreenPrinting=False<br>
+Verbose=False<br>
+[LoadingScreen]<br>
+LogLevel=1<br>
+FilePrinting=True<br>
+ConsolePrinting=False<br>
+ScreenPrinting=False<br>
+Verbose=False<br>
+[Gameplay]<br>
+LogLevel=1<br>
+FilePrinting=True<br>
+ConsolePrinting=False<br>
+ScreenPrinting=False<br>
+Verbose=False<br>
+[Zone]<br>
+LogLevel=1<br>
+FilePrinting=true<br>
+ConsolePrinting=false<br>
+ScreenPrinting=false<br>
+</details>
 
-> **Note**:  
-> Up to "March of the Lich King" expansion (and Mini-set "Returns to Naxxramas") release, MFB works to complete a lot of campfire tasks and somes bounties.  
+To change the group's name (default: Botwork), follow these steps:
+1. Create a screenshot in-game on the "Choose a Party" screen.
+2. Put the screenshot in the MFB directory: `conf/user/<resolution>/buttons/group_name.png`
+3. The file should be similar to `files/1920x1080/buttons/group_name.png`.
 
-**If you like the bot, think about [giving a tip](#if-you-want-to-support-or-thank-us)**.
+## Starting the bot
 
+If you encounter the following errors:
 
-# PvE preview (video)
-[![Watch the video](https://user-images.githubusercontent.com/56414438/156830161-924cf85c-64a2-4215-870d-d0d005d28adc.jpg)](https://youtu.be/ZQ3xCL9_4Yo)
+- "SetForegroundWindow error": It means there is another foreground window from another process. This can occur when using the "windows" key on the keyboard to open the Window Menu. Close the other window to resolve the issue.
 
+- "cp949 error": This error is likely to occur if you are using a Korean version of Windows. Refer to issue #154 for a solution.
 
-# If you want to support (or thank) us
-## Buy us a coffee, a beer or more 😄 
-|    Platform           | Address |  
-| :------------         | :-------------:|
-|Ko-Fi       | [mercenariesfarm](https://ko-fi.com/mercenariesfarm) |
+- "AHK Not Installed": This error is not a problem. Previous versions of MFB used AHK, but now it installs win32gui for new Windows users.
 
+- "'pip' is not recognized as an internal or external command, operable program or batch file.": During Python installation, make sure to select "Add Python [...] to PATH" option. Additionally, it's recommended to disable the long path limitation.
 
-## Or send crypto
+- "Settings file is missing section 'BotSettings'": Run conf/user/config.py or edit a conf/user/settings.ini file  the `conf/user/settings.sample.ini` file to `conf/user/settings.ini` to resolve this error. Read the settings wiki page for configuring user parameters and ensure to set the mandatory settings.
+
+- "The mouse pointer doesn't move at all (Windows)": Starting the .bat file as an administrator might resolve this issue for some users. If you encounter an error like "No such file or directory," refer to the solution below:
+<details><summary><i>Run as Admin</i></summary>
+To start the bot as an administrator, follow these steps:
+1. Start CMD as an Admin.
+2. In the Command Prompt, type `C:` if MFB is installed in the "C:" drive. Adjust the drive letter accordingly if it's installed in a different location.
+3. If you are in *`C:\WINDOWS\system32`*, type *`cd ..\..`* to navigate to the root of your drive ("C:" or "D:" or "E:" etc.)
+4. Go to the MFB directory by typing *`cd \my\path\to\Mercenaries-Farm-Bot\`*
+5. Start the *`HSbotRunner.bat`* file from there.
+</details>
+- "No such file or directory":
+
+  - For installing requirements: If you see an error like `ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'requirements_win.txt'`, make sure you are running the command from the correct directory.
+
+  - For running *`main.py`*: If you see an error like *`C:\Users\user\AppData\Local\Programs\Python\Python310\python.exe`*: can't open file *`C:\Windows\system32\main.py`*: [Errno 2] No such file or directory`, try running the bot as a regular user. If it still doesn't work, refer to solution below.
+
+<details><summary><i>Run as Admin</i></summary>
+To start the bot as an administrator, follow these steps:
+1. Start CMD as an Admin.
+2. In the Command Prompt, type `C:` if MFB is installed in the "C:" drive. Adjust the drive letter accordingly if it's installed in a different location.
+3. If you are in *`C:\WINDOWS\system32`*, type *`cd ..\..`* to navigate to the root of your drive ("C:" or "D:" or "E:" etc.)
+4. Go to the MFB directory by typing *`cd \my\path\to\Mercenaries-Farm-Bot\`*
+5. Start the *`HSbotRunner.bat`* file from there.
+</details>
+
+# If you would like to support [@Efemache](https://github.com/Efemache) for their great work:
+
+## Send a quick tip
+You can give them a quick tip at their [Ko-Fi](https://ko-fi.com/mercenariesfarm) page.
+
+## Send Crypto:
+If you prefer to support using crypto, you can send your contribution to the following addresses:
 
 |    Platform           | Address | QR Code | 
 | :------------         | :-------------:|  :-------------:|  
-| Bitcoin (BTC)         | 3L4MJh6JVrnHyDDrvrkZQNtUytYNjop18f | <img src="https://user-images.githubusercontent.com/56414438/162740117-eeebb1ef-2971-40d3-8e8f-a39fa51e8c6e.png" alt="BTC" width="200" /> |
-|Ethereum (ETH) or <br />Binance Smart Chain (BNB/BUSD) (*)| 0x6Db162daDe8385608867A3B19CF1465e0ed7c0e2 | <img src="https://user-images.githubusercontent.com/56414438/162740147-39c72409-94f3-4871-b9e5-a782ab9c2522.png" alt="ETH-BSC" width="200" /> |
+| Bitcoin (BTC)         | 3L4MJh6JVrnHyDDrvrkZQNtUytYNjop18f | ![BTC](https://user-images.githubusercontent.com/56414438/162740117-eeebb1ef-2971-40d3-8e8f-a39fa51e8c6e.png) |
+| Ethereum (ETH) or Binance Smart Chain (BNB/BUSD) (*)| 0x6Db162daDe8385608867A3B19CF1465e0ed7c0e2 | ![ETH-BSC](https://user-images.githubusercontent.com/56414438/162740147-39c72409-94f3-4871-b9e5-a782ab9c2522.png) |
 
- (\*) *yes, BSC and ETH addresses are the same*
+ (\*) Note: Ethereum (ETH) and Binance Smart Chain (BNB/BUSD) share the same address.
+ 
+ (\*) If you send your contribution in a different ERC-20 token on the Ethereum blockchain or a different BEP-20 token on the Binance Smart Chain, please inform us accordingly.
 
- (\*) *on Ethereum blockchain you can send any ERC-20 token (let us know if you send token other than ETH)*
-
- (\*) *on BSC blockchain you can send any BEP-20 token (let us know if you send another token than BNB or BUSD)*
-
-
-## Just a "Thanks"
-|    Platform           | Address |
-| :------------         | :-------------:|
-| "Thank you"           | [<img src="https://user-images.githubusercontent.com/56414438/163575703-d249c687-1fd4-4c4d-b549-e27b01bb022b.png" alt="twitter" width="35rem">](https://twitter.com/MercenariesFarm) [<img src="https://user-images.githubusercontent.com/56414438/163575713-a5b96683-f788-4d48-b598-a838e7e97b8b.png" alt="youtube" width="35rem">](https://www.youtube.com/channel/UCye37bX5PJnPgChWvzjTqKg) [<img src="https://user-images.githubusercontent.com/56414438/163575692-c6d78ec2-ae37-46e9-84ca-fd650d3835c2.png" alt="discord" width="35rem">](https://discord.gg/ePghxaUBEK)| |
-
-# Installation
-## When the bot is running
-* don't move the Hearthstone window
-* don't put another window in front of Hearthstone
-* don't touch your mouse (except if you want to bypass the bot)
-* don't resize the Hearthstone window or change the resolution
-
-
-## Windows
-* Install [Python 3.11](https://www.python.org/ftp/python/3.11.0/python-3.11.0-amd64-webinstall.exe) (⚠️ select the "Add Python 3.11 to PATH" during installation) 
-* Download the project
-* Open conf/user/settings.ini and set your [settings](https://github.com/Efemache/Mercenaries-Farm-bot/wiki/Settings#settingsini-confusersettingsini) (⚠️ don't forget to set "GameDir" to your Hearthstone directory)
-* Edit your Hearthstone [log.config file](https://github.com/Efemache/Mercenaries-Farm-bot/wiki/Settings#logconfig)
-* Start Hearthstone (with same resolution as set in settings.ini)
-* Create a group of mercenaries named "Botwork" (and go back to main menu)
-* Run HSbotRunner.bat
-
-
-## Linux
-* Install python3-venv (`sudo apt install python3.11-venv`)
-* Install gir1.2-wnck-3.0 (`sudo apt install gir1.2-wnck-3.0`)
-* Install - if needed - libharfbuzz-gobject0 (`sudo apt install libharfbuzz-gobject0`)
-* Download the project
-* Open conf/user/settings.ini and set your [settings](https://github.com/Efemache/Mercenaries-Farm-bot/wiki/Settings#settingsini-confusersettingsini) (⚠️ don't forget to set "GameDir" to your Hearthstone directory)
-* Edit your Hearthstone [log.config file](https://github.com/Efemache/Mercenaries-Farm-bot/wiki/Settings#logconfig)
-* Start Hearthstone (with same resolution as set in settings.ini)
-* Create a group of mercenaries named "Botwork" (and go back to main menu)
-* Run HSbotRunner.sh
-
-
-## Bot Installation/Configuration Video
-[![Watch the video](https://user-images.githubusercontent.com/56414438/190275041-fb8933ce-cee1-4257-ab06-fdd0419c9ad6.png)](https://youtu.be/Nh73f-YXUjg)
-
-
-# News & contact 
-More informations in [Wiki](https://github.com/Efemache/Mercenaries-Farm-Bot/wiki)
-
-For news, follow us on Twitter : [@MercenariesFarm](https://twitter.com/MercenariesFarm)
-
-For videos (news, settings, ...), subscribe on YouTube : [MercenariesFarm Channel](https://www.youtube.com/channel/UCye37bX5PJnPgChWvzjTqKg)
-
-If you have any issue with the bot, please, read first the [FAQ (Frequently Asked Questions)](https://github.com/Efemache/Mercenaries-Farm-bot/wiki/FAQ) before posting any question on discord or opening an issue on Github.
-
-For bugs, open an [issue](https://github.com/Efemache/Mercenaries-Farm-Bot/issues)
-
-To discuss with the community, go to discord : [Mercenaries Farm server](https://discord.gg/ePghxaUBEK) (⚠️ don't ask in private message)
-
-
-# Dev progress
-
-## Language & resolution
-⚠️ 1920x1080 is the only resolution "officially supported" (meaning, I can only test this resolution) but the other mentionned resolutions work too
-
-⚠️ windowed : monitor needs to have a higher resolution than Hearthstone for both width AND height
-
-| Resolution | English |
-| :------------------- | :-------------:|
-| 1920x1080 fullscreen <sup>1</sup> |        ✅      |
-| 1920x1080 windowed  |        ✅      |
-|  16:9 fullscreen  <sup>1</sup> <sup>2</sup> |        ✅      |
-|  16:9 windowed  <sup>2</sup> |        ✅      |
-
-(1)
-* *for fullscreen mode, Hearthstone resolution and screen resolution need to be the same (example : 1920x1080 for both)*
-
-(2)
-* *16:9 resolution should work if at least 960x540 (960x540, 1024x576, 1280x720, 1600x900, ...)*
-* *higher (than 1920x1080) 16:9 resolution has been tested with 2560x1440*
-
-## Support
-|                                        |   |
-| :------------------------------------- | :-------------:|
-|0. start from Battle.net | 1080 screen res. |
-|1. transition to Travel point selection | ✓|
-|    * new travel point portal | ✓|
-|    * Boss Rush support | x|
-|2. transition to Level/Bounty selection | ✓|
-|3. transition between encounters | ✓|
-|4. prioritize the spirit healer  | ✓|
-|5. prioritize the mysterious node | ✓|
-|6. put mercs on board | ✓|
-|7. search for suitable opponents | ✓|
-|8. choose abilities :  | ✓|
-|    * for each mercenary (using [combo.ini](https://github.com/Efemache/Mercenaries-Farm-bot/wiki/Settings#comboini-confusercomboini) files) | ✓|
-|    * or the first abilities by default (if no configuration exists) | ✓|
-|    * ability targetting friendly minion selected by Type, Faction or by Name| ✓|
-|    * taunt, stealth, divine shield, attack, health, ... detection | x|
-|9. attack opponents (if ability requires it) | ✓|
-|10. choose a treasure after passing a level | ✓|
-|11. collect rewards for reaching the last level|  ✓|
-|12. claim packs, coins and equipments from completed tasks | ✓|
-|13. repeat from 1 point | ✓|
-
-## AI
-### Battles
-MFB uses a simple AI which can be described as : 
-* Red (Protector) > Green (Fighter) > Blue (Caster) > Red (Protector)
-* It doesn't know about taunt, devine shield, stealth, attack, health, ...
-
-## Battle limitation (will change in future releases)
-* ~~bot doesn't work with ability like "choose one" with 2 choices (ex: Malfurion, but works for Rexxar)~~ ✓ (ok since May 23, 2022)
-* ~~bot doesn't work with ability which need to point to one of your mercenaries (ex: impossible to use healing with Xyrella)~~ ✓ (ok since May 23, 2022)
-  * ~~bot doesn't work with ability targeting a specific type of mercenary like Dragon, Beast, ...~~ ✓ (ok since Jul. 08, 2022)
-* ~~bot doesn't use minions on board which are not a mercenary~~ ✓ (ok since 0.4.0 release) / Feb. 18, 2022
-* ~~MFB can't target a specific Mercenary by name~~ ✓ (ok since Feb. 06, 2023)
-* MFB can't target a friendly minion/merc with an ability which, usually, point to an enemy
-
+### Roadmap
+1. Write better logic for catching where MFB is in it's routine to better assist with reconnects and sustaining productivity.
+2. Create a more intuitive pause/resume system.
+3. More to come.
 

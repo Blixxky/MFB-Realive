@@ -79,7 +79,7 @@ MFB fork : https://github.com/Blixxky/Mercenaries_Farm_Bot-Realive
 
 There are two ways to configure MFB now:
 1. You can use *`conf/user/config.py`*, the new Config Engine GUI. This will create *`settings.ini`* if it does not exist, *`combo.ini`* if it does not exist. 
-2. You can edit the *`conf/user/settings.ini`* file, the 'conf/user/combo.ini' file, and the 'log.config' file (WINE - *`USER\AppData\Local\Blizzard\Hearthstone\`* or Windows - *`%LocalAppData%/Blizzard/Hearthstone`*) in a text editor.
+2. You can edit the *`conf/user/settings.ini`* file, the *'conf/user/combo.ini'* file, and the *'log.config'* file (WINE - *`USER\AppData\Local\Blizzard\Hearthstone\`* or Windows - *`%LocalAppData%/Blizzard/Hearthstone`*) in a text editor.
    - :bangbang: Linux users will have to set the Game Dir where hearthstone.exe resides, Config Engine will likely detect it automatically on Windows.
 
 * "settings.ini" handles most of the bots settings and preferences. 

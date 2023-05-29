@@ -324,11 +324,11 @@ If you encounter the following errors:
 
 - "The mouse pointer doesn't move at all (Windows)": Starting the .bat file as an administrator might resolve this issue for some users. If you encounter an error like "No such file or directory," refer to the solution below:
 <details><summary><i>Run as Admin</i></summary>
-To start the bot as an administrator, follow these steps:
-1. Start CMD as an Admin.
-2. In the Command Prompt, type `C:` if MFB is installed in the "C:" drive. Adjust the drive letter accordingly if it's installed in a different location.
-3. If you are in *`C:\WINDOWS\system32`*, type *`cd ..\..`* to navigate to the root of your drive ("C:" or "D:" or "E:" etc.)
-4. Go to the MFB directory by typing *`cd \my\path\to\Mercenaries-Farm-Bot\`*
+To start the bot as an administrator, follow these steps:<br>
+1. Start CMD as an Admin.<br>
+2. In the Command Prompt, type `C:` if MFB is installed in the "C:" drive. Adjust the drive letter accordingly if it's installed in a different location.<br>
+3. If you are in *`C:\WINDOWS\system32`*, type *`cd ..\..`* to navigate to the root of your drive ("C:" or "D:" or "E:" etc.)<br>
+4. Go to the MFB directory by typing *`cd \my\path\to\Mercenaries-Farm-Bot\`*<br>
 5. Start the *`HSbotRunner.bat`* file from there.
 </details>
 - "No such file or directory":
@@ -338,11 +338,11 @@ To start the bot as an administrator, follow these steps:
   - For running *`main.py`*: If you see an error like *`C:\Users\user\AppData\Local\Programs\Python\Python310\python.exe`*: can't open file *`C:\Windows\system32\main.py`*: [Errno 2] No such file or directory`, try running the bot as a regular user. If it still doesn't work, refer to solution below.
 
 <details><summary><i>Run as Admin</i></summary>
-To start the bot as an administrator, follow these steps:
-1. Start CMD as an Admin.
-2. In the Command Prompt, type `C:` if MFB is installed in the "C:" drive. Adjust the drive letter accordingly if it's installed in a different location.
-3. If you are in *`C:\WINDOWS\system32`*, type *`cd ..\..`* to navigate to the root of your drive ("C:" or "D:" or "E:" etc.)
-4. Go to the MFB directory by typing *`cd \my\path\to\Mercenaries-Farm-Bot\`*
+To start the bot as an administrator, follow these steps:<br>
+1. Start CMD as an Admin.<br>
+2. In the Command Prompt, type `C:` if MFB is installed in the "C:" drive. Adjust the drive letter accordingly if it's installed in a different location.<br>
+3. If you are in *`C:\WINDOWS\system32`*, type *`cd ..\..`* to navigate to the root of your drive ("C:" or "D:" or "E:" etc.)<br>
+4. Go to the MFB directory by typing *`cd \my\path\to\Mercenaries-Farm-Bot\`*<br>
 5. Start the *`HSbotRunner.bat`* file from there.
 </details>
 

@@ -39,7 +39,7 @@ MFB fork : https://github.com/Blixxky/Mercenaries_Farm_Bot-Realive
    - [Original Mercenary Farm Bot](https://github.com/Efemache/Mercenaries-Farm-bot) <sub>no longer maintained.</sub>
    - [Realive fork](https://github.com/Blixxky/Mercenaries_Farm_Bot-Realive) <sub>currently being developed as of 5/29/23</sub>
 5. Run *`conf/user/config.py`* or *`conf/user/config.pyw`* and set your preferences
-6. Set **GameDir** to your Hearthstone directory using the Browse button, it isn't set automatically on Linux.
+6. Set **GameDir** to your Hearthstone directory using the Browse button.
 6. Create/Edit your Hearthstone [log.config file](https://github.com/Efemache/Mercenaries-Farm-bot/wiki/Settings#logconfig)
 7. Start Hearthstone with same resolution as set in *`settings.ini`*, Config Engine creates settings with default 1920x1080.
 8. Create a group of mercenaries named "Botwork" 

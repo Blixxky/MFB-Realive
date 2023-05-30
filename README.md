@@ -25,7 +25,7 @@ MFB fork : https://github.com/Blixxky/Mercenaries_Farm_Bot-Realive
    - [Original Mercenary Farm Bot](https://github.com/Efemache/Mercenaries-Farm-bot) <sub>no longer maintained.</sub>
    - [Realive fork](https://github.com/Blixxky/Mercenaries_Farm_Bot-Realive) <sub>currently being developed as of 5/29/23</sub>
 4. Open *`conf/user/config.py`* or *`conf/user/config.pyw`* and set your preferred '*settings using the GUI. 
-   - Set **GameDir** by browsing in the GUI or putting the path in settings.ini under "GameDir". This is where hearthstone.exe is
+   - Set **GameDir** by browsing in the GUI or putting the path in '*settings.ini*' under "GameDir". This is where '*hearthstone.exe*' is
    - Create your Hearthstone *`log.config`* file
 6. Start Hearthstone with same resolution as set in *`settings.ini`*, Config Engine creates settings with default 1920x1080.
 7. Create a group of mercenaries named "Botwork"
@@ -79,7 +79,7 @@ MFB fork : https://github.com/Blixxky/Mercenaries_Farm_Bot-Realive
 There are two ways to configure MFB now:
 1. You can use *`conf/user/config.py`*, the new Config Engine GUI. This will create *`settings.ini`* if it does not exist, *`combo.ini`* if it does not exist. 
 2. You can edit the *`conf/user/settings.ini`* file, the *'conf/user/combo.ini'* file, and the *'log.config'* file (WINE - *`USER\AppData\Local\Blizzard\Hearthstone\`* or Windows - *`%LocalAppData%/Blizzard/Hearthstone`*) in a text editor.
-   - :bangbang: Linux users will have to set the Game Dir where hearthstone.exe resides, Config Engine will likely detect it automatically on Windows.
+
 
 * "settings.ini" handles most of the bots settings and preferences. 
 <details><summary><i>Click here for a default settings.ini file</i></summary>

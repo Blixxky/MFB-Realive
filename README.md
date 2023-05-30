@@ -24,9 +24,9 @@ MFB fork : https://github.com/Blixxky/Mercenaries_Farm_Bot-Realive
 2. Download the project
    - [Original Mercenary Farm Bot](https://github.com/Efemache/Mercenaries-Farm-bot) <sub>no longer maintained.</sub>
    - [Realive fork](https://github.com/Blixxky/Mercenaries_Farm_Bot-Realive) <sub>currently being developed as of 5/29/23</sub>
-4. Open *`conf/user/config.py`* or *`conf/user/config.pyw`* and set your preferred settings using the GUI. 
-   - Set Game Dir if Config Engine doesn't detect it for you.
-   - Create your Hearthstone *`log.config`* file if it wasn't created by Config Engine.
+4. Open *`conf/user/config.py`* or *`conf/user/config.pyw`* and set your preferred '*settings using the GUI. 
+   - Set **GameDir** by browsing in the GUI or putting the path in settings.ini under "GameDir". This is where hearthstone.exe is
+   - Create your Hearthstone *`log.config`* file
 6. Start Hearthstone with same resolution as set in *`settings.ini`*, Config Engine creates settings with default 1920x1080.
 7. Create a group of mercenaries named "Botwork"
 8. Run HSbotRunner.bat
@@ -39,9 +39,8 @@ MFB fork : https://github.com/Blixxky/Mercenaries_Farm_Bot-Realive
    - [Original Mercenary Farm Bot](https://github.com/Efemache/Mercenaries-Farm-bot) <sub>no longer maintained.</sub>
    - [Realive fork](https://github.com/Blixxky/Mercenaries_Farm_Bot-Realive) <sub>currently being developed as of 5/29/23</sub>
 5. Run *`conf/user/config.py`* or *`conf/user/config.pyw`* and set your preferences
-   - :bangbang: Set **GameDir** to your Hearthstone directory using the Browse button, it isn't set automatically on Linux.
+6. Set **GameDir** to your Hearthstone directory using the Browse button, it isn't set automatically on Linux.
 6. Create/Edit your Hearthstone [log.config file](https://github.com/Efemache/Mercenaries-Farm-bot/wiki/Settings#logconfig)
-   - :bangbang: On Linux, Config Engine doesn't know the path and does not create one in the conf/user folder like the other files.
 7. Start Hearthstone with same resolution as set in *`settings.ini`*, Config Engine creates settings with default 1920x1080.
 8. Create a group of mercenaries named "Botwork" 
 9. Run HSbotRunner.sh

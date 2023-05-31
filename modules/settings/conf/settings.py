@@ -2,6 +2,9 @@ import logging
 import pathlib
 import shutil
 
+import sys
+import os
+
 from modules.exceptions import MissingGameDirectory, UnsetGameDirectory, SettingsError
 from modules.file_utils import parseINI, readINI
 from modules.utils import update
@@ -39,8 +42,12 @@ def get_system_user_settings(system_settings_filename, user_settings_filename):
         if not game_dir.is_dir():
             raise MissingGameDirectory(f"Game directory ({game_dir}) does not exist")
         else:
+            logs_dir = (settings_dict["gamedir"] + "/Logs")
+            subdirectories = os.listdir(logs_dir)
+            logs = os.listdir(logs_dir + "/" + subdirectories[len(subdirectories) - 1])
+
             settings_dict["zonelog"] = pathlib.PurePath(
-                game_dir, "Logs/Zone.log"
+                game_dir, "Logs/" + subdirectories[len(subdirectories) - 1] + "/" + logs[len(logs) - 1]
             ).as_posix()
 
         log.info("Settings")

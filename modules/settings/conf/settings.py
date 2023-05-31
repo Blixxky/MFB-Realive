@@ -44,10 +44,9 @@ def get_system_user_settings(system_settings_filename, user_settings_filename):
         else:
             logs_dir = (settings_dict["gamedir"] + "/Logs")
             subdirectories = os.listdir(logs_dir)
-            logs = os.listdir(logs_dir + "/" + subdirectories[len(subdirectories) - 1])
 
             settings_dict["zonelog"] = pathlib.PurePath(
-                game_dir, "Logs/" + subdirectories[len(subdirectories) - 1] + "/" + logs[len(logs) - 1]
+                game_dir, "Logs/" + subdirectories[len(subdirectories) - 1] + "/Zone.log"
             ).as_posix()
 
         log.info("Settings")

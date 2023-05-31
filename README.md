@@ -367,5 +367,8 @@ If you prefer to support using crypto, you can send your contribution to the fol
 ### Roadmap
 1. Write better logic for catching where MFB is in it's routine to better assist with reconnects and sustaining productivity.
 2. Create a more intuitive pause/resume system.
-3. More to come.
+3. Create better logging and exception handling for troubleshooting.
+4. Build upon the Treasure preference system, and get more data and screenshots for treasures.
+5. More to come...
+
 

@@ -9,7 +9,7 @@ MFB fork : https://github.com/Blixxky/Mercenaries_Farm_Bot-Realive
 - **1920x1080** in fullscreen mode ✔️✔️
 - **1920x1080** in windowed mode ✔️✔️
 
-- To play in windowed mode, ensure that your monitor has a higher resolution than Hearthstone in both width and height.
+- To play in windowed mode, ensure that your monitor has a higher resolution than Hearthstone in both width ad height.
 - **Any 16:9** aspect ratio with a minimum of 960x540, such as 960x540, 1024x576, 1280x720, 1600x900, and so on, in fullscreen mode ✔️
 - **Any 16:9** aspect ratio, including higher resolutions like 2560x1440, in windowed mode ✔️
 
@@ -22,8 +22,8 @@ MFB fork : https://github.com/Blixxky/Mercenaries_Farm_Bot-Realive
 ### Windows
 1. Install [Python 3.11](https://www.python.org/ftp/python/3.11.0/python-3.11.0-amd64-webinstall.exe) (⚠️ select the "Add Python 3.11 to PATH" during installation) 
 2. Download the project
-   - [Original Mercenary Farm Bot](https://github.com/Efemache/Mercenaries-Farm-bot) <sub>no longer maintained.</sub>
-   - [Realive fork](https://github.com/Blixxky/Mercenaries_Farm_Bot-Realive) <sub>currently being developed as of 5/29/23</sub>
+   - [Original Mercenary Farm Bot](https://github.com/Efemache/Mercenaries-Farm-bot) <sub>no longer maintained. unstable as of 5.31.23 due to Zone.log change</sub>
+   - [Realive fork](https://github.com/Blixxky/Mercenaries_Farm_Bot-Realive) <sub>currently being developed as. working and stable 5.31.23</sub>
 4. Open *`conf/user/config.py`* or *`conf/user/config.pyw`* and set your preferred '*settings*' using the GUI. 
    - Set **GameDir** by browsing in the GUI or putting the path in '*settings.ini*' under "GameDir". This is where '*hearthstone.exe*' is
    - Create your Hearthstone *`log.config`* file

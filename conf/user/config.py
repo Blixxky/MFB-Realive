@@ -5,14 +5,12 @@ MFB Config Engine - GUI for MFB settings by Blixxky
 This module provides a graphical user interface for MFB settings configuration.
 """
 
+
+
 import subprocess
 import sys
-
-subprocess.check_call(
-    [sys.executable, "-m", "pip", "install", "ttkthemes", "configparser"]
-)
 import configparser
-import os.path
+import os
 import tkinter as tk
 from tkinter import font, messagebox, filedialog, ttk
 from ttkthemes import ThemedStyle

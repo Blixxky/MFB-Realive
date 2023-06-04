@@ -4,19 +4,48 @@ MFB Config Engine - GUI for MFB settings by Blixxky
 
 This module provides a graphical user interface for MFB settings configuration.
 """
-
+import os
+import os.path
 import subprocess
 import sys
-
-subprocess.check_call(
-    [sys.executable, "-m", "pip", "install", "ttkthemes", "configparser"]
-)
-import configparser
-import os.path
 import tkinter as tk
+from datetime import datetime
 from tkinter import font, messagebox, filedialog, ttk
-from ttkthemes import ThemedStyle
+from typing import List
 
+current_dir = os.getcwd()
+timestamp_path = os.path.join(current_dir, "timestamp.txt")
+NEEDS_INSTALLATION = False
+
+if not os.path.isfile(timestamp_path):
+    NEEDS_INSTALLATION = True
+    with open(timestamp_path, "w", encoding="utf-8") as file:
+        file.write(f"{str(datetime.now().date())}\n")
+
+    try:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "ttkthemes==3.2.2"])
+    except subprocess.CalledProcessError:
+        try:
+            subprocess.check_call([sys.executable, "-m", "pip", "install", "ttkthemes"])
+            file.write("Dependencies installed: ttkthemes\n")
+        except subprocess.CalledProcessError:
+            pass
+
+    try:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "configparser==5.3.0"])
+    except subprocess.CalledProcessError:
+        pass
+
+    try:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "types-ttkthemes==3.2.4.5"])
+    except subprocess.CalledProcessError:
+        try:
+            subprocess.check_call([sys.executable, "-m", "pip", "install", "types-ttkthemes"])
+        except subprocess.CalledProcessError:
+            pass
+
+import configparser
+from ttkthemes import ThemedStyle
 
 # Initialize variables
 SETTINGS_INI_CREATED = False
@@ -39,26 +68,26 @@ if not os.path.isfile("settings.ini"):
     with open("settings.ini", "w", encoding="utf-8") as settingsfile:
         settingsfile.write(
             """[BotSettings]
-monitor = 1
-resolution = 1920x1080
-logs = True
-location =
-mode =
-level =
-preferelite = False
-notificationurl =
-MouseSpeed = 0.2
-GameDir =
-preferbooncaster = False
-preferboonfighter = False
-preferboonprotector = False
-preferprotector = False
-preferfighter = False
-prefercaster = False
-waitForEXP = 0
-quitBeforeBossFight = False
-stopAtBossFight = False
-preferPassiveTreasures = True
+monitor=1
+resolution=1920x1080
+logs=true
+location=
+mode=
+level=
+preferelite=false
+notificationurl=
+mousespeed=0.2
+gamedir=
+preferbooncaster=false
+preferboonfighter=false
+preferboonprotector=false
+preferprotector=false
+preferfighter=false
+prefercaster=false
+waitforexp=0
+quitbeforebossfight=false
+stopatbossfight=false
+preferpassivetreasures=true
 """
         )
 
@@ -292,9 +321,9 @@ Wavethrasher=1
         )
 
 
-def update_settings(game_dir=None):
+def update_settings():
     """
-    Read the settings
+    Read the settings and update the settings file
     """
     custom_config = configparser.ConfigParser()
     custom_config.optionxform = str
@@ -305,23 +334,19 @@ def update_settings(game_dir=None):
         "location": str(location_var.get()),
         "mode": str(mode_var.get()),
         "level": str(level_var.get()),
-        "MouseSpeed": str(mouse_speed_var.get()),
+        "mousespeed": str(mouse_speed_var.get()),
         "preferbooncaster": str(preferbooncaster_var.get()),
         "preferboonfighter": str(preferboonfighter_var.get()),
         "preferboonprotector": str(preferboonprotector_var.get()),
         "preferprotector": str(preferprotector_var.get()),
         "preferfighter": str(preferfighter_var.get()),
         "prefercaster": str(prefercaster_var.get()),
-        "waitForEXP": str(wait_for_exp_var.get()),
-        "quitBeforeBossFight": str(quit_before_boss_var.get()),
-        "stopAtBossFight": str(stop_at_boss_var.get()),
+        "waitforexp": str(wait_for_exp_var.get()),
+        "quitbeforebossfight": str(quit_before_boss_var.get()),
+        "stopatbossfight": str(stop_at_boss_var.get()),
         "preferelite": str(preferelite_var.get()),
-        "preferPassiveTreasures": str(prefer_passive_treasures_var.get()),
+        "preferpassivetreasures": str(prefer_passive_treasures_var.get()),
     }
-
-    # Update the GameDir value if it is not None
-    if game_dir is not None:
-        settings["GameDir"] = str(game_dir)
 
     # Update the settings in the configuration file
     if "BotSettings" not in custom_config:
@@ -331,17 +356,35 @@ def update_settings(game_dir=None):
     # Write the updated settings to the settings.ini file
     with open("settings.ini", "w", encoding="utf-8") as config_file:
         custom_config.write(config_file)
-        messagebox.showinfo("Success", "Settings updated successfully.")
+
+    messagebox.showinfo("Success", "Settings updated successfully.")
 
 
-# Function to browse and select the game directory
-def browse_game_dir():
+def browse_and_write_game_dir():
     """
-    Browse for hearthstone.exe
+    Browse for hearthstone.exe and write the game directory to settings.ini
     """
     hs_dir = filedialog.askdirectory()
     if hs_dir:
-        game_dir_var.set(hs_dir)
+        # Write the game directory to settings.ini
+        setdir = configparser.ConfigParser()
+        setdir.read("settings.ini", encoding="utf-8")
+
+        # Check if the "[BotSettings]" section exists
+        if not setdir.has_section("BotSettings"):
+            # Create the "[BotSettings]" section if it doesn't exist
+            setdir.add_section("BotSettings")
+
+        # Update the existing or create a new "gamedir" entry under the "[BotSettings]" section
+        setdir.set("BotSettings", "gamedir", hs_dir)
+
+        with open("settings.ini", "w", encoding="utf-8") as config_file:
+            setdir.write(config_file)
+
+        # Update the game directory value in the GUI
+        game_dir_var.set(
+            hs_dir
+        )  # Assuming game_dir_var is the variable for displaying the game directory
 
 
 # Create the main window
@@ -577,7 +620,7 @@ location_var.trace("w", update_level_dropdown)
 mode_var.trace("w", update_level_dropdown)
 
 
-# Create the MouseSpeed dropdown
+# Create the mousespeed dropdown
 mouse_speed_label = tk.Label(window, text="Mouse Speed:", font=label_font)
 mouse_speed_label.pack()
 mouse_speed_var = tk.StringVar()
@@ -585,18 +628,16 @@ mouse_speed_dropdown = ttk.Combobox(window, textvariable=mouse_speed_var)
 mouse_speed_dropdown["values"] = ["0.1", "0.2", "0.3", "0.4"]
 mouse_speed_dropdown.pack()
 
-# Create the GameDir entry
+# Create the gamedir entry
 game_dir_label = tk.Label(window, text="Game Directory:", font=label_font)
 game_dir_label.pack()
 game_dir_var = tk.StringVar()
-game_dir_entry = ttk.Entry(
-    window, textvariable=game_dir_var, width=40
-)  # Increase the width to 40
+game_dir_entry = ttk.Entry(window, textvariable=game_dir_var, width=40)
 game_dir_entry.pack()
 
 
 # Create the Browse button
-browse_button = ttk.Button(window, text="Browse", command=browse_game_dir)
+browse_button = ttk.Button(window, text="Browse", command=browse_and_write_game_dir)
 browse_button.pack()
 
 header_label = ttk.Label(
@@ -605,14 +646,11 @@ header_label = ttk.Label(
 header_label.pack(padx=(85, 70), pady=(5, 5))
 
 # Create a list to store the checkbox variables
-boon_checkboxes = []
-
-config = configparser.ConfigParser()
-config.read("settings.ini")
+boon_checkboxes: List[tk.BooleanVar] = []
 
 
 # Function to handle checkbox changes for boons
-def handle_boon_checkbox(var):
+def handle_boon_checkbox(var: tk.BooleanVar):
     """
     Max of 2 checkboxes at a time
     """
@@ -620,7 +658,22 @@ def handle_boon_checkbox(var):
     if checked_count > 2:
         var.set(False)  # Reset the checkbox if the maximum is reached
 
+def initialize_config_parser():
+    class CustomConfigParser(configparser.ConfigParser):
+        def __init__(self):
+            super().__init__()
 
+        def optionxform(self, optionstr):
+            return optionstr
+
+    config = CustomConfigParser()
+    config.read("settings.ini")
+
+    return config
+        
+# Call the function to initialize the config parser
+config = initialize_config_parser()
+        
 # Create the checkbox for preferbooncaster
 preferbooncaster_var = tk.BooleanVar()
 preferbooncaster_var.set(config.getboolean("BotSettings", "preferbooncaster"))
@@ -665,11 +718,11 @@ header_label.pack(padx=(70, 70), pady=(10, 5))
 
 
 # Create a list to store the checkbox variables
-fight_checkboxes = []
+fight_checkboxes: List[tk.BooleanVar] = []
 
 
 # Function to handle checkbox changes for fights
-def handle_fight_checkbox(var):
+def handle_fight_checkbox(var: tk.BooleanVar):
     """
     Maximum of 2 checkboxes ticked
     """
@@ -713,7 +766,6 @@ preferprotector_checkbox = ttk.Checkbutton(
 )
 preferprotector_checkbox.pack(anchor="w", padx=(150, 0))
 fight_checkboxes.append(preferprotector_var)
-
 header_label = ttk.Label(
     window, text="Miscellaneous", style="Header.TLabel", anchor="center"
 )
@@ -726,7 +778,7 @@ wait_for_exp_entry = ttk.Entry(window, textvariable=wait_for_exp_var, width=1)
 wait_for_exp_entry.pack(anchor="w", padx=(205, 0), pady=(1, 1))
 
 stop_at_boss_var: tk.BooleanVar = tk.BooleanVar()
-# Create the checkbox for quitBeforeBossFight
+# Create the checkbox for quitbeforebossfight
 quit_before_boss_var = tk.BooleanVar()
 quit_before_boss_checkbox = ttk.Checkbutton(
     window,
@@ -736,7 +788,7 @@ quit_before_boss_checkbox = ttk.Checkbutton(
 )
 quit_before_boss_checkbox.pack(anchor="w", padx=(150, 0))
 
-# Create the checkbox for stopAtBossFight
+# Create the checkbox for stopatbossfight
 stop_at_boss_var = tk.BooleanVar()
 stop_at_boss_checkbox = ttk.Checkbutton(
     window,
@@ -762,7 +814,7 @@ preferelite_checkbox = ttk.Checkbutton(
 )
 preferelite_checkbox.pack(anchor="w", padx=(150, 0))
 
-# Create the checkbox for preferPassiveTreasures
+# Create the checkbox for preferpassivetreasures
 prefer_passive_treasures_var = tk.BooleanVar(value=True)
 prefer_passive_treasures_checkbox = ttk.Checkbutton(
     window, text="Prefer Passive Treasures", variable=prefer_passive_treasures_var
@@ -793,26 +845,16 @@ if LOGFILE_APPENDED:
 tracking_label["text"] = TRACKING_TEXT
 
 
-class CustomConfigParser(configparser.ConfigParser):
-    """
-    Read the settings file
-    """
-
-    def optionxform(self, optionstr: str) -> str:
-        return optionstr
-
-
-config = CustomConfigParser()
-config.read("settings.ini", encoding="utf-8")
-
+# Call the function to initialize the config parser
+config = initialize_config_parser()
 
 # Populate the GUI elements with the values from the settings.ini file
 if "BotSettings" in config:
     location_var.set(config["BotSettings"].get("location", ""))
     mode_var.set(config["BotSettings"].get("mode", ""))
     level_var.set(config["BotSettings"].get("level", ""))
-    mouse_speed_var.set(config["BotSettings"].get("MouseSpeed", ""))
-    game_dir_var.set(config["BotSettings"].get("GameDir", ""))
+    mouse_speed_var.set(config["BotSettings"].get("mousespeed", ""))
+    game_dir_var.set(config["BotSettings"].get("gamedir", ""))
     preferbooncaster_var.set(
         config["BotSettings"].getboolean("preferbooncaster", False)
     )
@@ -827,14 +869,14 @@ if "BotSettings" in config:
     )
     preferboonfighter_var.set(config["BotSettings"].getboolean("preferfighter", False))
     preferbooncaster_var.set(config["BotSettings"].getboolean("prefercaster", False))
-    wait_for_exp_var.set(int(config["BotSettings"].get("waitForEXP", "0")))
+    wait_for_exp_var.set(int(config["BotSettings"].get("waitforexp", "0")))
     quit_before_boss_var.set(
-        config["BotSettings"].getboolean("quitBeforeBossFight", False)
+        config["BotSettings"].getboolean("quitbeforebossfight", False)
     )
-    stop_at_boss_var.set(config["BotSettings"].getboolean("stopAtBossFight", False))
+    stop_at_boss_var.set(config["BotSettings"].getboolean("stopatbossfight", False))
     preferelite_var.set(config["BotSettings"].getboolean("preferelite", False))
     prefer_passive_treasures_var.set(
-        config["BotSettings"].getboolean("preferPassiveTreasures", True)
+        config["BotSettings"].getboolean("preferpassivetreasures", True)
     )
 
 update_button = ttk.Button(window, text="Update Settings", command=update_settings)

@@ -29,7 +29,8 @@ MFB fork : https://github.com/Blixxky/Mercenaries_Farm_Bot-Realive
    - Create your Hearthstone *`log.config`* file
 6. Start Hearthstone with same resolution as set in *`settings.ini`*, Config Engine creates settings with default 1920x1080.
 7. Create a group of mercenaries named "Botwork"
-8. Run HSbotRunner.bat
+8. Run HSbotRunner.bat 
+   - The bat file now checks the last time dependencies were installed. If never or greater than 30 days, it will pip install all reqs.
 
 ### Linux
 1. Install python3-venv *`sudo apt install python3.11-venv`*

@@ -314,8 +314,11 @@ def select_ability(localhero, myBoard, enemies: Enemies, raund):
 
     if localhero in mercsAbilities:
         retour = False
+        time.sleep(0.3)
         chooseone2 = [windowMP()[2] // 2.4, windowMP()[2] // 1.7]
+        time.sleep(0.3)
         chooseone3 = [windowMP()[2] // 3, windowMP()[2] // 2, windowMP()[2] // 1.5]
+        time.sleep(0.3)
 
         abilitySetting = didnt_find_a_name_for_this_one(
             localhero, ability_section, raund, 1
@@ -325,7 +328,7 @@ def select_ability(localhero, myBoard, enemies: Enemies, raund):
             if isinstance(mercsAbilities[localhero][str(ability)], bool):
                 retour = mercsAbilities[localhero][str(ability)]
             elif mercsAbilities[localhero][str(ability)] == "chooseone3":
-                time.sleep(0.2)
+                time.sleep(0.3)
                 move_mouse_and_click(
                     windowMP(),
                     chooseone3[abilitySetting["chooseone"]],
@@ -333,7 +336,7 @@ def select_ability(localhero, myBoard, enemies: Enemies, raund):
                 )
                 retour = True
             elif mercsAbilities[localhero][str(ability)] == "chooseone2":
-                time.sleep(0.2)
+                time.sleep(0.3)
                 move_mouse_and_click(
                     windowMP(),
                     chooseone2[abilitySetting["chooseone"]],
@@ -341,7 +344,7 @@ def select_ability(localhero, myBoard, enemies: Enemies, raund):
                 )
                 retour = True
             elif mercsAbilities[localhero][str(ability)].startswith("friend"):
-                time.sleep(0.2)
+                time.sleep(0.3)
 
                 # if attacks.json shows something more than just "friend" (like "Beast")
                 if ":" in mercsAbilities[localhero][str(ability)]:
@@ -416,8 +419,9 @@ def take_turn_action(
     log.info("attack with : %s ( position : %s/%s =%s)", mercName, position, number, x)
 
     move_mouse_and_click(windowMP(), x, y)
-    time.sleep(0.2)
+    time.sleep(0.3)
     move_mouse(windowMP(), windowMP()[2] / 3, windowMP()[3] / 2)
+    time.sleep(0.3)
     if mercName in mercslist:
         if (
             mercslist[mercName]["role"] == "Protector"
@@ -528,6 +532,7 @@ def battle(zoneLog=None):
 
     raund = 1
     while True:
+        time.sleep(0.3)
         move_mouse(
             windowMP(),
             windowMP()[2] // 4,

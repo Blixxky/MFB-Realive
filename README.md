@@ -312,6 +312,8 @@ To change the group's name (default: Botwork), follow these steps:
 
 ## Starting the bot
 
+I highly recommend you start hearthstone.exe before launching .bat or .sh, as the BattleNet detection and launching can be a bit buggy.
+
 If you encounter the following errors:
 
 - "SetForegroundWindow error": It means there is another foreground window from another process. This can occur when using the "windows" key on the keyboard to open the Window Menu. Close the other window to resolve the issue.

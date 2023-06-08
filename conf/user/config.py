@@ -23,7 +23,9 @@ if not os.path.isfile(timestamp_path):
         file.write(f"{str(datetime.now().date())}\n")
 
     try:
-        subprocess.check_call([sys.executable, "-m", "pip", "install", "ttkthemes==3.2.2"])
+        subprocess.check_call(
+            [sys.executable, "-m", "pip", "install", "ttkthemes==3.2.2"]
+        )
     except subprocess.CalledProcessError:
         try:
             subprocess.check_call([sys.executable, "-m", "pip", "install", "ttkthemes"])
@@ -32,15 +34,21 @@ if not os.path.isfile(timestamp_path):
             pass
 
     try:
-        subprocess.check_call([sys.executable, "-m", "pip", "install", "configparser==5.3.0"])
+        subprocess.check_call(
+            [sys.executable, "-m", "pip", "install", "configparser==5.3.0"]
+        )
     except subprocess.CalledProcessError:
         pass
 
     try:
-        subprocess.check_call([sys.executable, "-m", "pip", "install", "types-ttkthemes==3.2.4.5"])
+        subprocess.check_call(
+            [sys.executable, "-m", "pip", "install", "types-ttkthemes==3.2.4.5"]
+        )
     except subprocess.CalledProcessError:
         try:
-            subprocess.check_call([sys.executable, "-m", "pip", "install", "types-ttkthemes"])
+            subprocess.check_call(
+                [sys.executable, "-m", "pip", "install", "types-ttkthemes"]
+            )
         except subprocess.CalledProcessError:
             pass
 
@@ -658,6 +666,7 @@ def handle_boon_checkbox(var: tk.BooleanVar):
     if checked_count > 2:
         var.set(False)  # Reset the checkbox if the maximum is reached
 
+
 def initialize_config_parser():
     class CustomConfigParser(configparser.ConfigParser):
         def __init__(self):
@@ -670,10 +679,11 @@ def initialize_config_parser():
     config.read("settings.ini")
 
     return config
-        
+
+
 # Call the function to initialize the config parser
 config = initialize_config_parser()
-        
+
 # Create the checkbox for preferbooncaster
 preferbooncaster_var = tk.BooleanVar()
 preferbooncaster_var.set(config.getboolean("BotSettings", "preferbooncaster"))

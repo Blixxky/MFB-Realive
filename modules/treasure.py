@@ -1,3 +1,12 @@
+"""
+This module provides functions related to choosing treasures after a battle/fight.
+
+Functions:
+- choose_treasure: Choose a treasure after a battle/fight.
+
+Note: This module requires the 'random', 'time', and 'queue' libraries.
+"""
+
 import random
 import time
 
@@ -17,9 +26,11 @@ TREASURES_DIR = "treasures"
 
 
 def chooseTreasure():
-    """used to choose a Treasure after a battle/fight
-    note: Treasures are added to a queue (FIFO); if no matches are
-    found, a random treasure is selected.
+    """
+    Choose a treasure after a battle/fight.
+
+    Note:
+    Treasures are added to a queue (FIFO); if no matches are found, a random treasure is selected.
     """
     treasures_queue = PriorityQueue()
 

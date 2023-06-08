@@ -1,3 +1,7 @@
+"""
+This module targets enemies and uses abilities during encounters.
+"""
+
 import re
 import time
 import random
@@ -21,6 +25,17 @@ ability_section = default_ability_section
 
 
 class Enemies:
+    """
+    Class to manage enemies in the game.
+    Attributes:
+    red: An integer representing the number of red enemies.
+    green: An integer representing the number of green enemies.
+    blue: An integer representing the number of blue enemies.
+    no_class: An integer representing the number of enemies with no class.
+    no_class2: An integer representing the number of enemies with no second class.
+    mol: An integer representing the number of mol enemies.
+    """
+
     def __init__(self, red, green, blue, noclass, noclass2, mol):
         self.red = red
         self.green = green
@@ -31,6 +46,16 @@ class Enemies:
 
 
 class Board:
+    """
+    Class to manage the game board.
+    Attributes:
+    card_width: An integer representing the width of a card on the board.
+    card_height: An integer representing the height of a card on the board.
+    position_even: A list of integers representing the positions of the cards on the even rows of the board.
+    position_odd: A list of integers representing the positions of the cards on the odd rows of the board.
+    my_board_y: A float representing the y-coordinate of the board.
+    """
+
     def __init__(self):
         self.card_width = windowMP()[2] // 16
         self.card_height = windowMP()[3] // 6
@@ -47,8 +72,14 @@ class Board:
 
 
 def select_enemy_to_attack(index):
-    """Used to move the mouse over an enemy to attack it
-    (after selecting a merc's ability)
+    """
+    Moves the mouse over an enemy to attack it after selecting a merc's ability.
+
+    Args:
+    index: A list of two integers representing the x and y coordinates of the enemy.
+
+    Returns:
+    A boolean value indicating whether the mouse was moved successfully.
     """
     cardWidth = windowMP()[2] // 16
     cardHeight = windowMP()[3] // 6
@@ -68,10 +99,13 @@ def select_enemy_to_attack(index):
 
 
 def select_random_enemy_to_attack(enemies=None):
-    """look for a random enemy
-    (used when blue mercs can't find red enemy,
-    green can't find blue or
-    red can't find green
+    """Selects a random enemy to attack.
+
+    Args:
+    enemies: An instance of the Enemies class representing the current state of enemies.
+
+    Returns:
+    A boolean value indicating whether an enemy was selected successfully.
     """
     enemies = enemies or []
     log.debug("select_random_enemy_to_attack : %s len=%s", enemies, len(enemies))
@@ -93,8 +127,14 @@ def select_random_enemy_to_attack(enemies=None):
 
 def priorityMercByRole(myMercs, targetrole) -> List[int]:
     """
-    return merc position list prioritize by the targetRole comes first,
-        non target role after and minion comes last
+    Prioritizes a list of mercenaries by a specified role.
+
+    Args:
+        my_mercs: A list of mercenaries.
+        target_role: A role that should be prioritized when sorting the list.
+
+    Returns:
+        A list of mercenary positions where mercenaries of the target role come first, followed by non-target roles and minions at the end.
     """
     mercs_pos = []
     # add targetrole mercs first
@@ -118,7 +158,9 @@ def priorityMercByRole(myMercs, targetrole) -> List[int]:
 
 
 def ability_target_friend(targettype, myMercs, enemies: Enemies, abilitySetting):
-    """Return the X coord of one of our mercenaries"""
+    """
+    Return the X coord of one of our mercenaries
+    """
 
     friendName = abilitySetting["name"]
 
@@ -170,8 +212,19 @@ def ability_target_friend(targettype, myMercs, enemies: Enemies, abilitySetting)
 
 
 def pickBestAllyToBuff(enemies, myMercs, number):
-    # TODO get multiple enemies per role for priority by
-    # weakness of the most role of enemy
+    """
+    Selects the best ally to buff based on the enemies' roles.
+
+    Args:
+        enemies: A list of enemy mercenaries.
+        my_mercs: A list of our mercenaries.
+        number: The total number of our mercenaries.
+
+    Returns:
+        The position of the best ally to buff.
+
+    TODO get multiple enemies per role for priority by weakness
+    """
     if enemies.blue:
         # enemies have blue so we buff red merc first
         position = random.choice(priorityMercByRole(myMercs, "Protector"))
@@ -197,7 +250,18 @@ def findFriendNameInMercs(myMercs, friendName):
 
 
 def get_ability_for_this_turn(name, minionSection, turn, defaultAbility=0):
-    """Get the ability (configured) for this turned for the selected Merc/minion"""
+    """
+    Retrieves the configured ability for a selected mercenary or minion during a specific turn.
+
+    Args:
+        name: The name of the mercenary or minion.
+        minion_section: The section of minions.
+        turn: The current turn.
+        default_ability: The default ability to use if no specific ability is configured.
+
+    Returns:
+        The ability to use for this turn.
+    """
 
     if minionSection in ability_order and name.lower() in ability_order[minionSection]:
         # in combo.ini, split (with ",") to find the ability to use this turn
@@ -220,6 +284,15 @@ def get_ability_for_this_turn(name, minionSection, turn, defaultAbility=0):
 
 
 def parse_ability_setting(ability):
+    """
+    Parses the ability setting from a given string.
+
+    Args:
+        ability: The ability setting string to parse.
+
+    Returns:
+        A dictionary containing parsed ability settings.
+    """
     retour = {
         "ai": "byColor",
         "chooseone": 0,
@@ -253,6 +326,18 @@ def parse_ability_setting(ability):
 
 
 def didnt_find_a_name_for_this_one(name, minionSection, turn, defaultAbility=0):
+    """
+    Retrieves the configuration of an ability for a specific turn and then selects this ability for a certain mercenary or minion.
+
+    Args:
+        name: The name of the mercenary or minion.
+        minion_section: The section of minions.
+        turn: The current turn.
+        default_ability: The default ability to use if no specific ability is configured.
+
+    Returns:
+        The configuration of the selected ability.
+    """
     abilitiesWidth = windowMP()[2] // 14.2
     abilitiesHeigth = windowMP()[3] // 7.2
 
@@ -307,9 +392,17 @@ def didnt_find_a_name_for_this_one(name, minionSection, turn, defaultAbility=0):
 
 
 def select_ability(localhero, myBoard, enemies: Enemies, raund):
-    """Select an ability for a mercenary.
-        Depend on what is available and wich Round (battle)
-    Click only on the ability (doesnt move to an enemy)
+    """
+    Selects an ability for a mercenary based on available abilities and the current round.
+
+    Args:
+        local_hero: The name of the mercenary for which to select an ability.
+        my_board: The current state of our board.
+        enemies: A list of enemy mercenaries.
+        round: The current round.
+
+    Returns:
+        A boolean indicating whether or not an ability was successfully selected.
     """
 
     if localhero in mercsAbilities:

@@ -1,3 +1,18 @@
+"""
+This module provides a Windows-specific implementation of the Window Manager using the win32gui library.
+It encapsulates some calls to the Windows API (winapi) for window management, including finding game windows,
+getting window geometry, showing windows, and setting windows to the foreground.
+
+Changelog:
+- Fixed global variable declaration for 'left', 'top', 'width', and 'height'.
+- Fixed return statements in the 'find_game' function to return expressions or None.
+- Defined the '_handles' attribute inside the '__init__' method.
+
+Classes:
+- WindowMgrWindowsWin32Gui: A class that extends the base WindowMgr class and implements the Windows-specific
+  window management functions using the win32gui library.
+"""
+
 import re
 import logging
 from ..base import WindowMgr
@@ -22,14 +37,28 @@ SW_SHOW = 5
 
 
 class WindowMgrWindowsWin32Gui(WindowMgr):
-    """Encapsulates some calls to the winapi for window management"""
+    """
+    This class provides functionalities to manage windows in Windows OS.
+    It extends from the base WindowMgr class and implements Win32-specific methods.
+    """
 
     def __init__(self):
-        """Constructor"""
+        """
+        Initializes an instance of the WindowMgrWindowsWin32Gui class, setting the window handle to None.
+        """
         self._handle = None
 
     def find_game(self, WINDOW_NAME, BNCount=0):
-        """find the hearthstone game window"""
+        """
+        Searches for the game window named 'WINDOW_NAME' on the screen, and brings it to the foreground if found.
+
+        Args:
+            WINDOW_NAME (str): The name of the game window to search for.
+            BNCount (int): The number of instances of the game window. Default is 0.
+
+        Returns:
+            self._handle: The handle to the found game window, or None if no matching window is found.
+        """
         self._find_window(WINDOW_NAME, BNCount)
         if (self._handle is not None) & (
             WINDOW_NAME != win32gui.GetWindowText(win32gui.GetForegroundWindow())
@@ -39,6 +68,13 @@ class WindowMgrWindowsWin32Gui(WindowMgr):
         return self._handle
 
     def get_window_geometry(self):
+        """
+        Fetches the window geometry of the active window. If the active window is 'Battle.net',
+        returns the geometry of the entire screen, else returns the client window geometry.
+
+        Returns:
+            tuple: A tuple representing the window's geometry (x, y, width, height).
+        """
         global left, top, width, height
         # To get the active window name
         WINDOW_NAME = win32gui.GetWindowText(win32gui.GetForegroundWindow())
@@ -52,7 +88,14 @@ class WindowMgrWindowsWin32Gui(WindowMgr):
             return (left, top, width, height)
 
     def _window_enum_callback(self, hwnd, WINDOW_NAME):
-        """Pass to win32gui.EnumWindows() to check all the opened windows"""
+        """
+        Callback function used by win32gui.EnumWindows() to check all the opened windows.
+        If a window title matches the given WINDOW_NAME, it sets the window handle to this window's handle.
+
+        Args:
+            hwnd: The handle to the window being checked.
+            WINDOW_NAME (str): The name of the game window to search for.
+        """
         if re.match(WINDOW_NAME, str(win32gui.GetWindowText(hwnd))) is not None:
             # print(hwnd)
             self._handles.append(hwnd)
@@ -60,6 +103,13 @@ class WindowMgrWindowsWin32Gui(WindowMgr):
             print(self._handle)
 
     def _find_window(self, WINDOW_NAME, BNCount):
+        """
+        Enumerates through all the windows and attempts to find the one with the given WINDOW_NAME.
+
+        Args:
+            WINDOW_NAME (str): The name of the game window to search for.
+            BNCount (int): The number of instances of the game window.
+        """
         self._handle = None
         self._handles = []
         win32gui.EnumWindows(self._window_enum_callback, WINDOW_NAME)
@@ -75,10 +125,15 @@ class WindowMgrWindowsWin32Gui(WindowMgr):
             self._handle = self._handles[0]
 
     def _show_window(self):
+        """
+        Brings the identified game window to the foreground.
+        """
         shell.SendKeys("%")
         win32gui.ShowWindow(self._handle, SW_SHOW)
 
     def _set_foreground(self):
-        """put the window in the foreground"""
+        """
+        Sets the identified game window as the foreground window.
+        """
         win32gui.SetForegroundWindow(self._handle)
         shell.SendKeys("%")

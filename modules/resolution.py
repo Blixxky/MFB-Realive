@@ -1,3 +1,14 @@
+"""
+This module provides image-related functions for resizing and generating images based on settings.
+
+Functions:
+- resize_image: Resize an image from source to destination.
+- check_resolution: Check if the window resolution matches the settings resolution.
+- gen_images_new_resolution: Generate images for the new resolution.
+
+Note: This module requires the 'cv2' and 'os' libraries.
+"""
+
 import cv2
 
 import os
@@ -13,7 +24,14 @@ orig_resolution = settings_dict["default_resolution"]
 
 
 def resize_image(srcfile, dstfile, params=[]):
-    """resize image from source to destination"""
+    """
+    Resize an image from source to destination.
+
+    Args:
+        srcfile (str): Path to the source image file.
+        dstfile (str): Path to the destination image file.
+        params (list, optional): List of parameters. Defaults to None.
+    """
     orig_resolution_w = int(params[0].split("x")[0])
     new_resolution_w = int(params[1].split("x")[0])
 
@@ -30,16 +48,23 @@ def resize_image(srcfile, dstfile, params=[]):
 
 
 def check_resolution(window):
+    """
+    Check if the window resolution matches the settings resolution.
+    """
+
     # retour=False
     # margin_error=0.1
-
     # windowx, windowy = window.split("x")
     # settingx, setting = setting.split("x")
+    # Dunno what this commented code was for, review by Blixxky 6.7.23
 
     return window == settings_dict["resolution"]
 
 
 def gen_images_new_resolution():
+    """
+    It appears that this function resizes the base images to scale to new resolutions.
+    """
     new_resolution = settings_dict["resolution"]
 
     ox, oy = orig_resolution.split("x")

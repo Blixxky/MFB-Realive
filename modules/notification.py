@@ -1,3 +1,19 @@
+"""
+This module provides functions for sending notifications to webhook URLs.
+
+Functions:
+- send_notification: Send a notification message to a webhook URL from the 'notificationURL' config.
+- send_slack_notification: Send a notification message to a Slack webhook URL from the 'slacknotificationurl' config.
+
+Note: This module requires the 'urllib' library.
+
+Constants:
+- settings_dict: A dictionary containing settings.
+
+Dependencies:
+- logging: The standard Python logging module.
+"""
+
 from urllib import request, parse, error
 
 from .settings import settings_dict
@@ -8,7 +24,16 @@ log = logging.getLogger(__name__)
 
 
 def send_notification(message: dict):
-    """Send notification message to a webhook url from `notificationURL` config."""
+    """
+    Send a notification message to a webhook URL.
+
+    Args:
+        message (dict): The message to send as a dictionary.
+
+    Raises:
+        error.HTTPError: If there is an HTTP error.
+        error.URLError: If there is a URL error.
+    """
     if "notificationurl" not in settings_dict or not settings_dict["notificationurl"]:
         return
     url = settings_dict["notificationurl"]
@@ -26,7 +51,16 @@ def send_notification(message: dict):
 
 
 def send_slack_notification(message):
-    """Send notification message to a webhook url from `notificationURL` config."""
+    """
+    Send a notification message to a Slack webhook URL.
+
+    Args:
+        message (str): The message to send.
+
+    Raises:
+        error.HTTPError: If there is an HTTP error.
+        error.URLError: If there is a URL error.
+    """
     if (
         "slacknotificationurl" not in settings_dict
         or not settings_dict["slacknotificationurl"]

@@ -1,4 +1,15 @@
-# import random
+"""
+This module provides functions for interacting with the campfire screen in the game. The campfire screen is where completed tasks and rewards can be found.
+
+Functions:
+- toggle_campfire_screen: Toggle the campfire screen between party and visitor views.
+- check_party_tasks: Check if there are completed tasks in the campfire party view and claim the rewards.
+- check_visitor_tasks: Check if there are completed tasks in the campfire visitor view and claim the rewards.
+- claim_task_reward: Claim the rewards for a completed task in the campfire.
+- look_at_campfire_completed_tasks: Look at the campfire screen to find and claim rewards for completed tasks.
+
+"""
+
 import time
 
 from .platforms import windowMP
@@ -24,6 +35,10 @@ log = logging.getLogger(__name__)
 
 
 def toggle_campfire_screen():
+    """
+    Toggle the campfire screen between party and visitor views.
+    Returns the view that is currently active ('party', 'visitor'), or None if neither view is active.
+    """
     if find_element(Button.campfire_hiddenparty.filename, Action.move_and_click):
         return "party"
         time.sleep(2)
@@ -35,6 +50,11 @@ def toggle_campfire_screen():
 
 
 def check_party_tasks():
+    """
+    Check if there are completed tasks in the campfire party view.
+    If tasks are completed, claim the rewards and return True.
+    If no tasks are completed, return False.
+    """
     if find_element(Button.campfire_hiddenvisitors.filename, Action.screenshot):
         waitForItOrPass(Button.campfire_completed_partytask, 3)
         if find_element(
@@ -47,6 +67,11 @@ def check_party_tasks():
 
 
 def check_visitor_tasks():
+    """
+    Check if there are completed tasks in the campfire visitor view.
+    If tasks are completed, claim the rewards and return True.
+    If no tasks are completed, return False.
+    """
     if find_element(Button.campfire_hiddenparty.filename, Action.screenshot):
         waitForItOrPass(Button.campfire_completed_task, 3)
         if (
@@ -64,6 +89,9 @@ def check_visitor_tasks():
 
 
 def claim_task_reward():
+    """
+    Claim the rewards for a completed task in the campfire.
+    """
     while not find_element(Button.campfire_claim.filename, Action.screenshot):
         time.sleep(0.5)
 

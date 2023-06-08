@@ -1,3 +1,8 @@
+"""
+This module contains the main logic for navigating the Mercenaries mode in Hearthstone.
+It provides functions to detect the current state of the game and progress through the various stages of gameplay.
+"""
+
 import time
 import sys
 

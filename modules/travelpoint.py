@@ -1,14 +1,20 @@
+"""
+This module provides functions for handling travel points in the game.
+
+Functions:
+- get_travelpoints_list: Get the list of available travel points.
+- travelpoint_selection: Choose a travel point and mode.
+
+Note: This module requires the 'time' and 're' libraries.
+"""
+
 import time
 import re
 
 from .platforms import windowMP
 from .mouse_utils import (
-    move_mouse_and_click,
     move_mouse,
-    mouse_position,
-    mouse_click,
     mouse_scroll,
-    MOUSE_RANGE,
 )
 
 from .constants import UIElement, Button, Action
@@ -22,6 +28,12 @@ log = logging.getLogger(__name__)
 
 
 def get_travelpoints_list():
+    """
+    Get the list of available travel points.
+
+    Returns:
+        list: List of travel points.
+    """
     tp_list = []
     for key in jposition:
         if re.search(r"travelpoint\..+\.scroll", key):
@@ -31,8 +43,8 @@ def get_travelpoints_list():
 
 
 def travelpointSelection():
-    """Choose a Travel Point (Barrens, Felwood, ...)
-    and the mode : Normal or Heroic
+    """
+    Choose a travel point and mode.
     """
 
     if find_element(UIElement.travelpoint.filename, Action.screenshot):

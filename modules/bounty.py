@@ -1,3 +1,6 @@
+"""
+This module contains functions related to moving from one bounty to the next, quitting when specified, and finding and moving in-between game windows.
+"""
 import sys
 import random
 import time
@@ -29,7 +32,9 @@ log = logging.getLogger(__name__)
 
 
 def collect():
-    """Collect the rewards just after beating the final boss of this level"""
+    """
+    Collect the rewards just after beating the final boss of this level
+    """
 
     # it's difficult to find every boxes with lib CV2 so,
     # we try to detect just one and then we click on all known positions
@@ -81,7 +86,9 @@ def collect():
 
 
 def quitBounty():
-    """Function to (auto)quit the bounty. Called if the user configured it."""
+    """
+    Function to (auto)quit the bounty. Called if the user configured it.
+    """
     end = False
     if find_element(Button.view_party.filename, Action.move_and_click):
         while not find_element(UIElement.your_party.filename, Action.move):
@@ -96,7 +103,9 @@ def quitBounty():
 
 
 def nextlvl():
-    """Progress on the map (Boon, Portal, ...) to find the next battle"""
+    """
+    Progress on the map (Boon, Portal, ...) to find the next battle
+    """
     time.sleep(3)
     retour = True
 
@@ -180,6 +189,9 @@ def nextlvl():
 
 
 def searchForEncounter():
+    """
+    Search for the next encounter on the map.
+    """
     retour = True
     if find_element(UIElement.view_party.filename, Action.screenshot):
         x, y = mouse_position(windowMP())

@@ -9,7 +9,7 @@ log = logging.getLogger(__name__)
 
 
 def readjson(jfile):
-    """... just for reading json file and return data :)"""
+    """Reads a JSON file and returns the data."""
     with open(jfile) as descriptor:
         data = json.load(descriptor)
 
@@ -17,13 +17,13 @@ def readjson(jfile):
 
 
 def read_ini_to_dict(inifile):
-    """read ini file to parsed dictionary"""
+    """Reads an INI file and returns the parsed dictionary."""
     log.debug("Reading %s", inifile)
     return parseINI(readINI(inifile))
 
 
 def parseINI(inidict):
-    """... just for transform value into right type"""
+    """Transforms values into the appropriate type based on the input dictionary from an INI file."""
     initype = {}
     for k in inidict.keys():
         i = inidict[k].split("#")[0]
@@ -40,7 +40,7 @@ def parseINI(inidict):
 
 
 def readINI(inifile):
-    """... just for reading .ini file and return data"""
+    """Reads an INI file and returns the data."""
     config = configparser.ConfigParser()
     try:
         config.read(inifile)
@@ -52,7 +52,7 @@ def readINI(inifile):
 
 
 def writeINI(file, data):
-    """... to write new settings into .ini file and return if ok (or not)"""
+    """Writes new settings into an INI file and returns the status of the operation."""
     config = configparser.ConfigParser()
 
     for section in data:

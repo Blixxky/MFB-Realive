@@ -1,3 +1,11 @@
+"""
+This module provides the LogHSMercs class for parsing and tracking game state changes
+from a specified Hearthstone Mercenaries log file. The class maintains the state of player's
+hand and board, as well as the enemy's board, and provides methods to access these states. It also
+supports real-time log file tracking through a separate thread, allowing the game state to be
+updated as new log entries are created.
+"""
+
 import time
 import re
 from pathlib import Path
@@ -9,8 +17,12 @@ log = logging.getLogger(__name__)
 
 class LogHSMercs:
     def __init__(self, logpath):
-        """Generator function that yields new lines in filelog to
-        follow cards in hand and on the battlefield.
+        """
+        Constructs a LogHSMercs object. Opens the specified log file and prepares for
+        real-time tracking of game state changes.
+        Tracks cards in hand and on field.
+        Args:
+            logpath (str): Path to the Hearthstone Mercenaries log file.
         """
         self.logpath = logpath
 
@@ -34,6 +46,12 @@ class LogHSMercs:
         self.zonechange_finished = False
 
     def find_battle_start_log(self):
+        """
+        Identifies the starting point of a battle in the log file. This is determined
+        by finding a specific pattern in the file's lines. The read position is then set to
+        this line for the upcoming tracking.
+        """
+
         line = self.logfile.readline()
         while line:
             if re.search(
@@ -48,7 +66,10 @@ class LogHSMercs:
             self.logfile.seek(self.filePos)
 
     def follow(self):
-        # Start an infinite loop to read the log file
+        """
+        Starts real-time tracking of the log file, continuously reading new lines and updating
+        the game state based on the parsed information.
+        """
         while self.__running:
             # Read the last line of the file
             line = self.logfile.readline()
@@ -144,6 +165,12 @@ class LogHSMercs:
                     self.zonechange_finished = True
 
     def get_zonechanged(self):
+        """
+        Checks if a zone change has been completed in the log file.
+
+        Returns:
+        bool: True if a zone change has occurred, otherwise False.
+        """
         if self.zonechange_finished:
             self.zonechange_finished = False
             return True
@@ -151,6 +178,9 @@ class LogHSMercs:
             return False
 
     def start(self):
+        """
+        Begins real-time tracking of the log file by launching the follow method in a new thread.
+        """
         log.debug("Reading logfile: %s", self.logpath)
         self.__running = True
         t1 = threading.Thread(target=self.follow)
@@ -158,6 +188,11 @@ class LogHSMercs:
         t1.start()
 
     def stop(self):
+        """
+        Stops real-time tracking of the log file. This method also cleans up the player's hand and board
+        states and closes the log file.
+        """
+
         log.debug("Closing logfile: %s", self.logpath)
         self.__running = False
         self.cleanHand()
@@ -165,21 +200,45 @@ class LogHSMercs:
         self.logfile.close()
 
     def cleanHand(self):
+        """
+        Clears the player's hand state.
+        """
         self.cardsInHand = []
 
     def getHand(self):
+        """
+        Retrieves the player's current hand.
+
+        Returns:
+            list: List of cards in the player's hand.
+        """
         return self.cardsInHand
 
     def cleanBoard(self):
+        """
+        Clears the player's and enemy's board states.
+        """
         self.myBoard = {}
         self.mercsId = {}
         self.enemiesBoard = {}
         self.enemiesId = {}
 
     def getMyBoard(self):
+        """
+        Retrieves the current state of the player's board.
+
+        Returns:
+            dict: Dictionary representing the player's board. Keys are the positions, and values are the corresponding card names.
+        """
         return {key: self.mercsId[self.myBoard[key]] for key in self.myBoard.keys()}
 
     def getEnemyBoard(self):
+        """
+        Retrieves the current state of the enemy's board.
+
+        Returns:
+            dict: Dictionary representing the enemy's board. Keys are the positions, and values are the corresponding card names.
+        """
         return {
             key: self.enemiesId[self.enemiesBoard[key]]
             for key in self.enemiesBoard.keys()

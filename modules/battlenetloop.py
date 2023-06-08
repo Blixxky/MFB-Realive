@@ -1,3 +1,7 @@
+"""
+This module contains functions related to entering the game from Battle.net.
+"""
+
 import time
 from .constants import Button, Action
 from .image_utils import find_element
@@ -8,6 +12,9 @@ log = logging.getLogger(__name__)
 
 
 def enter_from_battlenet():
+    """
+    Enters the game from the Battle.net application.
+    """
     find_element(Button.battlenet.filename, Action.move_and_click) and time.sleep(1)
 
     find_element(

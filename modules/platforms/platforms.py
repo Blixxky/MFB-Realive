@@ -1,3 +1,11 @@
+"""
+This module provides a function to detect the operating system.
+
+Functions:
+- find_os: Detects the operating system and returns its name.
+
+"""
+
 import sys
 import logging
 
@@ -5,6 +13,12 @@ log = logging.getLogger(__name__)
 
 
 def find_os():
+    """
+    Detect the operating system and return its name.
+
+    Returns:
+    - Name of the detected operating system.
+    """
     # try to detect the OS (Windows, Linux, Mac, ...)
     # to load specific libs
     if sys.platform in ["Windows", "win32", "cygwin"]:

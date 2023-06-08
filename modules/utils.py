@@ -1,3 +1,7 @@
+"""
+This module provides a function for updating dictionaries with new values.
+"""
+
 from copy import deepcopy
 
 

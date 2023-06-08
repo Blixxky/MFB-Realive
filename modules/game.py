@@ -1,3 +1,8 @@
+"""
+This module contains functions related to controlling and interacting with the Hearthstone game window. It provides various utilities for automating actions in the game, such as finding elements on the screen, clicking on specific positions, waiting for specific elements to appear, and handling common scenarios.
+Note: This module assumes the presence of relevant image files, configuration settings, and external dependencies as specified in the associated modules and configurations.
+"""
+
 import sys
 import time
 
@@ -43,7 +48,7 @@ def waitForItOrPass(image, duration, step=0.5):
 
 
 def defaultCase():
-    """Clicking on the right edge of the screen to click away popups"""
+    """Click on the right edge of the screen to dismiss popups"""
     """Saving x,y to move back into previous position"""
     if find_element(UIElement.quests.filename, Action.screenshot) or find_element(
         UIElement.encounter_card.filename, Action.screenshot

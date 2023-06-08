@@ -1,3 +1,13 @@
+"""
+This module provides a Linux-specific implementation of the Window Manager using the Wnck library.
+It encapsulates some calls for Linux window management, including finding game windows and getting
+window geometry.
+
+Classes:
+- WindowMgrLinux: A class that extends the base WindowMgr class and implements the Linux-specific
+  window management functions using the Wnck library.
+
+"""
 import time
 import logging
 import pyautogui
@@ -22,15 +32,30 @@ except ImportError:
 
 
 class WindowMgrLinux(WindowMgr):
-    """Encapsulates some calls for Linux window management"""
+    """
+    This class provides functionalities to handle windows in Linux systems.
+    It extends from the base WindowMgr class and implements Linux-specific methods.
+    """
 
     def __init__(self):
         """Constructor"""
         self.win = None
 
     def find_game(self, WINDOW_NAME, BNCount=0):
-        # BNCount is a workaround for Windows users
-        """find the hearthstone game window"""
+        """
+        Searches for the game window named 'WINDOW_NAME' on the screen and makes it active.
+        If the game window is not found, prints a message and sets the target window as None.
+
+        Note: BNCount is not used in this method; it's included to keep the method signature consistent
+        with other implementations.
+
+        Args:
+            WINDOW_NAME (str): The name of the game window to search for.
+            BNCount (int): This parameter is not used in the Linux version. Default is 0.
+
+        Returns:
+            win: Returns the identified game window if found, else returns None.
+        """
         screenHW = Wnck.Screen.get_default()
         while Gtk.events_pending():
             Gtk.main_iteration()
@@ -50,6 +75,13 @@ class WindowMgrLinux(WindowMgr):
         return win
 
     def get_window_geometry(self):
+        """
+        Fetches the window geometry of the target window. If the target window is 'Battle.net',
+        returns the geometry of the entire screen, else returns the client window geometry.
+
+        Returns:
+            tuple: A tuple representing the window's geometry (x, y, width, height).
+        """
         # workaround for Battle.net
         if self._win.get_name() == "Battle.net":
             (width, height) = pyautogui.size()

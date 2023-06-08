@@ -1,0 +1,753 @@
+\conf\user\config.py:55:1: E402 module level import not at top of file
+\conf\user\config.py:56:1: E402 module level import not at top of file
+config.py:55:0: C0413: Import "import configparser" should be placed at the top of the module (wrong-import-position)
+config.py:56:0: C0413: Import "from ttkthemes import ThemedStyle" should be placed at the top of the module (wrong-import-position)
+config.py:607:0: W0613: Unused argument 'args' (unused-argument)
+config.py:670:0: C0116: Missing function or method docstring (missing-function-docstring)
+config.py:678:4: W0621: Redefining name 'config' from outer scope (line 685) (redefined-outer-name)
+config.py:671:4: C0115: Missing class docstring (missing-class-docstring)
+\modules\__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:58: error: Value of type "object" is not indexable  [index]
+ahk_manager.py:9: error: Cannot find implementation or library stub for module named "ahk"  [import]
+ahk_manager.py:9: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+\modules\platforms\window_managers\linux.py:22: error: Cannot find implementation or library stub for module named "pgi"  [import]
+\modules\platforms\window_managers\linux.py:25: error: Cannot find implementation or library stub for module named "gi"  [import]
+\modules\platforms\window_managers\linux.py:28: error: Cannot find implementation or library stub for module named "gi.repository"  [import]
+ahk_manager.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+ahk_manager.py:3:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
+ahk_manager.py:4:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
+ahk_manager.py:38:4: C0116: Missing function or method docstring (missing-function-docstring)
+ahk_manager.py:9: error: Cannot find implementation or library stub for module named "ahk"  [import]
+ahk_manager.py:9: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+\modules\__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:58: error: Value of type "object" is not indexable  [index]
+\modules\platforms\window_managers\linux.py:22: error: Cannot find implementation or library stub for module named "pgi"  [import]
+\modules\platforms\window_managers\linux.py:25: error: Cannot find implementation or library stub for module named "gi"  [import]
+\modules\platforms\window_managers\linux.py:28: error: Cannot find implementation or library stub for module named "gi.repository"  [import]
+factory.py:16:4: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
+factory.py:12:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+ahk_manager.py:9: error: Cannot find implementation or library stub for module named "ahk"  [import]
+ahk_manager.py:9: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+\modules\__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:58: error: Value of type "object" is not indexable  [index]
+\modules\platforms\window_managers\linux.py:22: error: Cannot find implementation or library stub for module named "pgi"  [import]
+\modules\platforms\window_managers\linux.py:25: error: Cannot find implementation or library stub for module named "gi"  [import]
+\modules\platforms\window_managers\linux.py:28: error: Cannot find implementation or library stub for module named "gi.repository"  [import]
+win32gui_manager.py:18:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
+win32gui_manager.py:19:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
+win32gui_manager.py:51:24: C0103: Argument name "WINDOW_NAME" doesn't conform to snake_case naming style (invalid-name)
+win32gui_manager.py:51:37: C0103: Argument name "BNCount" doesn't conform to snake_case naming style (invalid-name)
+win32gui_manager.py:78:8: W0601: Global variable 'left' undefined at the module level (global-variable-undefined)
+win32gui_manager.py:78:8: W0601: Global variable 'top' undefined at the module level (global-variable-undefined)
+win32gui_manager.py:78:8: W0601: Global variable 'width' undefined at the module level (global-variable-undefined)
+win32gui_manager.py:78:8: W0601: Global variable 'height' undefined at the module level (global-variable-undefined)
+win32gui_manager.py:80:8: C0103: Variable name "WINDOW_NAME" doesn't conform to snake_case naming style (invalid-name)
+win32gui_manager.py:83:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+win32gui_manager.py:90:42: C0103: Argument name "WINDOW_NAME" doesn't conform to snake_case naming style (invalid-name)
+win32gui_manager.py:105:27: C0103: Argument name "WINDOW_NAME" doesn't conform to snake_case naming style (invalid-name)
+win32gui_manager.py:105:40: C0103: Argument name "BNCount" doesn't conform to snake_case naming style (invalid-name)
+win32gui_manager.py:105:4: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+win32gui_manager.py:114:8: W0201: Attribute '_handles' defined outside __init__ (attribute-defined-outside-init)
+ahk_manager.py:9: error: Cannot find implementation or library stub for module named "ahk"  [import]
+ahk_manager.py:9: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+\modules\__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:58: error: Value of type "object" is not indexable  [index]
+\modules\platforms\window_managers\linux.py:22: error: Cannot find implementation or library stub for module named "pgi"  [import]
+\modules\platforms\window_managers\linux.py:25: error: Cannot find implementation or library stub for module named "gi"  [import]
+\modules\platforms\window_managers\linux.py:28: error: Cannot find implementation or library stub for module named "gi.repository"  [import]
+__init__.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+windows\ahk_manager.py:9: error: Cannot find implementation or library stub for module named "ahk"  [import]
+\modules\__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:58: error: Value of type "object" is not indexable  [index]
+linux.py:22: error: Cannot find implementation or library stub for module named "pgi"  [import]
+linux.py:25: error: Cannot find implementation or library stub for module named "gi"  [import]
+linux.py:28: error: Cannot find implementation or library stub for module named "gi.repository"  [import]
+linux.py:28: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+base.py:16:4: C0116: Missing function or method docstring (missing-function-docstring)
+base.py:20:4: C0116: Missing function or method docstring (missing-function-docstring)
+windows\ahk_manager.py:9: error: Cannot find implementation or library stub for module named "ahk"  [import]
+\modules\__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:58: error: Value of type "object" is not indexable  [index]
+linux.py:22: error: Cannot find implementation or library stub for module named "pgi"  [import]
+linux.py:25: error: Cannot find implementation or library stub for module named "gi"  [import]
+linux.py:28: error: Cannot find implementation or library stub for module named "gi.repository"  [import]
+linux.py:28: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+linux.py:15:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
+linux.py:16:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
+linux.py:44:24: C0103: Argument name "WINDOW_NAME" doesn't conform to snake_case naming style (invalid-name)
+linux.py:44:37: C0103: Argument name "BNCount" doesn't conform to snake_case naming style (invalid-name)
+linux.py:59:8: C0103: Variable name "screenHW" doesn't conform to snake_case naming style (invalid-name)
+linux.py:65:12: C0103: Variable name "w" doesn't conform to snake_case naming style (invalid-name)
+linux.py:44:37: W0613: Unused argument 'BNCount' (unused-argument)
+linux.py:86:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+linux.py:74:8: W0201: Attribute '_win' defined outside __init__ (attribute-defined-outside-init)
+windows\ahk_manager.py:9: error: Cannot find implementation or library stub for module named "ahk"  [import]
+\modules\__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:58: error: Value of type "object" is not indexable  [index]
+linux.py:22: error: Cannot find implementation or library stub for module named "pgi"  [import]
+linux.py:25: error: Cannot find implementation or library stub for module named "gi"  [import]
+linux.py:28: error: Cannot find implementation or library stub for module named "gi.repository"  [import]
+linux.py:28: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+window_managers\windows\ahk_manager.py:9: error: Cannot find implementation or library stub for module named "ahk"  [import]
+\modules\__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:58: error: Value of type "object" is not indexable  [index]
+window_managers\linux.py:22: error: Cannot find implementation or library stub for module named "pgi"  [import]
+window_managers\linux.py:25: error: Cannot find implementation or library stub for module named "gi"  [import]
+window_managers\linux.py:28: error: Cannot find implementation or library stub for module named "gi.repository"  [import]
+window_managers\linux.py:28: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+factory.py:20:4: C0103: Variable name "os" doesn't conform to snake_case naming style (invalid-name)
+factory.py:22:4: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
+factory.py:28:8: W0719: Raising too general exception: Exception (broad-exception-raised)
+window_managers\windows\ahk_manager.py:9: error: Cannot find implementation or library stub for module named "ahk"  [import]
+\modules\__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:58: error: Value of type "object" is not indexable  [index]
+window_managers\linux.py:22: error: Cannot find implementation or library stub for module named "pgi"  [import]
+window_managers\linux.py:25: error: Cannot find implementation or library stub for module named "gi"  [import]
+window_managers\linux.py:28: error: Cannot find implementation or library stub for module named "gi.repository"  [import]
+window_managers\linux.py:28: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+platforms.py:25:8: C0103: Variable name "myOS" doesn't conform to snake_case naming style (invalid-name)
+platforms.py:27:8: C0103: Variable name "myOS" doesn't conform to snake_case naming style (invalid-name)
+platforms.py:29:8: C0103: Variable name "myOS" doesn't conform to snake_case naming style (invalid-name)
+platforms.py:30:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+window_managers\windows\ahk_manager.py:9: error: Cannot find implementation or library stub for module named "ahk"  [import]
+\modules\__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:58: error: Value of type "object" is not indexable  [index]
+window_managers\linux.py:22: error: Cannot find implementation or library stub for module named "pgi"  [import]
+window_managers\linux.py:25: error: Cannot find implementation or library stub for module named "gi"  [import]
+window_managers\linux.py:28: error: Cannot find implementation or library stub for module named "gi.repository"  [import]
+window_managers\linux.py:28: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+__init__.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+\modules\__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:58: error: Value of type "object" is not indexable  [index]
+conf.py:79:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+conf.py:84:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+conf.py:89:0: W0102: Dangerous default value config_files (builtins.list) as argument (dangerous-default-value)
+conf.py:180:28: W0613: Unused argument 'setting_name' (unused-argument)
+\modules\__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:58: error: Value of type "object" is not indexable  [index]
+settings.py:85:11: W0718: Catching too general exception Exception (broad-exception-caught)
+settings.py:71:8: R1720: Unnecessary "else" after "raise", remove the "else" and de-indent the code inside it (no-else-raise)
+settings.py:84:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+settings.py:85:4: C0103: Variable name "e" doesn't conform to snake_case naming style (invalid-name)
+settings.py:86:8: E1205: Too many arguments for logging format string (logging-too-many-args)
+settings.py:111:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+\modules\__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:58: error: Value of type "object" is not indexable  [index]
+\modules\__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+\modules\__init__.py:58: error: Value of type "object" is not indexable  [index]
+constants.py:112: error: Incompatible types in assignment (expression has type "str", base class "str" defined the type as "Callable[[str, str, str, SupportsIndex], str]")  [assignment]
+platforms\window_managers\windows\ahk_manager.py:9: error: Cannot find implementation or library stub for module named "ahk"  [import]
+__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:58: error: Value of type "object" is not indexable  [index]
+platforms\window_managers\linux.py:22: error: Cannot find implementation or library stub for module named "pgi"  [import]
+platforms\window_managers\linux.py:25: error: Cannot find implementation or library stub for module named "gi"  [import]
+platforms\window_managers\linux.py:28: error: Cannot find implementation or library stub for module named "gi.repository"  [import]
+image_utils.py:17: error: Cannot find implementation or library stub for module named "cv2"  [import]
+image_utils.py:17: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+image_utils.py:18: error: Cannot find implementation or library stub for module named "numpy"  [import]
+battlenetloop.py:18:4: W0106: Expression "find_element(Button.battlenet.filename, Action.move_and_click) and time.sleep(1)" is assigned to nothing (expression-not-assigned)
+battlenetloop.py:20:4: W0106: Expression "find_element(Button.battlenet_hearthstone.filename, Action.move_and_click) and time.sleep(1)" is assigned to nothing (expression-not-assigned)
+battlenetloop.py:8:0: C0411: standard import "import logging" should be placed before "from .constants import Button, Action" (wrong-import-order)
+constants.py:112: error: Incompatible types in assignment (expression has type "str", base class "str" defined the type as "Callable[[str, str, str, SupportsIndex], str]")  [assignment]
+platforms\window_managers\windows\ahk_manager.py:9: error: Cannot find implementation or library stub for module named "ahk"  [import]
+__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:58: error: Value of type "object" is not indexable  [index]
+platforms\window_managers\linux.py:22: error: Cannot find implementation or library stub for module named "pgi"  [import]
+platforms\window_managers\linux.py:25: error: Cannot find implementation or library stub for module named "gi"  [import]
+platforms\window_managers\linux.py:28: error: Cannot find implementation or library stub for module named "gi.repository"  [import]
+image_utils.py:17: error: Cannot find implementation or library stub for module named "cv2"  [import]
+image_utils.py:17: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+image_utils.py:18: error: Cannot find implementation or library stub for module named "numpy"  [import]
+bounty.py:41:4: C0103: Variable name "collectAttempts" doesn't conform to snake_case naming style (invalid-name)
+bounty.py:44:8: C0103: Variable name "collectAttempts" doesn't conform to snake_case naming style (invalid-name)
+bounty.py:82:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+bounty.py:88:0: C0103: Function name "quitBounty" doesn't conform to snake_case naming style (invalid-name)
+bounty.py:167:20: C0103: Variable name "x" doesn't conform to snake_case naming style (invalid-name)
+bounty.py:168:20: C0103: Variable name "y" doesn't conform to snake_case naming style (invalid-name)
+bounty.py:179:16: C0103: Variable name "x" doesn't conform to snake_case naming style (invalid-name)
+bounty.py:179:19: C0103: Variable name "y" doesn't conform to snake_case naming style (invalid-name)
+bounty.py:105:0: R0912: Too many branches (16/12) (too-many-branches)
+bounty.py:105:0: R0915: Too many statements (53/50) (too-many-statements)
+bounty.py:191:0: C0103: Function name "searchForEncounter" doesn't conform to snake_case naming style (invalid-name)
+bounty.py:197:8: C0103: Variable name "x" doesn't conform to snake_case naming style (invalid-name)
+bounty.py:197:11: C0103: Variable name "y" doesn't conform to snake_case naming style (invalid-name)
+bounty.py:198:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+bounty.py:199:11: R1716: Simplify chained comparison between the operands (chained-comparison)
+bounty.py:202:12: C0103: Variable name "x" doesn't conform to snake_case naming style (invalid-name)
+bounty.py:204:12: C0103: Variable name "x" doesn't conform to snake_case naming style (invalid-name)
+bounty.py:211:12: C0103: Variable name "y" doesn't conform to snake_case naming style (invalid-name)
+bounty.py:212:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+bounty.py:217:0: C0103: Function name "goToEncounter" doesn't conform to snake_case naming style (invalid-name)
+bounty.py:224:4: C0103: Variable name "travelEnd" doesn't conform to snake_case naming style (invalid-name)
+bounty.py:242:16: C0103: Variable name "travelEnd" doesn't conform to snake_case naming style (invalid-name)
+bounty.py:254:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+bounty.py:285:0: W1404: Implicit string concatenation found in call (implicit-str-concat)
+bounty.py:288:24: C0103: Variable name "travelEnd" doesn't conform to snake_case naming style (invalid-name)
+bounty.py:291:16: C0103: Variable name "travelEnd" doesn't conform to snake_case naming style (invalid-name)
+bounty.py:298:16: C0103: Variable name "travelEnd" doesn't conform to snake_case naming style (invalid-name)
+bounty.py:305:8: C0103: Variable name "x" doesn't conform to snake_case naming style (invalid-name)
+bounty.py:217:0: R0912: Too many branches (18/12) (too-many-branches)
+bounty.py:217:0: R0915: Too many statements (56/50) (too-many-statements)
+bounty.py:305:8: W0612: Unused variable 'x' (unused-variable)
+bounty.py:316:0: C0103: Function name "travelToLevel" doesn't conform to snake_case naming style (invalid-name)
+bounty.py:355:0: C0103: Function name "selectGroup" doesn't conform to snake_case naming style (invalid-name)
+bounty.py:355:0: R1711: Useless return at end of function or method (useless-return)
+bounty.py:29:0: C0411: standard import "import logging" should be placed before "from .platforms import windowMP" (wrong-import-order)
+constants.py:112: error: Incompatible types in assignment (expression has type "str", base class "str" defined the type as "Callable[[str, str, str, SupportsIndex], str]")  [assignment]
+platforms\window_managers\windows\ahk_manager.py:9: error: Cannot find implementation or library stub for module named "ahk"  [import]
+__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:58: error: Value of type "object" is not indexable  [index]
+platforms\window_managers\linux.py:22: error: Cannot find implementation or library stub for module named "pgi"  [import]
+platforms\window_managers\linux.py:25: error: Cannot find implementation or library stub for module named "gi"  [import]
+platforms\window_managers\linux.py:28: error: Cannot find implementation or library stub for module named "gi.repository"  [import]
+image_utils.py:17: error: Cannot find implementation or library stub for module named "cv2"  [import]
+image_utils.py:17: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+image_utils.py:18: error: Cannot find implementation or library stub for module named "numpy"  [import]
+campfire.py:42:4: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
+campfire.py:44:8: W0101: Unreachable code (unreachable)
+campfire.py:47:8: W0101: Unreachable code (unreachable)
+campfire.py:130:16: R1723: Unnecessary "else" after "break", remove the "else" and de-indent the code inside it (no-else-break)
+campfire.py:28:0: C0411: standard import "import logging" should be placed before "from .platforms import windowMP" (wrong-import-order)
+constants.py:112: error: Incompatible types in assignment (expression has type "str", base class "str" defined the type as "Callable[[str, str, str, SupportsIndex], str]")  [assignment]
+__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:58: error: Value of type "object" is not indexable  [index]
+constants.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+constants.py:4:0: C0115: Missing class docstring (missing-class-docstring)
+constants.py:15:4: E0213: Method '_generate_next_value_' should have "self" as first argument (no-self-argument)
+constants.py:19:0: C0115: Missing class docstring (missing-class-docstring)
+constants.py:21:4: C0116: Missing function or method docstring (missing-function-docstring)
+constants.py:22:18: E1101: Instance of 'ImageFragment' has no '_dir_name' member (no-member)
+constants.py:25:0: C0115: Missing class docstring (missing-class-docstring)
+constants.py:26:4: C0103: Class constant name "_dir_name" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:28:4: C0103: Class constant name "Alterac" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:29:4: C0103: Class constant name "Barrens" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:30:4: C0103: Class constant name "Bossrush" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:31:4: C0103: Class constant name "Blackrock" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:32:4: C0103: Class constant name "Darkshore" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:33:4: C0103: Class constant name "Darkmoon" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:34:4: C0103: Class constant name "Felwood" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:35:4: C0103: Class constant name "Onyxia" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:36:4: C0103: Class constant name "Sunken" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:37:4: C0103: Class constant name "Winterspring" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:38:4: C0103: Class constant name "battle" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:39:4: C0103: Class constant name "battle_portal" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:40:4: C0103: Class constant name "blue" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:41:4: C0103: Class constant name "encounter_booncaster" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:42:4: C0103: Class constant name "encounter_boonfighter" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:43:4: C0103: Class constant name "encounter_boonprotector" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:44:4: C0103: Class constant name "encounter_caster" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:45:4: C0103: Class constant name "encounter_fighter" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:46:4: C0103: Class constant name "encounter_protector" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:47:4: C0103: Class constant name "encounter_elite" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:48:4: C0103: Class constant name "boss" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:49:4: C0103: Class constant name "bounties" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:50:4: C0103: Class constant name "campfire" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:51:4: C0103: Class constant name "encounter_card" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:52:4: C0103: Class constant name "free_battle" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:53:4: C0103: Class constant name "green" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:54:4: C0103: Class constant name "heroic" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:55:4: C0103: Class constant name "hourglass" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:56:4: C0103: Class constant name "lose" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:57:4: C0103: Class constant name "mystery" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:58:4: C0103: Class constant name "noclass" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:59:4: C0103: Class constant name "noclass2" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:60:4: C0103: Class constant name "normal" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:61:4: C0103: Class constant name "quests" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:62:4: C0103: Class constant name "red" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:63:4: C0103: Class constant name "replace_grey" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:64:4: C0103: Class constant name "reward_chest" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:65:4: C0103: Class constant name "sob" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:66:4: C0103: Class constant name "spirithealer" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:67:4: C0103: Class constant name "take_grey" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:68:4: C0103: Class constant name "task_completed" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:69:4: C0103: Class constant name "task_event_completed" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:70:4: C0103: Class constant name "task_expansion_completed" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:71:4: C0103: Class constant name "team_selection" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:72:4: C0103: Class constant name "travelpoint" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:73:4: C0103: Class constant name "treasure_passive" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:74:4: C0103: Class constant name "view_party" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:75:4: C0103: Class constant name "win" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:76:4: C0103: Class constant name "win_final" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:77:4: C0103: Class constant name "your_party" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:80:0: C0115: Missing class docstring (missing-class-docstring)
+constants.py:81:4: C0103: Class constant name "_dir_name" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:83:4: C0103: Class constant name "allready" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:84:4: C0103: Class constant name "arrow_prev" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:85:4: C0103: Class constant name "arrow_next" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:86:4: C0103: Class constant name "back" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:87:4: C0103: Class constant name "campfire_claim" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:88:4: C0103: Class constant name "campfire_completed_task" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:89:4: C0103: Class constant name "campfire_completed_eventtask" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:90:4: C0103: Class constant name "campfire_completed_partytask" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:91:4: C0103: Class constant name "campfire_completed_expansiontask" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:92:4: C0103: Class constant name "campfire_hiddenparty" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:93:4: C0103: Class constant name "campfire_hiddenvisitors" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:94:4: C0103: Class constant name "choose_level" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:95:4: C0103: Class constant name "choose_team" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:96:4: C0103: Class constant name "choose_travel" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:97:4: C0103: Class constant name "done" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:98:4: C0103: Class constant name "done_bonus" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:99:4: C0103: Class constant name "fight" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:100:4: C0103: Class constant name "finishok" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:101:4: C0103: Class constant name "group_name" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:102:4: C0103: Class constant name "join_button" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:103:4: C0103: Class constant name "keep" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:104:4: C0103: Class constant name "lockin" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:105:4: C0103: Class constant name "num" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:106:4: C0103: Class constant name "ok" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:107:4: C0103: Class constant name "onedie" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:108:4: C0103: Class constant name "pick" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:109:4: C0103: Class constant name "play" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:110:4: C0103: Class constant name "portal_warp" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:111:4: C0103: Class constant name "reconnect" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:113:4: C0103: Class constant name "retire" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:114:4: C0103: Class constant name "reveal" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:115:4: C0103: Class constant name "take" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:116:4: C0103: Class constant name "tavern" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:117:4: C0103: Class constant name "view_party" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:118:4: C0103: Class constant name "visit" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:119:4: C0103: Class constant name "battlenet_play" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:120:4: C0103: Class constant name "battlenet" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:121:4: C0103: Class constant name "battlenet_hearthstone" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:124:0: C0115: Missing class docstring (missing-class-docstring)
+constants.py:125:4: C0103: Class constant name "screenshot" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:126:4: C0103: Class constant name "move" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:127:4: C0103: Class constant name "get_coords_part_screen" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:128:4: C0103: Class constant name "move_and_click" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:129:4: C0103: Class constant name "get_coords" doesn't conform to UPPER_CASE naming style (invalid-name)
+constants.py:112: error: Incompatible types in assignment (expression has type "str", base class "str" defined the type as "Callable[[str, str, str, SupportsIndex], str]")  [assignment]
+platforms\window_managers\windows\ahk_manager.py:9: error: Cannot find implementation or library stub for module named "ahk"  [import]
+__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:58: error: Value of type "object" is not indexable  [index]
+platforms\window_managers\linux.py:22: error: Cannot find implementation or library stub for module named "pgi"  [import]
+platforms\window_managers\linux.py:25: error: Cannot find implementation or library stub for module named "gi"  [import]
+platforms\window_managers\linux.py:28: error: Cannot find implementation or library stub for module named "gi.repository"  [import]
+image_utils.py:17: error: Cannot find implementation or library stub for module named "cv2"  [import]
+image_utils.py:17: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+image_utils.py:18: error: Cannot find implementation or library stub for module named "numpy"  [import]
+encounter.py:242:1: W0511: TODO This could also be moved to an entirely new module (fixme)
+encounter.py:23:0: C0103: Constant name "default_ability_section" doesn't conform to UPPER_CASE naming style (invalid-name)
+encounter.py:24:0: C0103: Constant name "ability_section" doesn't conform to UPPER_CASE naming style (invalid-name)
+encounter.py:39:4: R0913: Too many arguments (7/5) (too-many-arguments)
+encounter.py:27:0: R0903: Too few public methods (0/2) (too-few-public-methods)
+encounter.py:70:8: E1101: Instance of 'Board' has no 'myboard' member (no-member)
+encounter.py:48:0: R0903: Too few public methods (0/2) (too-few-public-methods)
+encounter.py:84:4: C0103: Variable name "cardWidth" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:85:4: C0103: Variable name "cardHeight" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:90:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+encounter.py:114:8: C0103: Variable name "toAttack" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:128:0: C0103: Function name "priorityMercByRole" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:128:23: C0103: Argument name "myMercs" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:160:38: C0103: Argument name "myMercs" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:160:65: C0103: Argument name "abilitySetting" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:165:4: C0103: Variable name "friendName" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:169:4: C0103: Variable name "cardSize" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:170:4: C0103: Variable name "firstOdd" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:171:4: C0103: Variable name "firstEven" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:172:4: C0103: Variable name "positionOdd" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:173:4: C0103: Variable name "positionEven" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:206:8: C0103: Variable name "x" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:209:8: C0103: Variable name "x" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:160:0: R0912: Too many branches (13/12) (too-many-branches)
+encounter.py:214:0: C0103: Function name "pickBestAllyToBuff" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:214:32: C0103: Argument name "myMercs" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:243:0: C0116: Missing function or method docstring (missing-function-docstring)
+encounter.py:243:0: C0103: Function name "findFriendNameInMercs" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:243:26: C0103: Argument name "myMercs" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:243:35: C0103: Argument name "friendName" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:252:36: C0103: Argument name "minionSection" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:252:57: C0103: Argument name "defaultAbility" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:270:8: C0103: Variable name "abilitiesNumber" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:328:41: C0103: Argument name "minionSection" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:328:62: C0103: Argument name "defaultAbility" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:341:4: C0103: Variable name "abilitiesWidth" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:342:4: C0103: Variable name "abilitiesHeigth" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:345:4: C0103: Variable name "abilitiesPositionY" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:350:4: C0103: Variable name "abilitiesPositionX" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:357:4: C0103: Variable name "abilityConfig" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:363:9: R1716: Simplify chained comparison between the operands (chained-comparison)
+encounter.py:364:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+encounter.py:368:8: C0103: Variable name "abilityScreenshot" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:388:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+encounter.py:394:30: C0103: Argument name "myBoard" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:416:8: C0103: Variable name "abilitySetting" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:465:8: C0103: Variable name "abilitySetting" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:476:4: C0103: Argument name "mercName" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:477:4: C0103: Argument name "myMercs" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:494:4: C0103: Variable name "cardSize" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:495:4: C0103: Variable name "firstOdd" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:496:4: C0103: Variable name "firstEven" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:497:4: C0103: Variable name "positionOdd" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:498:4: C0103: Variable name "positionEven" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:506:8: C0103: Variable name "x" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:509:8: C0103: Variable name "x" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:510:4: C0103: Variable name "y" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:520:12: R0916: Too many boolean expressions in if statement (6/5) (too-many-boolean-expressions)
+encounter.py:529:12: R0916: Too many boolean expressions in if statement (6/5) (too-many-boolean-expressions)
+encounter.py:538:12: R0916: Too many boolean expressions in if statement (6/5) (too-many-boolean-expressions)
+encounter.py:560:0: C0116: Missing function or method docstring (missing-function-docstring)
+encounter.py:560:17: C0103: Argument name "ns" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:570:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+encounter.py:583:0: C0116: Missing function or method docstring (missing-function-docstring)
+encounter.py:583:19: C0103: Argument name "ns" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:587:0: C0116: Missing function or method docstring (missing-function-docstring)
+encounter.py:587:21: C0103: Argument name "ns" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:591:0: C0116: Missing function or method docstring (missing-function-docstring)
+encounter.py:591:20: C0103: Argument name "ns" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:595:0: C0116: Missing function or method docstring (missing-function-docstring)
+encounter.py:595:23: C0103: Argument name "ns" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:599:0: C0116: Missing function or method docstring (missing-function-docstring)
+encounter.py:599:24: C0103: Argument name "ns" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:603:0: C0116: Missing function or method docstring (missing-function-docstring)
+encounter.py:603:19: C0103: Argument name "ns" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:607:0: C0116: Missing function or method docstring (missing-function-docstring)
+encounter.py:607:27: C0103: Argument name "ns" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:620:11: C0103: Argument name "zoneLog" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:645:8: R1723: Unnecessary "elif" after "break", remove the leading "el" from "elif" (no-else-break)
+encounter.py:667:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+encounter.py:670:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+encounter.py:680:12: C0103: Variable name "enemyBoard_left" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:681:12: C0103: Variable name "enemyBoard_right" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:684:12: C0103: Variable name "enemyBoardScreenshot" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:736:0: C0103: Function name "selectCardsInHand" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:736:22: C0103: Argument name "zL" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:747:4: W0603: Using the global statement (global-statement)
+encounter.py:767:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+encounter.py:774:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+encounter.py:778:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+encounter.py:779:8: C0103: Variable name "x1" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:780:8: C0103: Variable name "y1" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:781:8: C0103: Variable name "x2" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:782:8: C0103: Variable name "y2" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:787:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+encounter.py:815:0: C0115: Missing class docstring (missing-class-docstring)
+encounter.py:815:0: C0103: Class name "cardsInHand" doesn't conform to PascalCase naming style (invalid-name)
+encounter.py:816:28: C0103: Argument name "zLog" doesn't conform to snake_case naming style (invalid-name)
+encounter.py:825:4: C0116: Missing function or method docstring (missing-function-docstring)
+encounter.py:832:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+encounter.py:840:20: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+encounter.py:825:4: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+encounter.py:843:4: C0116: Missing function or method docstring (missing-function-docstring)
+encounter.py:847:4: C0116: Missing function or method docstring (missing-function-docstring)
+encounter.py:850:4: C0116: Missing function or method docstring (missing-function-docstring)
+encounter.py:851:8: W0201: Attribute 'coord_y' defined outside __init__ (attribute-defined-outside-init)
+__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:58: error: Value of type "object" is not indexable  [index]
+exceptions.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+exceptions.py:1:0: C0115: Missing class docstring (missing-class-docstring)
+exceptions.py:5:0: C0115: Missing class docstring (missing-class-docstring)
+exceptions.py:9:0: C0115: Missing class docstring (missing-class-docstring)
+exceptions.py:13:0: C0115: Missing class docstring (missing-class-docstring)
+exceptions.py:17:0: C0115: Missing class docstring (missing-class-docstring)
+exceptions.py:21:0: C0115: Missing class docstring (missing-class-docstring)
+exceptions.py:25:0: C0115: Missing class docstring (missing-class-docstring)
+exceptions.py:29:0: C0115: Missing class docstring (missing-class-docstring)
+file_utils.py:34:31: W605 invalid escape sequence '\.'
+__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:58: error: Value of type "object" is not indexable  [index]
+file_utils.py:34:30: W1401: Anomalous backslash in string: '\.'. String constant might be missing an r prefix. (anomalous-backslash-in-string)
+file_utils.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+file_utils.py:13:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+file_utils.py:25:0: C0103: Function name "parseINI" doesn't conform to snake_case naming style (invalid-name)
+file_utils.py:42:0: C0103: Function name "readINI" doesn't conform to snake_case naming style (invalid-name)
+file_utils.py:51:11: W0212: Access to a protected member _sections of a client class (protected-access)
+file_utils.py:54:0: C0103: Function name "writeINI" doesn't conform to snake_case naming style (invalid-name)
+file_utils.py:63:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+file_utils.py:67:0: C0116: Missing function or method docstring (missing-function-docstring)
+file_utils.py:68:4: W0106: Expression "os.path.exists(dstdir) or os.mkdir(dstdir)" is assigned to nothing (expression-not-assigned)
+constants.py:112: error: Incompatible types in assignment (expression has type "str", base class "str" defined the type as "Callable[[str, str, str, SupportsIndex], str]")  [assignment]
+platforms\window_managers\windows\ahk_manager.py:9: error: Cannot find implementation or library stub for module named "ahk"  [import]
+__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:58: error: Value of type "object" is not indexable  [index]
+platforms\window_managers\linux.py:22: error: Cannot find implementation or library stub for module named "pgi"  [import]
+platforms\window_managers\linux.py:25: error: Cannot find implementation or library stub for module named "gi"  [import]
+platforms\window_managers\linux.py:28: error: Cannot find implementation or library stub for module named "gi.repository"  [import]
+image_utils.py:17: error: Cannot find implementation or library stub for module named "cv2"  [import]
+image_utils.py:17: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+image_utils.py:18: error: Cannot find implementation or library stub for module named "numpy"  [import]
+game.py:20:14: C0103: Argument name "t" doesn't conform to snake_case naming style (invalid-name)
+game.py:22:24: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+game.py:25:12: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+game.py:30:0: C0103: Function name "waitForItOrPass" doesn't conform to snake_case naming style (invalid-name)
+game.py:39:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+game.py:50:0: C0103: Function name "defaultCase" doesn't conform to snake_case naming style (invalid-name)
+game.py:52:4: W0105: String statement has no effect (pointless-string-statement)
+game.py:56:8: C0103: Variable name "x" doesn't conform to snake_case naming style (invalid-name)
+game.py:56:11: C0103: Variable name "y" doesn't conform to snake_case naming style (invalid-name)
+game.py:58:8: C0103: Variable name "mx" doesn't conform to snake_case naming style (invalid-name)
+game.py:59:8: C0103: Variable name "my" doesn't conform to snake_case naming style (invalid-name)
+game.py:15:0: C0411: standard import "import logging" should be placed before "from .image_utils import find_element" (wrong-import-order)
+constants.py:112: error: Incompatible types in assignment (expression has type "str", base class "str" defined the type as "Callable[[str, str, str, SupportsIndex], str]")  [assignment]
+platforms\window_managers\windows\ahk_manager.py:9: error: Cannot find implementation or library stub for module named "ahk"  [import]
+__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:58: error: Value of type "object" is not indexable  [index]
+platforms\window_managers\linux.py:22: error: Cannot find implementation or library stub for module named "pgi"  [import]
+platforms\window_managers\linux.py:25: error: Cannot find implementation or library stub for module named "gi"  [import]
+platforms\window_managers\linux.py:28: error: Cannot find implementation or library stub for module named "gi.repository"  [import]
+resolution.py:12: error: Cannot find implementation or library stub for module named "cv2"  [import]
+image_utils.py:17: error: Cannot find implementation or library stub for module named "cv2"  [import]
+image_utils.py:17: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+image_utils.py:18: error: Cannot find implementation or library stub for module named "numpy"  [import]
+gameloop.py:33:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+gameloop.py:46:8: C0103: Variable name "mx" doesn't conform to snake_case naming style (invalid-name)
+gameloop.py:47:8: C0103: Variable name "my" doesn't conform to snake_case naming style (invalid-name)
+gameloop.py:20:0: C0411: standard import "import logging" should be placed before "from .bounty import selectGroup, travelToLevel, goToEncounter" (wrong-import-order)
+constants.py:112: error: Incompatible types in assignment (expression has type "str", base class "str" defined the type as "Callable[[str, str, str, SupportsIndex], str]")  [assignment]
+platforms\window_managers\windows\ahk_manager.py:9: error: Cannot find implementation or library stub for module named "ahk"  [import]
+__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:58: error: Value of type "object" is not indexable  [index]
+platforms\window_managers\linux.py:22: error: Cannot find implementation or library stub for module named "pgi"  [import]
+platforms\window_managers\linux.py:25: error: Cannot find implementation or library stub for module named "gi"  [import]
+platforms\window_managers\linux.py:28: error: Cannot find implementation or library stub for module named "gi.repository"  [import]
+image_utils.py:17: error: Cannot find implementation or library stub for module named "cv2"  [import]
+image_utils.py:17: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+image_utils.py:18: error: Cannot find implementation or library stub for module named "numpy"  [import]
+image_utils.py:17:0: E0401: Unable to import 'cv2' (import-error)
+image_utils.py:18:0: E0401: Unable to import 'numpy' (import-error)
+image_utils.py:59:11: W0718: Catching too general exception Exception (broad-exception-caught)
+image_utils.py:54:12: W0719: Raising too general exception: Exception (broad-exception-raised)
+image_utils.py:59:4: C0103: Variable name "e" doesn't conform to snake_case naming style (invalid-name)
+image_utils.py:60:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+image_utils.py:100:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+image_utils.py:103:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+image_utils.py:125:8: C0103: Variable name "x" doesn't conform to snake_case naming style (invalid-name)
+image_utils.py:125:11: C0103: Variable name "y" doesn't conform to snake_case naming style (invalid-name)
+image_utils.py:126:8: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
+image_utils.py:202:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+image_utils.py:207:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+image_utils.py:213:4: C0103: Argument name "x" doesn't conform to snake_case naming style (invalid-name)
+image_utils.py:214:4: C0103: Argument name "y" doesn't conform to snake_case naming style (invalid-name)
+image_utils.py:212:0: R0913: Too many arguments (9/5) (too-many-arguments)
+image_utils.py:243:4: W0602: Using global for 'sct' but no assignment is done (global-variable-not-assigned)
+image_utils.py:251:4: C0103: Variable name "partImg" doesn't conform to snake_case naming style (invalid-name)
+image_utils.py:254:8: C0103: Variable name "partImg" doesn't conform to snake_case naming style (invalid-name)
+image_utils.py:258:8: C0103: Variable name "partImg" doesn't conform to snake_case naming style (invalid-name)
+image_utils.py:218:4: W0613: Unused argument 'resolution' (unused-argument)
+image_utils.py:282:4: C0103: Variable name "h" doesn't conform to snake_case naming style (invalid-name)
+image_utils.py:283:4: C0103: Variable name "w" doesn't conform to snake_case naming style (invalid-name)
+image_utils.py:27:0: C0411: standard import "import logging" should be placed before "import cv2" (wrong-import-order)
+image_utils.py:32:0: C0411: third party import "import mss" should be placed before "from .platforms import windowMP" (wrong-import-order)
+__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:58: error: Value of type "object" is not indexable  [index]
+log_board.py:18:0: C0115: Missing class docstring (missing-class-docstring)
+log_board.py:34:8: C0103: Attribute name "filePos" doesn't conform to snake_case naming style (invalid-name)
+log_board.py:39:8: C0103: Attribute name "cardsInHand" doesn't conform to snake_case naming style (invalid-name)
+log_board.py:40:8: C0103: Attribute name "myBoard" doesn't conform to snake_case naming style (invalid-name)
+log_board.py:41:8: C0103: Attribute name "mercsId" doesn't conform to snake_case naming style (invalid-name)
+log_board.py:43:8: C0103: Attribute name "enemiesBoard" doesn't conform to snake_case naming style (invalid-name)
+log_board.py:44:8: C0103: Attribute name "enemiesId" doesn't conform to snake_case naming style (invalid-name)
+log_board.py:18:0: R0902: Too many instance attributes (13/7) (too-many-instance-attributes)
+log_board.py:37:23: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)
+log_board.py:87:32: C0103: Variable name "mercId" doesn't conform to snake_case naming style (invalid-name)
+log_board.py:107:28: C0103: Variable name "enemyId" doesn't conform to snake_case naming style (invalid-name)
+log_board.py:127:28: C0103: Variable name "enemyId" doesn't conform to snake_case naming style (invalid-name)
+log_board.py:68:4: R0912: Too many branches (16/12) (too-many-branches)
+log_board.py:174:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+log_board.py:186:8: C0103: Variable name "t1" doesn't conform to snake_case naming style (invalid-name)
+log_board.py:202:4: C0103: Method name "cleanHand" doesn't conform to snake_case naming style (invalid-name)
+log_board.py:208:4: C0103: Method name "getHand" doesn't conform to snake_case naming style (invalid-name)
+log_board.py:217:4: C0103: Method name "cleanBoard" doesn't conform to snake_case naming style (invalid-name)
+log_board.py:226:4: C0103: Method name "getMyBoard" doesn't conform to snake_case naming style (invalid-name)
+log_board.py:233:0: C0206: Consider iterating with .items() (consider-using-dict-items)
+log_board.py:233:64: C0201: Consider iterating the dictionary directly instead of calling .keys() (consider-iterating-dictionary)
+log_board.py:235:4: C0103: Method name "getEnemyBoard" doesn't conform to snake_case naming style (invalid-name)
+log_board.py:244:0: C0206: Consider iterating with .items() (consider-using-dict-items)
+log_board.py:244:23: C0201: Consider iterating the dictionary directly instead of calling .keys() (consider-iterating-dictionary)
+log_board.py:185:8: W0201: Attribute '__running' defined outside __init__ (attribute-defined-outside-init)
+log_board.py:197:8: W0201: Attribute '__running' defined outside __init__ (attribute-defined-outside-init)
+log_board.py:187:8: W0201: Attribute 'thread' defined outside __init__ (attribute-defined-outside-init)
+__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:58: error: Value of type "object" is not indexable  [index]
+mouse_utils.py:37:17: C0103: Argument name "s" doesn't conform to snake_case naming style (invalid-name)
+mouse_utils.py:61:4: C0103: Variable name "x" doesn't conform to snake_case naming style (invalid-name)
+mouse_utils.py:61:7: C0103: Variable name "y" doesn't conform to snake_case naming style (invalid-name)
+mouse_utils.py:65:33: C0103: Argument name "x" doesn't conform to snake_case naming style (invalid-name)
+mouse_utils.py:65:36: C0103: Argument name "y" doesn't conform to snake_case naming style (invalid-name)
+mouse_utils.py:79:23: C0103: Argument name "x" doesn't conform to snake_case naming style (invalid-name)
+mouse_utils.py:79:26: C0103: Argument name "y" doesn't conform to snake_case naming style (invalid-name)
+mouse_utils.py:89:4: C0103: Variable name "p" doesn't conform to snake_case naming style (invalid-name)
+mouse_utils.py:90:4: C0103: Variable name "s" doesn't conform to snake_case naming style (invalid-name)
+__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:58: error: Value of type "object" is not indexable  [index]
+notification.py:49:11: W0718: Catching too general exception Exception (broad-exception-caught)
+notification.py:43:8: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)
+notification.py:44:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+notification.py:45:4: C0103: Variable name "e" doesn't conform to snake_case naming style (invalid-name)
+notification.py:46:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+notification.py:47:4: C0103: Variable name "e" doesn't conform to snake_case naming style (invalid-name)
+notification.py:48:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+notification.py:49:4: C0103: Variable name "e" doesn't conform to snake_case naming style (invalid-name)
+notification.py:50:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+notification.py:81:11: W0718: Catching too general exception Exception (broad-exception-caught)
+notification.py:75:8: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)
+notification.py:76:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+notification.py:77:4: C0103: Variable name "e" doesn't conform to snake_case naming style (invalid-name)
+notification.py:78:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+notification.py:79:4: C0103: Variable name "e" doesn't conform to snake_case naming style (invalid-name)
+notification.py:80:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+notification.py:81:4: C0103: Variable name "e" doesn't conform to snake_case naming style (invalid-name)
+notification.py:82:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+notification.py:21:0: C0411: standard import "import logging" should be placed before "from .settings import settings_dict" (wrong-import-order)
+__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:58: error: Value of type "object" is not indexable  [index]
+resolution.py:12: error: Cannot find implementation or library stub for module named "cv2"  [import]
+resolution.py:12: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+resolution.py:12:0: E0401: Unable to import 'cv2' (import-error)
+resolution.py:26:0: W0102: Dangerous default value [] as argument (dangerous-default-value)
+resolution.py:70:4: C0103: Variable name "ox" doesn't conform to snake_case naming style (invalid-name)
+resolution.py:70:8: C0103: Variable name "oy" doesn't conform to snake_case naming style (invalid-name)
+resolution.py:71:4: C0103: Variable name "nx" doesn't conform to snake_case naming style (invalid-name)
+resolution.py:71:8: C0103: Variable name "ny" doesn't conform to snake_case naming style (invalid-name)
+resolution.py:74:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+resolution.py:92:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+resolution.py:14:0: C0411: standard import "import os" should be placed before "import cv2" (wrong-import-order)
+resolution.py:18:0: C0411: standard import "import logging" should be placed before "import cv2" (wrong-import-order)
+constants.py:112: error: Incompatible types in assignment (expression has type "str", base class "str" defined the type as "Callable[[str, str, str, SupportsIndex], str]")  [assignment]
+platforms\window_managers\windows\ahk_manager.py:9: error: Cannot find implementation or library stub for module named "ahk"  [import]
+__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:58: error: Value of type "object" is not indexable  [index]
+platforms\window_managers\linux.py:22: error: Cannot find implementation or library stub for module named "pgi"  [import]
+platforms\window_managers\linux.py:25: error: Cannot find implementation or library stub for module named "gi"  [import]
+platforms\window_managers\linux.py:28: error: Cannot find implementation or library stub for module named "gi.repository"  [import]
+image_utils.py:17: error: Cannot find implementation or library stub for module named "cv2"  [import]
+image_utils.py:17: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+image_utils.py:18: error: Cannot find implementation or library stub for module named "numpy"  [import]
+travelpoint.py:45:0: C0103: Function name "travelpointSelection" doesn't conform to snake_case naming style (invalid-name)
+travelpoint.py:75:19: W0718: Catching too general exception Exception (broad-exception-caught)
+travelpoint.py:76:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+travelpoint.py:25:0: C0411: standard import "import logging" should be placed before "from .platforms import windowMP" (wrong-import-order)
+constants.py:112: error: Incompatible types in assignment (expression has type "str", base class "str" defined the type as "Callable[[str, str, str, SupportsIndex], str]")  [assignment]
+platforms\window_managers\windows\ahk_manager.py:9: error: Cannot find implementation or library stub for module named "ahk"  [import]
+__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:58: error: Value of type "object" is not indexable  [index]
+platforms\window_managers\linux.py:22: error: Cannot find implementation or library stub for module named "pgi"  [import]
+platforms\window_managers\linux.py:25: error: Cannot find implementation or library stub for module named "gi"  [import]
+platforms\window_managers\linux.py:28: error: Cannot find implementation or library stub for module named "gi.repository"  [import]
+image_utils.py:17: error: Cannot find implementation or library stub for module named "cv2"  [import]
+image_utils.py:17: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+image_utils.py:18: error: Cannot find implementation or library stub for module named "numpy"  [import]
+treasure.py:28:0: C0103: Function name "chooseTreasure" doesn't conform to snake_case naming style (invalid-name)
+treasure.py:40:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+treasure.py:61:12: C0103: Variable name "y" doesn't conform to snake_case naming style (invalid-name)
+treasure.py:62:12: C0103: Variable name "x" doesn't conform to snake_case naming style (invalid-name)
+treasure.py:21:0: C0411: standard import "import logging" should be placed before "from .platforms import windowMP" (wrong-import-order)
+__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:58: error: Value of type "object" is not indexable  [index]
+__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+__init__.py:58: error: Value of type "object" is not indexable  [index]
+__init__.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+__init__.py:36:0: C0103: Constant name "_usersetting" doesn't conform to UPPER_CASE naming style (invalid-name)
+__init__.py:37:0: C0103: Constant name "_systsetting" doesn't conform to UPPER_CASE naming style (invalid-name)
+__init__.py:38:0: C0103: Constant name "filelogs" doesn't conform to UPPER_CASE naming style (invalid-name)
+__init__.py:44:7: W0718: Catching too general exception Exception (broad-exception-caught)
+__init__.py:42:7: W0212: Access to a protected member _sections of a client class (protected-access)
+__init__.py:43:8: C0103: Constant name "filelogs" doesn't conform to UPPER_CASE naming style (invalid-name)
+__init__.py:53:7: W0718: Catching too general exception Exception (broad-exception-caught)
+__init__.py:49:7: W0212: Access to a protected member _sections of a client class (protected-access)
+__init__.py:50:8: C0103: Constant name "filelogs" doesn't conform to UPPER_CASE naming style (invalid-name)
+__init__.py:51:9: W0212: Access to a protected member _sections of a client class (protected-access)
+__init__.py:52:8: C0103: Constant name "filelogs" doesn't conform to UPPER_CASE naming style (invalid-name)
+\tools\findObject.py:4:1: F811 redefinition of unused 'mss' from line 3
+findObject.py:1: error: Cannot find implementation or library stub for module named "cv2"  [import]
+findObject.py:1: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+findObject.py:2: error: Cannot find implementation or library stub for module named "numpy"  [import]
+findObject.py:4: error: Incompatible import of "mss" (imported name has type Module, local name has type "Callable[[KwArg(Any)], MSSBase]")  [assignment]
+findObject.py:18: error: "Callable[[KwArg(Any)], MSSBase]" has no attribute "mss"  [attr-defined]
+findObject.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+findObject.py:1:0: C0103: Module name "findObject" doesn't conform to snake_case naming style (invalid-name)
+findObject.py:1:0: E0401: Unable to import 'cv2' (import-error)
+findObject.py:2:0: E0401: Unable to import 'numpy' (import-error)
+findObject.py:4:0: W0404: Reimport 'mss' (imported line 3) (reimported)
+findObject.py:7:0: W0105: String statement has no effect (pointless-string-statement)
+findObject.py:20:4: C0103: Constant name "imgTmpPath" doesn't conform to UPPER_CASE naming style (invalid-name)
+findObject.py:45:4: R1722: Consider using 'sys.exit' instead (consider-using-sys-exit)
+findObject.py:47:24: E0601: Using variable 'img' before assignment (used-before-assignment)
+findObject.py:48:22: E0601: Using variable 'imgTmpPath' before assignment (used-before-assignment)
+findObject.py:53:25: E0601: Using variable 'threshold' before assignment (used-before-assignment)
+findObject.py:58:20: W0631: Using possibly undefined loop variable 'pt' (undefined-loop-variable)
+findObject.py:58:27: W0631: Using possibly undefined loop variable 'pt' (undefined-loop-variable)
+findObject.py:5:0: C0411: standard import "import sys" should be placed before "import cv2" (wrong-import-order)
+modules\constants.py:112: error: Incompatible types in assignment (expression has type "str", base class "str" defined the type as "Callable[[str, str, str, SupportsIndex], str]")  [assignment]
+modules\platforms\window_managers\windows\ahk_manager.py:9: error: Cannot find implementation or library stub for module named "ahk"  [import]
+modules\__init__.py:42: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+modules\__init__.py:49: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+modules\__init__.py:51: error: "ConfigParser" has no attribute "_sections"  [attr-defined]
+modules\__init__.py:58: error: Value of type "object" is not indexable  [index]
+modules\platforms\window_managers\linux.py:22: error: Cannot find implementation or library stub for module named "pgi"  [import]
+modules\platforms\window_managers\linux.py:25: error: Cannot find implementation or library stub for module named "gi"  [import]
+modules\platforms\window_managers\linux.py:28: error: Cannot find implementation or library stub for module named "gi.repository"  [import]
+modules\resolution.py:12: error: Cannot find implementation or library stub for module named "cv2"  [import]
+modules\resolution.py:12: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+modules\image_utils.py:17: error: Cannot find implementation or library stub for module named "cv2"  [import]
+modules\image_utils.py:18: error: Cannot find implementation or library stub for module named "numpy"  [import]
+main.py:22:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+main.py:25:4: C0103: Variable name "BNCount" doesn't conform to snake_case naming style (invalid-name)
+main.py:43:15: W0718: Catching too general exception Exception (broad-exception-caught)
+main.py:32:16: C0103: Variable name "BNCount" doesn't conform to snake_case naming style (invalid-name)
+main.py:36:20: C0103: Variable name "BNCount" doesn't conform to snake_case naming style (invalid-name)
+main.py:38:20: C0103: Variable name "BNCount" doesn't conform to snake_case naming style (invalid-name)
+main.py:13:0: C0411: standard import "import logging" should be placed before "from modules.gameloop import where" (wrong-import-order)

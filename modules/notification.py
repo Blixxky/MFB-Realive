@@ -41,13 +41,13 @@ def send_notification(message: dict):
         data = parse.urlencode(message).encode()
         req = request.Request(url, data, method="POST")
         request.urlopen(req)
-        log.info(f"notification sent: {message}")
+        log.info("notification sent: %s", message)
     except error.HTTPError as e:
-        log.error(f"notification HTTP error: {e.code}")
+        log.error("notification HTTP error: %s", e.code)
     except error.URLError as e:
-        log.error(f"notification URL error: {e.reason}")
+        log.error("notification URL error: %s", e.reason)
     except Exception as e:
-        log.error(f"notification error: {e}")
+        log.error("notification error: %s", e)
 
 
 def send_slack_notification(message):
@@ -73,10 +73,11 @@ def send_slack_notification(message):
         data = bytes(message, "utf-8")
         req = request.Request(url, data, headers=headers, method="POST")
         request.urlopen(req)
-        log.info(f"notification sent: {message}")
+        log.info("notification sent: %s", message)
     except error.HTTPError as e:
-        log.error(f"notification HTTP error: {e.code}")
+        log.error("notification HTTP error: %s", e.code)
     except error.URLError as e:
-        log.error(f"notification URL error: {e.reason}")
+        log.error("notification URL error: %s", e.reason)
     except Exception as e:
-        log.error(f"notification error: {e}")
+        log.error("notification error: %s", e)
+

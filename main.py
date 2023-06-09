@@ -19,7 +19,7 @@ def main():
     """
     Checks python and tries to find the Hearthstone or Battle.net window.
     """
-    log.info(f"Python version: {sys.version}")
+    log.info("Python version: %s", sys.version)
     gen_images_new_resolution()
     # Sometimes it is the first BN window shall be launched, sometimes it is the second.
     BNCount = 1

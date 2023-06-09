@@ -1,3 +1,37 @@
+2023-06-09
+----------
+1. Changed `log.info` string to use lazy `%` formatting.
+2. Changed `modules/platforms/platforms.py` `log.info` string to use lazy `%` formatting.
+3. Changed `modules/conf/conf.py` `log.info` string to use lazy `%` formatting.
+4. Changed `modules/conf/settings.py` `log.error` string to use lazy `%` formatting.
+5. Changed `modules/conf/settings.py` `log.info` string to use lazy `%` formatting.
+6. Changed `modules/conf/settings.py` raise `SettingsError` string to use lazy `%` formatting.
+7. Changed `modules/conf/settings.py` raise `MissingGameDirectory` string to use lazy `%` formatting.
+8. Modified `modules/conf/settings.py` the `Zone.log` path builder. Line 79.
+9. Changed `modules/bounty.py` `log.info` strings to use lazy `%` formatting (line 82, 253).
+10. Changed `modules/bounty.py` `log.debug` strings to use lazy `%` formatting (line 197, 211).
+11. Changed `modules/bounty.py` `json.dumps` string to use lazy `%` formatting.
+12. Changed `modules/encounter.py` `log.debug` strings to use lazy `%` formatting (line 90, 115, 171, 172, 249, 366, 368, 783, 832).
+13. Changed `modules/encounter.py` `log.warning` string to use lazy `%` formatting.
+14. Changed `modules/encounter.py` `log.info` strings to use lazy `%` formatting (line 283, 515, 573, 667, 670, 767, 774, 787).
+15. Changed `modules/encounter.py` `log.error` string to use lazy `%` formatting.
+16. Changed `modules/game.py` `log.info` string to use lazy `%` formatting.
+17. Changed `modules/gameloop.py` `log.error` string to use lazy `%` formatting.
+18. Removed `modules/gameloop.py` commented `time.sleep` commands and a disabled function.
+19. Changed `modules/image_utils.py` `log.error` string to use lazy `%` formatting (line 60, 100, 102).
+20. Changed `modules/image_utils.py` `log.info` string to use lazy `%` formatting (line 201).
+21. Changed `modules/image_utils.py` `print` string to use lazy `%` formatting (line 204).
+22. Changed `modules/image_utils.py` `log.debug` string to use lazy `%` formatting.
+23. Changed `modules/notification.py` `log.info` strings to use lazy `%` formatting (line 44, 76).
+24. Changed `modules/notification.py` `log.error` strings to use lazy `%` formatting (line 46, 48, 50, 78, 80, 82).
+25. Changed `modules/resolution.py` `log.error` string to use lazy `%` formatting.
+26. Changed `modules/resolution.py` `log.debug` string to use lazy `%` formatting.
+27. Changed `modules/travelpoint.py` `log.error` string to use lazy `%` formatting.
+28. Changed `modules/treasure.py` `log.debug` string to use lazy `%` formatting.
+29. Changed `main.py` `log.info` strings to use lazy `%` formatting (line 22, 41).
+30. Changed `main.py` `log.error` string to use lazy `%` formatting.
+
+
 2023-06-08
 ----------
 1. Added module docstring to main.py

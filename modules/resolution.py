@@ -56,7 +56,6 @@ def check_resolution(window):
     # margin_error=0.1
     # windowx, windowy = window.split("x")
     # settingx, setting = setting.split("x")
-    # Dunno what this commented code was for, review by Blixxky 6.7.23
 
     return window == settings_dict["resolution"]
 
@@ -71,7 +70,7 @@ def gen_images_new_resolution():
     nx, ny = new_resolution.split("x")
 
     if orig_resolution == new_resolution:
-        log.debug(f"Resolution not changed : {orig_resolution}")
+        log.debug("Resolution not changed : %s", orig_resolution)
     else:
         # test if directory already exists so we don't generate images file
         if (
@@ -90,5 +89,5 @@ def gen_images_new_resolution():
                 )
             else:
                 log.error(
-                    f"Resolution doesn't have the same ratio as {orig_resolution}"
+                    "Resolution doesn't have the same ratio as %s", orig_resolution
                 )

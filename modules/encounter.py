@@ -88,8 +88,10 @@ def select_enemy_to_attack(index):
     if index:
         time.sleep(0.1)
         log.debug(
-            f"Move index (index, x, y) : {index}"
-            f" {index[0] + (cardWidth // 2)} {index[1] - (cardWidth // 3)}",
+            "Move index (index, x, y) : %s %s %s",
+            index,
+            index[0] + (cardWidth // 2),
+            index[1] - (cardWidth // 3),
         )
         move_mouse_and_click(
             windowMP(), index[0] + (cardWidth // 3), index[1] - (cardHeight // 2)
@@ -362,8 +364,9 @@ def didnt_find_a_name_for_this_one(name, minionSection, turn, defaultAbility=0):
         log.debug("No ability selected (0)")
     elif ability >= 1 and ability <= 3:
         log.debug(
-            f"abilities Y : {abilitiesPositionY} |"
-            f" abilities X : {abilitiesPositionX}"
+            "abilities Y : %s | abilities X : %s",
+            abilitiesPositionY,
+            abilitiesPositionX,
         )
         abilityScreenshot = [
             int(abilitiesWidth),
@@ -385,7 +388,7 @@ def didnt_find_a_name_for_this_one(name, minionSection, turn, defaultAbility=0):
                 int(abilitiesPositionY + abilitiesHeigth // 2),
             )
     else:
-        log.warning(f"No ability selected for {name}")
+        log.warning("No ability selected for %s", name)
         abilityConfig["ability"] = 0
 
     return abilityConfig
@@ -568,13 +571,15 @@ def find_enemies(ns=True) -> Enemies:
     enemymol = find_mol_enemy(ns)
 
     log.info(
-        f"Enemies : red {enemyred}"
-        f" - green {enemygreen}"
-        f" - blue {enemyblue}"
-        f" - noclass {enemynoclass}"
-        f" - noclass2 {enemynoclass2}"
-        f" - mol {enemymol}"
+        "Enemies : red %s - green %s - blue %s - noclass %s - noclass2 %s - mol %s",
+        enemyred,
+        enemygreen,
+        enemyblue,
+        enemynoclass,
+        enemynoclass2,
+        enemymol,
     )
+
     return Enemies(
         enemyred, enemygreen, enemyblue, enemynoclass, enemynoclass2, enemymol
     )
@@ -664,10 +669,10 @@ def battle(zoneLog=None):
         ):  # or find_element(Button.startbattle1.filename, Action.screenshot):
             # looks for your enemies on board thanks to log file
             enemies = zoneLog.getEnemyBoard()
-            log.info(f"Round {raund} : enemy board {enemies}")
+            log.info("Round %s : enemy board %s", raund, enemies)
             # looks for your Mercenaries on board thanks to log file
             mercenaries = zoneLog.getMyBoard()
-            log.info(f"Round {raund} :  your board {mercenaries}")
+            log.info("Round %s :  your board %s", raund, mercenaries)
 
             # click on neutral zone to avoid problem with screenshot
             # when you're looking for red/green/blue enemies
@@ -764,14 +769,14 @@ def selectCardsInHand(zL=None):
         boss = zL.getEnemyBoard()
         for i in boss:
             if boss[i] in ability_order:
-                log.info(f"Specific conf found to beat: {boss[i]}")
+                log.info("Specific conf found to beat: %s", boss[i])
                 ability_section = boss[i]
                 break
 
         # wait 'WaitForEXP' (float) in minutes, to make the battle last longer
         # and win more XP (for the Hearthstone reward track)
         wait_for_exp = settings_dict["waitforexp"]
-        log.info(f"WaitForEXP - wait (second(s)) : {wait_for_exp}")
+        log.info("WaitForEXP - wait (second(s)) : %s", wait_for_exp)
         # time.sleep(wait_for_exp)
         countdown(wait_for_exp, 10, "Wait for XP : sleeping")
 
@@ -784,7 +789,7 @@ def selectCardsInHand(zL=None):
         # Look if user configured the bot to select cards in hand
         # and put them on board
         if "_handselection" in ability_order[ability_section]:
-            log.info(f"Cards in hand: {zL.getHand()}")
+            log.info("Cards in hand: %s", zL.getHand())
             cards = cardsInHand(windowMP(), zL, 3)
 
             for merc in ability_order[ability_section]["_handselection"].split("+"):
@@ -829,7 +834,7 @@ class cardsInHand:
                 return False
             move_mouse_and_click(self.win, coord_x, self.coord_y)
             move_mouse_and_click(self.win, self.win[2] // 1.33, self.win[3] // 1.63)
-            log.debug(f"Put on board: {mercenary}")
+            log.debug("Put on board: %s", mercenary)
             self.on_board += 1
             self.in_hand.remove(mercenary)
             i = 0
@@ -837,7 +842,7 @@ class cardsInHand:
                 time.sleep(0.5)
                 i += 1
                 if i > 10:
-                    log.error(f"Putting {mercenary} on board failed.")
+                    log.error("Putting %s on board failed.", mercenary)
                     break
 
     def clean(self):

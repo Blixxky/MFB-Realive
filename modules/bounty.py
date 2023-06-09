@@ -80,7 +80,8 @@ def collect():
                 )
             )
             log.info(
-                f"Attempted to collect treasure {collectAttempts} times, attempting to recover."
+                "Attempted to collect treasure %s times, attempting to recover.",
+                collectAttempts,
             )
             break
 
@@ -195,7 +196,7 @@ def searchForEncounter():
     retour = True
     if find_element(UIElement.view_party.filename, Action.screenshot):
         x, y = mouse_position(windowMP())
-        log.debug(f"Mouse (x, y) : ({x}, {y})")
+        log.debug("Mouse (x, y) : (%s, %s)", x, y)
         if y >= (windowMP()[3] // 2.2 - MOUSE_RANGE) and y <= (
             windowMP()[3] // 2.2 + MOUSE_RANGE
         ):
@@ -209,7 +210,7 @@ def searchForEncounter():
             retour = False
         else:
             y = windowMP()[3] // 2.2
-            log.debug(f"move mouse to (x, y) : ({x}, {y})")
+            log.debug("move mouse to (x, y) : (%s, %s)", x, y)
             move_mouse_and_click(windowMP(), x, y)
     return retour
 
@@ -251,7 +252,7 @@ def goToEncounter():
             #    break
 
             retour = selectCardsInHand()
-            log.info(f"goToEncounter - retour = {retour}")
+            log.info("goToEncounter - retour = %s", retour)
             time.sleep(1)
             if retour == "win":
                 log.info("goToEncounter : Battle won")
@@ -329,7 +330,7 @@ def travelToLevel(page="next"):
         waitForItOrPass(Button.choose_level, 6)
         find_element(Button.choose_level.filename, Action.move_and_click)
         send_slack_notification(
-            json.dumps({"text": f"Starting {settings_dict['location']} bounty."})
+            json.dumps({"text": "Starting %s bounty." % settings_dict["location"]})
         )
         retour = True
     elif page == "next":

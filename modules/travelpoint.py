@@ -73,7 +73,7 @@ def travelpointSelection():
                     jthreshold["travelpoints"],
                 )
             except Exception:
-                log.error(f"Travel Point unknown : {location}")
+                log.error("Travel Point unknown : %s", location)
 
         move_mouse(windowMP(), windowMP()[2] // 2, windowMP()[3] // 2)
         time.sleep(0.5)

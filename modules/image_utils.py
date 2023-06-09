@@ -52,12 +52,12 @@ def get_resolution() -> tuple[str, int, int, float]:
         windows_w, windows_h = windowMP()[2], windowMP()[3]
         if round(windows_w / setting_w, 2) != round(windows_h / setting_h, 2):
             raise Exception(
-                "setting resolution and windows resolution are not the same aspect ratio"
+                "Setting resolution and windows resolution are not the same aspect ratio"
             )
         scale_size = setting_w / windows_w
         return resolution, setting_w, setting_h, scale_size
     except Exception as e:
-        log.error(f"the resolution {resolution} is not supported: {e}")
+        log.error("The resolution %s is not supported: %s", resolution, e)
         sys.exit(1)
 
 
@@ -97,17 +97,13 @@ def get_gray_image(file):
     # need to resize the image in memory
     if file not in get_gray_image.imagesInMemory:
         if not os.path.isfile(file):
-            log.error(f'Err: file "{file}" doesn\'t exist.')
+            log.error('Err: file "%s" doesn\'t exist.', file)
         get_gray_image.imagesInMemory[file] = cv2.imread(file, cv2.IMREAD_GRAYSCALE)
-
-        log.debug(f"images in memory : {len(get_gray_image.imagesInMemory)}")
-
+        log.debug("images in memory : %s", len(get_gray_image.imagesInMemory))
     return get_gray_image.imagesInMemory[file]
 
 
-def find_element(
-    file, action, threshold="-", new_screen=True
-):
+def find_element(file, action, threshold="-", new_screen=True):
     """Find an object ('file') on the screen (UI, Button, ...)
         and do some actions ('action')
                 Screenshot Here  |    Screenshot Before  |  Actions   | Return
@@ -202,11 +198,12 @@ def find_element_from_file(
     if click_coords is not None:
         click_coords = [click_coords[0] + left, click_coords[1] + top]
         log.info(
-            f"Found {file} ( {threshold} ) { click_coords[0] } { click_coords[1] }",
+            "Found %s ( %s ) %s %s", file, threshold, click_coords[0], click_coords[1]
         )
+
     else:
-        print(f"Waiting for... {file}\033[K", end="\r")
-        log.debug(f"Looked for {file} ( {threshold} )")
+        print("Waiting for... %s\033[K" % file, end="\r")
+        log.debug("Looked for %s ( %s )", file, threshold)
 
     return click_coords
 

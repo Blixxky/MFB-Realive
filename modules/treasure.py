@@ -37,7 +37,7 @@ def chooseTreasure():
     for treasure in treasures_priority:
         treasures_queue.put((treasures_priority[treasure], treasure))
 
-    log.debug(f"treasures queue contains : {treasures_queue}")
+    log.debug("treasures queue contains : %s", treasures_queue)
 
     while not treasures_queue.empty():
         next_treasure = treasures_queue.get()[1]

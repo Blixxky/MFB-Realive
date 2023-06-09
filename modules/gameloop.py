@@ -31,7 +31,7 @@ def where():
     win_game_resolution = f"{width}x{height}"
     if not check_resolution(win_game_resolution):
         log.error(
-            f"Game window size ({win_game_resolution}) doesn't match your settings."
+            "Game window size (%s) doesn't match your settings.", win_game_resolution
         )
         sys.exit()
 
@@ -46,48 +46,26 @@ def where():
         mx = jposition["mouse.neutral.x"]
         my = jposition["mouse.neutral.y"]
         move_mouse(windowMP(), windowMP()[2] / mx, windowMP()[3] / my)
-    #        time.sleep(3)
 
     if find_element(UIElement.travelpoint.filename, Action.screenshot):
-        #        time.sleep(3)
         # Find the travel point and the mode (normal/heroic)
         travelpointSelection()
-    #        time.sleep(3)
 
     if find_element(UIElement.bounties.filename, Action.screenshot):
-        #        time.sleep(3)
         travelToLevel()
         time.sleep(1)
 
     if find_element(UIElement.team_selection.filename, Action.screenshot):
-        #        time.sleep(3)
         selectGroup()
         time.sleep(1)
-
-    #    if find_element(Button.play.filename, Action.screenshot):
-    #        time.sleep(3)
-    #        goToEncounter()
-    #        # time.sleep(3)
-
-    #    if find_element(UIElement.view_party.filename, Action.screenshot):
-    #        nextlvl()
 
     if find_element(UIElement.view_party.filename, Action.screenshot):
         goToEncounter()
 
     if find_element(UIElement.campfire.filename, Action.screenshot):
-        #        time.sleep(2)
         look_at_campfire_completed_tasks()
-    #        time.sleep(3)
-
-    # Note: feature disabled because of enemy board detection needing
-    # to start log-scan before battle started
-    # Note: could work if log scan had something like a rewind scan
-    # if find_element(Button.num.filename, Action.screenshot):
-    #     selectCardsInHand()
 
     else:
         defaultCase()
-    #        time.sleep(3)
 
     return True

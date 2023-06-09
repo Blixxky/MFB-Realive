@@ -36,7 +36,7 @@ def waitForItOrPass(image, duration, step=0.5):
     """
     retour = False
 
-    log.info(f"Waiting ({str(duration)}s max) for : {image}")
+    log.info("Waiting (%ss max) for : %s", str(duration), image)
     for _ in range(int(duration / step)):
         time.sleep(step)
         # time.sleep(0.5)
@@ -48,8 +48,10 @@ def waitForItOrPass(image, duration, step=0.5):
 
 
 def defaultCase():
-    """Click on the right edge of the screen to dismiss popups"""
-    """Saving x,y to move back into previous position"""
+    """
+    Click on the right edge of the screen to dismiss popups
+    Saving x,y to move back into previous position
+    """
     if find_element(UIElement.quests.filename, Action.screenshot) or find_element(
         UIElement.encounter_card.filename, Action.screenshot
     ):

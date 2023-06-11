@@ -47,7 +47,7 @@ MFB-Realive : https://github.com/Blixxky/MFB-Realive
 ### While the bot is running...
 - Don't move the Hearthstone window
 - Don't put another window in front of Hearthstone
-- Don't touch your mouse unless you want to bypass the bot (drag it to the bottom corner until you get the resume alert)
+- Don't touch your mouse unless you want to bypass the bot (drag it to the top left corner until you get the resume alert)
 - Don't resize the Hearthstone window or change the resolution
 - Eat popcorn..
 

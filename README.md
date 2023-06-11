@@ -20,7 +20,7 @@ MFB-Realive : https://github.com/Blixxky/MFB-Realive
 ### Windows
 1. Install [Python 3.11](https://www.python.org/ftp/python/3.11.0/python-3.11.0-amd64-webinstall.exe) (⚠️ select the "Add Python 3.11 to PATH" during installation) 
 2. Download the project
-   - [Realive fork](https://github.com/Blixxky/MFB-Realive)
+   - [MFB-Realive](https://github.com/Blixxky/MFB-Realive)
 4. Open *`conf/user/config.py`* or *`conf/user/config.pyw`* and set your preferred '*settings*' using the GUI. 
    - Set **GameDir** by browsing in the GUI or putting the path in '*settings.ini*' under "GameDir". This is where '*hearthstone.exe*' is
    - Create your Hearthstone *`log.config`* file
@@ -34,7 +34,7 @@ MFB-Realive : https://github.com/Blixxky/MFB-Realive
 2. Install gir1.2-wnck-3.0 *`sudo apt install gir1.2-wnck-3.0`*
 3. Install - if needed - libharfbuzz-gobject0 *`sudo apt install libharfbuzz-gobject0`*
 4. Download the project
-   - [Realive fork](https://github.com/Blixxky/MFB-Realive)
+   - [MFB-Realive](https://github.com/Blixxky/MFB-Realive)
 5. Run *`conf/user/config.py`* or *`conf/user/config.pyw`* and set your preferences
 6. Set **GameDir** to your Hearthstone directory using the Browse button.
 6. Create/Edit your Hearthstone [log.config file](https://github.com/Efemache/Mercenaries-Farm-bot/wiki/Settings#logconfig)

@@ -1,6 +1,8 @@
 # Mercenaries Farm Bot Realive
 MFB-Realive : https://github.com/Blixxky/MFB-Realive
 
+![Image](rejoice.jpg)
+
 ## Supported Resolutions
 
 - For fullscreen mode, both the Hearthstone resolution and your screen resolution must match. For example, use **1920x1080** for both.

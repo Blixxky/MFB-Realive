@@ -15,8 +15,8 @@ Classes:
 
 import re
 import logging
-from ..base import WindowMgr
-from ...platforms import find_os
+from modules.platforms.window_managers.base import WindowMgr
+from modules.platforms.platforms import find_os
 
 log = logging.getLogger(__name__)
 
@@ -47,6 +47,7 @@ class WindowMgrWindowsWin32Gui(WindowMgr):
         Initializes an instance of the WindowMgrWindowsWin32Gui class, setting the window handle to None.
         """
         self._handle = None
+        self._handles = []
 
     def find_game(self, WINDOW_NAME, BNCount=0):
         """
@@ -60,7 +61,7 @@ class WindowMgrWindowsWin32Gui(WindowMgr):
             self._handle: The handle to the found game window, or None if no matching window is found.
         """
         self._find_window(WINDOW_NAME, BNCount)
-        if (self._handle is not None) & (
+        if (self._handle is not None) and (
             WINDOW_NAME != win32gui.GetWindowText(win32gui.GetForegroundWindow())
         ):
             self._show_window()
@@ -97,10 +98,8 @@ class WindowMgrWindowsWin32Gui(WindowMgr):
             WINDOW_NAME (str): The name of the game window to search for.
         """
         if re.match(WINDOW_NAME, str(win32gui.GetWindowText(hwnd))) is not None:
-            # print(hwnd)
             self._handles.append(hwnd)
             self._handle = hwnd
-            print(self._handle)
 
     def _find_window(self, WINDOW_NAME, BNCount):
         """
@@ -118,10 +117,8 @@ class WindowMgrWindowsWin32Gui(WindowMgr):
             log.info("Matched no window")
             return False
         if len(self._handles) > 1:
-            print(BNCount)
             self._handle = self._handles[BNCount]
-            print(self._handle)
-        else:  # len(self._handles) == 1:
+        else:
             self._handle = self._handles[0]
 
     def _show_window(self):

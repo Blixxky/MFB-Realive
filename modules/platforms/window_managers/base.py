@@ -14,8 +14,8 @@ class WindowMgr(ABC):
 
     @abstractmethod
     def get_window_geometry(self):
-        pass
+        """Get window geometry"""
 
     @abstractmethod
     def find_game(self):
-        pass
+        """Find Game"""

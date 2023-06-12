@@ -1,5 +1,55 @@
-2023-06-09
-----------
+2023-06-11 v1.0.4
+-----------------
+1. Updated `conf\user\combo.ini` to add Archimonde, rescued student, drakonid 3 to ability rotations.
+2. Updated `conf\system\mercs.json` to add rescued student and drakonid 3.
+3. Changed `modules/init.py` `_sections` to `has_section` for `configparser`.
+4. Changed `modules/platforms/factory.py` `elif` Linux statement to `if`.
+5. Replaced `modules/platforms/factory.py` `Exception` with a more specific `ValueError` exception on line 13.
+6. Changed `modules/platforms/factory.py` unnecessary `else` to `elif` on line 8 to address the `no-else-return` linting issue.
+7. Changed `modules/platforms/window_managers/windows/win32gui_manager.py` relative imports to absolute.
+8. Defined `modules/platforms/window_managers/windows/win32gui_manager.py` global variables 'left', 'top', 'width', and 'height' at the module level.
+9. Removed `modules/platforms/window_managers/windows/win32gui_manager.py` unnecessary `else` statement after the return statement.
+10. Addressed `modules/platforms/window_managers/windows/win32gui_manager.py` inconsistency in return statements by having all of them return an expression.
+11. Moved `modules/platforms/window_managers/windows/win32gui_manager.py` attribute `_handles` definition inside the `__init__` method.
+12. Added `modules/__init__.py` module docstring.
+13. Added `modules/platforms/__init__.py` module docstring.
+14. Added `modules/platforms/window_managers/base.py` function docstrings.
+15. Changed `modules/platforms/window_managers/linux.py` relative imports to absolute.
+16. Removed `modules/platforms/window_managers/linux.py` unused argument `BNCount` on line 44.
+17. Resolved `modules/platforms/window_managers/linux.py` unnecessary `else` statement on line 86.
+18. Defined `modules/platforms/window_managers/linux.py` "win" within the `__init__` method.
+19. Removed `modules/settings/conf/conf.py` unused `setting_name`.
+20. Removed `modules/settings/conf/settings.py` unnecessary `else` after `raise`.
+21. Changed `modules/settings/conf/settings.py` `raise` to use f-string.
+22. Added `modules/battlenetloop.py` `found_element` variable.
+23. Fixed `modules/battlenetloop.py` import order.
+24. Cleaned `modules/bounty.py` import statements.
+25. Simplified `modules/bounty.py` function by reducing the number of branches and statements (Line 106).
+26. Simplified `modules/bounty.py` the chained comparison in `searchForEncounter()` by removing unnecessary parentheses (Line 200).
+27. Changed `modules/bounty.py` string concatenation in `travelToLevel()` to use explicit concatenation instead of implicit concatenation (Line 286).
+28. Changed `modules/bounty.py` string formatting in `send_slack_notification()` to use an f-string instead of formatting a regular string (Line 333).
+29. Removed `modules/bounty.py` unnecessary return statement at the end of the `quitBounty()` function (Line 356).
+30. Removed `modules/campfire.py` `toggle_campfire_screen()` removed unnecessary `elif` and `else`.
+31. Removed `modules/campfire.py` `look_at_campfire_completed_tasks()` removed unnecessary `else` after `break`.
+32. Modified `modules/encounter.py` the `__init__` method to take any number of keyword arguments.
+33. Rewrote `modules/encounter.py` class `Enemies` to use a `namedtuple`.
+34. Rewrote `modules/encounter.py` class `Board` to use a `namedtuple`.
+35. Changed `modules/encounter.py` `log.debug` to use lazy `%` formatting (Line 783).
+36. Moved `modules/encounter.py` `self.coord_y` to inside `__init__`.
+37. Cleaned `modules/encounter.py` import list.
+38. Added `modules/encounter.py` `selectCardsInHand` docstring.
+39. Added `modules/encounter.py` `cardsInHand` docstring.
+40. Added `modules/encounter.py` `execute_action_sequence` docstring.
+41. Added `modules/encounter.py` `find_enemies` docstring.
+42. Added `modules/exceptions.py` module docstring and class docstrings.
+43. Changed `modules/file_utils.py` `elif` to use raw string on lines 32 and 34.
+44. Added `modules/file_utils.py` encoding types to open functions.
+45. Added `modules/file_utils.py` `copy_dir_and_func_files` docstring.
+46. Converted `modules/game.py` lines 22 and 24 to f-strings.
+
+
+2023-06-09 v1.0.3
+-----------------
 1. Changed `log.info` string to use lazy `%` formatting.
 2. Changed `modules/platforms/platforms.py` `log.info` string to use lazy `%` formatting.
 3. Changed `modules/conf/conf.py` `log.info` string to use lazy `%` formatting.
@@ -32,8 +82,8 @@
 30. Changed `main.py` `log.error` string to use lazy `%` formatting.
 
 
-2023-06-08
-----------
+2023-06-08 v1.0.2
+-----------------
 1. Added module docstring to main.py
 2. Added module docstring to /modules/bounty.py
 3. Added function docstring to /modules/bounty.py searchForEncounter

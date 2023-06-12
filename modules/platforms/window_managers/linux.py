@@ -12,8 +12,8 @@ import time
 import logging
 import pyautogui
 
-from .base import WindowMgr
-from ..platforms import find_os
+from modules.platforms.window_managers.base import WindowMgr
+from modules.platforms.platforms import find_os
 
 # from ...exceptions import WindowManagerError
 
@@ -40,8 +40,9 @@ class WindowMgrLinux(WindowMgr):
     def __init__(self):
         """Constructor"""
         self.win = None
+        self._win = None  # define '_win' attribute in constructor
 
-    def find_game(self, WINDOW_NAME, BNCount=0):
+    def find_game(self, WINDOW_NAME):
         """
         Searches for the game window named 'WINDOW_NAME' on the screen and makes it active.
         If the game window is not found, prints a message and sets the target window as None.
@@ -51,7 +52,6 @@ class WindowMgrLinux(WindowMgr):
 
         Args:
             WINDOW_NAME (str): The name of the game window to search for.
-            BNCount (int): This parameter is not used in the Linux version. Default is 0.
 
         Returns:
             win: Returns the identified game window if found, else returns None.
@@ -71,7 +71,7 @@ class WindowMgrLinux(WindowMgr):
                 break
         if not win:
             print(f"No '{WINDOW_NAME}' window found.")
-        self._win = win
+        self._win = win  # use self._win defined in __init__
         return win
 
     def get_window_geometry(self):
@@ -86,5 +86,4 @@ class WindowMgrLinux(WindowMgr):
         if self._win.get_name() == "Battle.net":
             (width, height) = pyautogui.size()
             return (0, 0, width, height)
-        else:
-            return self._win.get_client_window_geometry()
+        return self._win.get_client_window_geometry()

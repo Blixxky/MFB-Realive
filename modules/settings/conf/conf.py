@@ -178,22 +178,21 @@ def log_setting_dict(setting_name, setting_dict):
         setting_dict (dict): The dictionary containing settings data to log.
     """
     log.debug("%s", setting_name)
-    log_setting_dict_helper(setting_name, setting_dict)
+    log_setting_dict_helper(setting_dict)
 
 
-def log_setting_dict_helper(setting_name, setting_dict, indent=""):
+def log_setting_dict_helper(setting_dict, indent=""):
     """
     Recursively logs the contents of a settings dictionary. This function is used
     by log_setting_dict() to handle the nested dictionary structure.
 
     Args:
-        setting_name (str): The name of the current dictionary or subdictionary.
         setting_dict (dict): The dictionary containing settings data to log.
         indent (str): A string of whitespace used to indent nested dictionary entries.
             Default is an empty string.
     """
     for setting, value in setting_dict.items():
         if isinstance(value, dict):
-            log_setting_dict_helper(setting, value, indent * 4)
+            log_setting_dict_helper(value, indent * 4)
         else:
             log.debug(" - %s: %s", setting, value)

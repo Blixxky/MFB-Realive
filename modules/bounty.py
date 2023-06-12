@@ -1,12 +1,7 @@
 """
 This module contains functions related to moving from one bounty to the next, quitting when specified, and finding and moving in-between game windows.
 """
-import sys
-import random
-import time
-import json
-import pathlib
-
+import logging, sys, random, time, json, pathlib
 from .platforms import windowMP
 from .mouse_utils import (
     move_mouse_and_click,
@@ -15,18 +10,14 @@ from .mouse_utils import (
     mouse_click,
     MOUSE_RANGE,
 )
-
 from .constants import UIElement, Button, Action
 from .image_utils import find_element
 from .game import waitForItOrPass, defaultCase
 from .encounter import selectCardsInHand
 from .campfire import look_at_campfire_completed_tasks
-
 from .settings import settings_dict, jthreshold
 from .treasure import chooseTreasure
 from .notification import send_notification, send_slack_notification
-
-import logging
 
 log = logging.getLogger(__name__)
 
@@ -43,17 +34,22 @@ def collect():
     while True:
         collectAttempts += 1
 
-        move_mouse_and_click(windowMP(), windowMP()[2] / 2.5, windowMP()[3] / 3.5)
-        move_mouse_and_click(windowMP(), windowMP()[2] / 2, windowMP()[3] / 3.5)
-        move_mouse_and_click(windowMP(), windowMP()[2] / 1.5, windowMP()[3] / 3.5)
-        move_mouse_and_click(windowMP(), windowMP()[2] / 1.5, windowMP()[3] / 2.4)
-        move_mouse_and_click(windowMP(), windowMP()[2] / 2.7, windowMP()[3] / 1.4)
-        move_mouse_and_click(windowMP(), windowMP()[2] / 3, windowMP()[3] / 2.7)
-        move_mouse_and_click(windowMP(), windowMP()[2] / 1.4, windowMP()[3] / 1.3)
-        move_mouse_and_click(windowMP(), windowMP()[2] / 1.6, windowMP()[3] / 1.3)
-        move_mouse_and_click(windowMP(), windowMP()[2] / 1.7, windowMP()[3] / 1.3)
-        move_mouse_and_click(windowMP(), windowMP()[2] / 1.8, windowMP()[3] / 1.3)
-        move_mouse_and_click(windowMP(), windowMP()[2] / 1.9, windowMP()[3] / 1.3)
+        positions = [
+            (2.5, 3.5),
+            (2, 3.5),
+            (1.5, 3.5),
+            (1.5, 2.4),
+            (2.7, 1.4),
+            (3, 2.7),
+            (1.4, 1.3),
+            (1.6, 1.3),
+            (1.7, 1.3),
+            (1.8, 1.3),
+            (1.9, 1.3),
+        ]
+
+        for x, y in positions:
+            move_mouse_and_click(windowMP(), windowMP()[2] / x, windowMP()[3] / y)
 
         # click done button in middle
         move_mouse_and_click(windowMP(), windowMP()[2] / 1.9, windowMP()[3] / 1.8)

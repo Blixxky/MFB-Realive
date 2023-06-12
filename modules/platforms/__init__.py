@@ -1,3 +1,6 @@
+"""
+Init script to handle window manager.
+"""
 from .factory import get_window_manager as _get_window_manager
 
 

@@ -25,4 +25,4 @@ def get_window_manager():
     elif os == "linux":
         return WindowMgrLinux()
     else:
-        raise Exception(f"OS not recognized: {os}")
+        raise ValueError(f"OS not recognized: {os}")

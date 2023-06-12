@@ -3,8 +3,7 @@ This module contains functions related to controlling and interacting with the H
 Note: This module assumes the presence of relevant image files, configuration settings, and external dependencies as specified in the associated modules and configurations.
 """
 
-import sys
-import time
+import logging, sys, time
 
 from .image_utils import find_element
 from .constants import Action, UIElement, Button
@@ -12,17 +11,17 @@ from .settings import jposition
 from .mouse_utils import move_mouse, move_mouse_and_click, mouse_position
 from .platforms import windowMP
 
-import logging
+
 
 log = logging.getLogger(__name__)
 
 
 def countdown(t, step=1, msg="Sleeping"):
     """Wait and show how many seconds til the end"""
-    pad_str = " " * len("%d" % step)
+    pad_str = " " * len(f"{step}")
     for i in range(t, 0, -step):
         sys.stdout.write(
-            "%s for the next %d seconds %s\r" % (msg, i, pad_str),
+            f"{msg} for the next {i} seconds {pad_str}\r"
         )
         time.sleep(step)
 

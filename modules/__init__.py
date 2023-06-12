@@ -1,6 +1,8 @@
+"""
+Initialization script, handles logging, settings, and certain out strings.
+"""
 import logging
 import logging.config
-
 import configparser
 
 log_config = {
@@ -39,19 +41,22 @@ filelogs = False
 _config = configparser.ConfigParser()
 try:
     _config.read(_systsetting)
-    if _config._sections["BotSettings"]["logs"] == "True":
-        filelogs = True
+    if _config.has_section("BotSettings") and _config.has_option("BotSettings", "logs"):
+        if _config.getboolean("BotSettings", "logs"):
+            filelogs = True
 except Exception:
     pass
 
 try:
     _config.read(_usersetting)
-    if _config._sections["BotSettings"]["logs"] == "True":
-        filelogs = True
-    elif _config._sections["BotSettings"]["logs"] == "False":
-        filelogs = False
+    if _config.has_section("BotSettings") and _config.has_option("BotSettings", "logs"):
+        if _config.getboolean("BotSettings", "logs"):
+            filelogs = True
+        else:
+            filelogs = False
 except Exception:
     pass
+
 
 print(f"Logs: {filelogs}")
 if filelogs:

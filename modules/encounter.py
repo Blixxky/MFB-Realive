@@ -2,29 +2,28 @@
 This module targets enemies and uses abilities during encounters.
 """
 
+import logging
+import random
 import re
 import time
-import random
-import logging
 from typing import List
+from collections import namedtuple
 
-from .platforms import windowMP
-from .mouse_utils import move_mouse_and_click, move_mouse, mouse_click  # , mouse_scroll
-
-from .image_utils import find_element
-from .constants import UIElement, Button, Action
+from .constants import Action, Button, UIElement
 from .game import countdown, waitForItOrPass
-
+from .image_utils import find_element
 from .log_board import LogHSMercs
-from .settings import settings_dict, mercslist, mercsAbilities, ability_order
+from .mouse_utils import move_mouse, move_mouse_and_click, mouse_click
+from .platforms import windowMP
+from .settings import ability_order, mercsAbilities, mercslist, settings_dict
+
 
 log = logging.getLogger(__name__)
 
 default_ability_section = "Mercenary"
 ability_section = default_ability_section
 
-
-class Enemies:
+class Enemies(namedtuple('Enemies', ['red', 'green', 'blue', 'noclass', 'noclass2', 'mol'])):
     """
     Class to manage enemies in the game.
     Attributes:
@@ -36,16 +35,9 @@ class Enemies:
     mol: An integer representing the number of mol enemies.
     """
 
-    def __init__(self, red, green, blue, noclass, noclass2, mol):
-        self.red = red
-        self.green = green
-        self.blue = blue
-        self.noclass = noclass
-        self.noclass2 = noclass2
-        self.mol = mol
 
 
-class Board:
+class Board(namedtuple('Board', ['card_width', 'card_height', 'position_even', 'position_odd', 'my_board_y'])):
     """
     Class to manage the game board.
     Attributes:
@@ -56,19 +48,20 @@ class Board:
     my_board_y: A float representing the y-coordinate of the board.
     """
 
-    def __init__(self):
-        self.card_width = windowMP()[2] // 16
-        self.card_height = windowMP()[3] // 6
+    def __new__(cls):
+        card_width = windowMP()[2] // 16
+        card_height = windowMP()[3] // 6
 
         card_size = windowMP()[2] // 12
         first_even = windowMP()[2] // 3.6
 
         positions = [first_even + i * card_size // 2 for i in range(11)]
-        self.position_even = positions[::2]
-        self.position_odd = positions[1::2]
+        position_even = positions[::2]
+        position_odd = positions[1::2]
 
-        self.myboard.y = windowMP()[3] / 1.5
-        # self.enemy.y =
+        my_board_y = windowMP()[3] / 1.5
+
+        return super().__new__(cls, card_width, card_height, position_even, position_odd, my_board_y)
 
 
 def select_enemy_to_attack(index):
@@ -86,7 +79,7 @@ def select_enemy_to_attack(index):
     retour = False
 
     if index:
-        time.sleep(0.1)
+        time.sleep(0.3)
         log.debug(
             "Move index (index, x, y) : %s %s %s",
             index,
@@ -559,16 +552,42 @@ def take_turn_action(
         )
 
 
-# Look for enemies
+def execute_action_sequence(window, x, y):
+    """
+    Execute a sequence of actions.
+
+    Args:
+        window: The game window.
+        x: The x-coordinate of the target location.
+        y: The y-coordinate of the target location.
+    """
+    move_mouse_and_click(window, x, y)
+    time.sleep(0.3)
+    move_mouse(window, window[2] / 3, window[3] / 2)
+    time.sleep(0.3)
+
+
 def find_enemies(ns=True) -> Enemies:
-    # we use new screenshot for the first call
-    # then we already have the image in memory
-    enemyred = find_red_enemy(ns)
-    enemygreen = find_green_enemy(ns)
-    enemyblue = find_blue_enemy(ns)
-    enemynoclass = find_noclass_enemy(ns)
-    enemynoclass2 = find_noclass2_enemy(ns)
-    enemymol = find_mol_enemy(ns)
+    """
+    Find and return the count of different enemy types.
+
+    Args:
+        ns: A boolean indicating whether to consider non-standard enemy types.
+
+    Returns:
+        An instance of the Enemies class containing the count of different enemy types.
+
+    """
+    # Get the window geometry once
+    window_geometry = windowMP()
+
+    # Find all enemy types
+    enemyred = find_enemy("red", window_geometry, ns)
+    enemygreen = find_enemy("green", window_geometry, ns)
+    enemyblue = find_enemy("blue", window_geometry, ns)
+    enemynoclass = find_enemy("noclass", window_geometry, ns)
+    enemynoclass2 = find_enemy("noclass2", window_geometry, ns)
+    enemymol = find_enemy("sob", window_geometry, ns)
 
     log.info(
         "Enemies : red %s - green %s - blue %s - noclass %s - noclass2 %s - mol %s",
@@ -585,35 +604,22 @@ def find_enemies(ns=True) -> Enemies:
     )
 
 
-def find_red_enemy(ns=True):
-    return find_enemy("red", ns)
 
+def find_enemy(enemy_role, window_geometry, ns=True):
+    """
+    Finds the coordinates of an enemy on the game screen.
 
-def find_green_enemy(ns=True):
-    return find_enemy("green", ns)
+    Args:
+        enemy_role (str): The role of the enemy to find.
+        window_geometry (tuple): The geometry of the game window.
+        ns (bool, optional): Determines whether to use a new screenshot for the search. Default is True.
 
-
-def find_blue_enemy(ns=True):
-    return find_enemy("blue", ns)
-
-
-def find_noclass_enemy(ns=True):
-    return find_enemy("noclass", ns)
-
-
-def find_noclass2_enemy(ns=True):
-    return find_enemy("noclass2", ns)
-
-
-def find_mol_enemy(ns=True):
-    return find_enemy("sob", ns)
-
-
-def find_enemy(enemy_role, ns=True):
+    Returns:
+        tuple or None: The coordinates (x, y) of the enemy if found, None otherwise.
+    """
     enemy = find_element(
         getattr(UIElement, enemy_role).filename, Action.get_coords, new_screen=ns
     )
-    # find_element: Can be changed to return None or actual coords if exists
     if enemy:
         enemy = (
             enemy[0],
@@ -622,9 +628,17 @@ def find_enemy(enemy_role, ns=True):
     return enemy
 
 
+
+
 def battle(zoneLog=None):
-    """Find the cards on the battlefield (yours and those of your opponents)
-    and make them battle until one of yours die
+    """
+    Simulate battles between the cards on the battlefield until one of your cards dies.
+
+    Args:
+        zoneLog: An instance of the zone log class.
+
+    Returns:
+        str: The outcome of the battle, either "win" or "loose".
     """
     retour = True
 
@@ -648,7 +662,7 @@ def battle(zoneLog=None):
         find_element(Button.onedie.filename, Action.move_and_click)
 
         if find_element(UIElement.win.filename, Action.screenshot) or find_element(
-            UIElement.win_final.filename, Action.screenshot
+                UIElement.win_final.filename, Action.screenshot
         ):
             retour = "win"
             move_mouse_and_click(windowMP(), windowMP()[2] / 2, windowMP()[3] / 1.3)
@@ -665,7 +679,7 @@ def battle(zoneLog=None):
             zoneLog.cleanBoard()
             break
         elif find_element(
-            Button.fight.filename, Action.screenshot
+                Button.fight.filename, Action.screenshot
         ):  # or find_element(Button.startbattle1.filename, Action.screenshot):
             # looks for your enemies on board thanks to log file
             enemies = zoneLog.getEnemyBoard()
@@ -684,7 +698,7 @@ def battle(zoneLog=None):
             # an enemy outside the zone)
             enemyBoard_left = int(windowMP()[0] + (windowMP()[2] // 4))
             enemyBoard_right = int(windowMP()[2] // 1.3) - (
-                enemyBoard_left - windowMP()[0]
+                    enemyBoard_left - windowMP()[0]
             )
             enemyBoardScreenshot = [
                 enemyBoard_right,
@@ -739,12 +753,19 @@ def battle(zoneLog=None):
 
 
 def selectCardsInHand(zL=None):
-    """Select the cards to put on battlefield
-    and then, start the 'battle' function
-    Update : actually, the bot doesn't choose it anymore
-    since we stopped to use image with mercenaries text
-    (so we can easily support multi-language)
-        this feature will come back later using HS logs
+    """
+    Select the cards to put on the battlefield and start the 'battle' function.
+    Note: The feature of choosing cards manually from images with text has been temporarily disabled
+    to support multi-language. This feature will be reintroduced in the future using HS logs.
+
+    Args:
+        zL: An instance of LogHSMercs representing the zone log.
+
+    Returns:
+        The result of the battle.
+
+    Raises:
+        None
     """
 
     log.debug("[ SETH - START]")
@@ -773,14 +794,14 @@ def selectCardsInHand(zL=None):
                 ability_section = boss[i]
                 break
 
-        # wait 'WaitForEXP' (float) in minutes, to make the battle last longer
+        # wait 'WaitForEXP' to make the battle last longer
         # and win more XP (for the Hearthstone reward track)
         wait_for_exp = settings_dict["waitforexp"]
         log.info("WaitForEXP - wait (second(s)) : %s", wait_for_exp)
         # time.sleep(wait_for_exp)
         countdown(wait_for_exp, 10, "Wait for XP : sleeping")
 
-        log.debug(f"windowMP = {windowMP()}")
+        log.debug("windowMP = %s", windowMP())
         x1 = windowMP()[2] // 2.6
         y1 = windowMP()[3] // 1.09
         x2 = windowMP()[2] // 10
@@ -818,6 +839,19 @@ def selectCardsInHand(zL=None):
 
 
 class cardsInHand:
+    """
+        Class to manage the cards in hand.
+
+        Attributes:
+        win: A tuple representing the window geometry.
+        zone_log: An instance of LogHSMercs representing the zone log.
+        in_hand: A list of cards in hand.
+        on_board: An integer representing the number of cards currently on the board.
+        max_on_board: An integer representing the maximum number of cards allowed on the board.
+
+        Methods:
+        send_to_board: Sends a card to the board.
+    """
     def __init__(self, win, zLog, max_on_board):
         self.win = win
         self.zone_log = zLog

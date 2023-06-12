@@ -40,13 +40,14 @@ def toggle_campfire_screen():
     Returns the view that is currently active ('party', 'visitor'), or None if neither view is active.
     """
     if find_element(Button.campfire_hiddenparty.filename, Action.move_and_click):
+        time.sleep(2)
         return "party"
+
+    if find_element(Button.campfire_hiddenvisitors.filename, Action.move_and_click):
         time.sleep(2)
-    elif find_element(Button.campfire_hiddenvisitors.filename, Action.move_and_click):
         return "visitor"
-        time.sleep(2)
-    else:
-        return None
+
+    return None
 
 
 def check_party_tasks():
@@ -109,7 +110,8 @@ def claim_task_reward():
 
 
 def look_at_campfire_completed_tasks():
-    """Once opened, look at campfire if you find completed tasks and,
+    """
+    Once opened, look at campfire if you find completed tasks and,
     if so, open them.
     """
 
@@ -126,12 +128,12 @@ def look_at_campfire_completed_tasks():
                 and check_party_tasks()
             ):
                 claim_task_reward()
-            else:
-                if toggled:
-                    break
-                else:
-                    toggle_campfire_screen()
-                    toggled = True
+
+            if toggled:
+                break
+
+            toggle_campfire_screen()
+            toggled = True
 
         move_mouse_and_click(windowMP(), windowMP()[2] / 1.16, windowMP()[3] / 1.93)
 

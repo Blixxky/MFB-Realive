@@ -3,8 +3,7 @@ This module contains the main logic for navigating the Mercenaries mode in Heart
 It provides functions to detect the current state of the game and progress through the various stages of gameplay.
 """
 
-import time
-import sys
+import logging, sys, time
 
 from .bounty import selectGroup, travelToLevel, goToEncounter
 from .travelpoint import travelpointSelection
@@ -16,8 +15,6 @@ from .settings import jposition
 from .mouse_utils import move_mouse
 from .platforms import windowMP
 from .resolution import check_resolution
-
-import logging
 
 log = logging.getLogger(__name__)
 

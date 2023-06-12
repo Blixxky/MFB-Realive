@@ -69,21 +69,17 @@ def get_system_user_settings(system_settings_filename, user_settings_filename):
 
         game_dir = pathlib.Path(settings_dict["gamedir"])
         if not game_dir.is_dir():
-            raise MissingGameDirectory("Game directory (%s) does not exist" % game_dir)
-        else:
-            logs_dir = settings_dict["gamedir"] + "/Logs"
-            subdirectories = os.listdir(logs_dir)
+            raise MissingGameDirectory(f"Game directory ({game_dir}) does not exist")
 
-            settings_dict["zonelog"] = pathlib.PurePath(
-                game_dir,
-                "Logs/" + subdirectories[-1] + "/Zone.log",
-            ).as_posix()
+        logs_dir = f"{settings_dict['gamedir']}/Logs"
+        subdirectories = os.listdir(logs_dir)
 
-        log.info("Settings")
-        for setting, value in settings_dict.items():
-            log.info(" - %s: %s", setting, value)
-    except Exception as e:
-        log.error("Running without settings:", e)
+        settings_dict["zonelog"] = pathlib.PurePath(
+            game_dir,
+            f"Logs/{subdirectories[-1]}/Zone.log",
+        ).as_posix()
+    except (MissingGameDirectory, UnsetGameDirectory) as e:
+        log.error("Running without settings: %s", e)
 
     return add_bot_settings(settings_dict)
 

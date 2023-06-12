@@ -80,4 +80,3 @@ def send_slack_notification(message):
         log.error("notification URL error: %s", e.reason)
     except Exception as e:
         log.error("notification error: %s", e)
-

@@ -1,3 +1,8 @@
+2023-06-12 v1.0.4 hotfix
+-----------------
+1. Converted all relative imports to absolute.
+2. Organized all imports to be properly sorted unless to do so would break them (config.py)
+
 2023-06-11 v1.0.4
 -----------------
 1. Updated `conf\user\combo.ini` to add Archimonde, rescued student, drakonid 3 to ability rotations.

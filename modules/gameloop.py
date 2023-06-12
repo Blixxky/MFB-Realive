@@ -3,18 +3,20 @@ This module contains the main logic for navigating the Mercenaries mode in Heart
 It provides functions to detect the current state of the game and progress through the various stages of gameplay.
 """
 
-import logging, sys, time
+import logging
+import sys
+import time
 
-from .bounty import selectGroup, travelToLevel, goToEncounter
-from .travelpoint import travelpointSelection
-from .constants import UIElement, Button, Action
-from .image_utils import find_element
-from .game import defaultCase
-from .campfire import look_at_campfire_completed_tasks
-from .settings import jposition
-from .mouse_utils import move_mouse
-from .platforms import windowMP
-from .resolution import check_resolution
+from modules.bounty import selectGroup, travelToLevel, goToEncounter
+from modules.travelpoint import travelpointSelection
+from modules.constants import UIElement, Button, Action
+from modules.image_utils import find_element
+from modules.game import defaultCase
+from modules.campfire import look_at_campfire_completed_tasks
+from modules.settings import jposition
+from modules.mouse_utils import move_mouse
+from modules.platforms import windowMP
+from modules.resolution import check_resolution
 
 log = logging.getLogger(__name__)
 

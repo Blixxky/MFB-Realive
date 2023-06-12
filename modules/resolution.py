@@ -10,12 +10,11 @@ Note: This module requires the 'cv2' and 'os' libraries.
 """
 
 import cv2
-
-import os
-from .settings import settings_dict
-from .file_utils import copy_dir_and_func_files
-
 import logging
+import os
+from .file_utils import copy_dir_and_func_files
+from .settings import settings_dict
+
 
 log = logging.getLogger(__name__)
 

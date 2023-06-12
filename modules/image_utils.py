@@ -11,28 +11,25 @@ Functions:
 - find_element_center_on_screen: Find element center on the screen.
 """
 
-import sys
-import os.path
-
 import cv2
-import numpy as np
-
-
-from .platforms import windowMP
-from .mouse_utils import move_mouse_and_click, move_mouse
-
-from .settings import settings_dict, jthreshold
-from .constants import Action
-
 import logging
-
-# needed as workaround for Linux
-# https://stackoverflow.com/questions/74856512/screenshot-error-xdefaultrootwindow-failed-after-closing-a-tkinter-toplevel
-# https://github.com/BoboTiG/python-mss/issues/220
 import mss
+import numpy as np
+import os.path
+import sys
 
+from modules.constants import Action
+from modules.mouse_utils import move_mouse, move_mouse_and_click
+from modules.platforms import windowMP
+from modules.settings import jthreshold, settings_dict
+"""
+mss is needed as workaround for Linux
+https://stackoverflow.com/questions/74856512/screenshot-error-xdefaultrootwindow-failed-after-closing-a-tkinter-toplevel
+https://github.com/BoboTiG/python-mss/issues/220
+"""
 sct = mss.mss()
-# workaround end ###
+# workaround end
+
 
 log = logging.getLogger(__name__)
 

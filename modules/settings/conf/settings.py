@@ -8,12 +8,14 @@ Functions:
 - copy_config_from_sample_if_not_exists: Copy the sample config to the config file if it doesn't exist.
 """
 import logging
+import os
 import pathlib
 import shutil
-import os
-from modules.exceptions import MissingGameDirectory, UnsetGameDirectory, SettingsError
+
+from modules.exceptions import MissingGameDirectory, SettingsError, UnsetGameDirectory
 from modules.file_utils import parseINI, readINI
 from modules.utils import update
+
 
 log = logging.getLogger(__name__)
 

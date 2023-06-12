@@ -4,8 +4,8 @@ This module contains functions related to entering the game from Battle.net.
 
 import logging
 import time
-from .constants import Button, Action
-from .image_utils import find_element
+from modules.constants import Button, Action
+from modules.image_utils import find_element
 
 
 log = logging.getLogger(__name__)

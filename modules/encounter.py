@@ -23,7 +23,10 @@ log = logging.getLogger(__name__)
 default_ability_section = "Mercenary"
 ability_section = default_ability_section
 
-class Enemies(namedtuple('Enemies', ['red', 'green', 'blue', 'noclass', 'noclass2', 'mol'])):
+
+class Enemies(
+    namedtuple("Enemies", ["red", "green", "blue", "noclass", "noclass2", "mol"])
+):
     """
     Class to manage enemies in the game.
     Attributes:
@@ -36,8 +39,12 @@ class Enemies(namedtuple('Enemies', ['red', 'green', 'blue', 'noclass', 'noclass
     """
 
 
-
-class Board(namedtuple('Board', ['card_width', 'card_height', 'position_even', 'position_odd', 'my_board_y'])):
+class Board(
+    namedtuple(
+        "Board",
+        ["card_width", "card_height", "position_even", "position_odd", "my_board_y"],
+    )
+):
     """
     Class to manage the game board.
     Attributes:
@@ -61,7 +68,9 @@ class Board(namedtuple('Board', ['card_width', 'card_height', 'position_even', '
 
         my_board_y = windowMP()[3] / 1.5
 
-        return super().__new__(cls, card_width, card_height, position_even, position_odd, my_board_y)
+        return super().__new__(
+            cls, card_width, card_height, position_even, position_odd, my_board_y
+        )
 
 
 def select_enemy_to_attack(index):
@@ -604,7 +613,6 @@ def find_enemies(ns=True) -> Enemies:
     )
 
 
-
 def find_enemy(enemy_role, window_geometry, ns=True):
     """
     Finds the coordinates of an enemy on the game screen.
@@ -626,8 +634,6 @@ def find_enemy(enemy_role, window_geometry, ns=True):
             enemy[1],
         )
     return enemy
-
-
 
 
 def battle(zoneLog=None):
@@ -662,7 +668,7 @@ def battle(zoneLog=None):
         find_element(Button.onedie.filename, Action.move_and_click)
 
         if find_element(UIElement.win.filename, Action.screenshot) or find_element(
-                UIElement.win_final.filename, Action.screenshot
+            UIElement.win_final.filename, Action.screenshot
         ):
             retour = "win"
             move_mouse_and_click(windowMP(), windowMP()[2] / 2, windowMP()[3] / 1.3)
@@ -679,7 +685,7 @@ def battle(zoneLog=None):
             zoneLog.cleanBoard()
             break
         elif find_element(
-                Button.fight.filename, Action.screenshot
+            Button.fight.filename, Action.screenshot
         ):  # or find_element(Button.startbattle1.filename, Action.screenshot):
             # looks for your enemies on board thanks to log file
             enemies = zoneLog.getEnemyBoard()
@@ -698,7 +704,7 @@ def battle(zoneLog=None):
             # an enemy outside the zone)
             enemyBoard_left = int(windowMP()[0] + (windowMP()[2] // 4))
             enemyBoard_right = int(windowMP()[2] // 1.3) - (
-                    enemyBoard_left - windowMP()[0]
+                enemyBoard_left - windowMP()[0]
             )
             enemyBoardScreenshot = [
                 enemyBoard_right,
@@ -840,18 +846,19 @@ def selectCardsInHand(zL=None):
 
 class cardsInHand:
     """
-        Class to manage the cards in hand.
+    Class to manage the cards in hand.
 
-        Attributes:
-        win: A tuple representing the window geometry.
-        zone_log: An instance of LogHSMercs representing the zone log.
-        in_hand: A list of cards in hand.
-        on_board: An integer representing the number of cards currently on the board.
-        max_on_board: An integer representing the maximum number of cards allowed on the board.
+    Attributes:
+    win: A tuple representing the window geometry.
+    zone_log: An instance of LogHSMercs representing the zone log.
+    in_hand: A list of cards in hand.
+    on_board: An integer representing the number of cards currently on the board.
+    max_on_board: An integer representing the maximum number of cards allowed on the board.
 
-        Methods:
-        send_to_board: Sends a card to the board.
+    Methods:
+    send_to_board: Sends a card to the board.
     """
+
     def __init__(self, win, zLog, max_on_board):
         self.win = win
         self.zone_log = zLog

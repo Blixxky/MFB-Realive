@@ -6,11 +6,12 @@ supports real-time log file tracking through a separate thread, allowing the gam
 updated as new log entries are created.
 """
 
-import time
-import re
-from pathlib import Path
-import threading
 import logging
+import re
+import threading
+import time
+from pathlib import Path
+
 
 log = logging.getLogger(__name__)
 

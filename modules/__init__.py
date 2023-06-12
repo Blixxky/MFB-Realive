@@ -1,9 +1,8 @@
 """
 Initialization script, handles logging, settings, and certain out strings.
 """
-import logging
-import logging.config
 import configparser
+import logging.config
 
 log_config = {
     "version": 1,

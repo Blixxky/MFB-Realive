@@ -8,21 +8,17 @@ Functions:
 Note: This module requires the 'time' and 're' libraries.
 """
 
-import time
-import re
-
-from .platforms import windowMP
-from .mouse_utils import (
-    move_mouse,
-    mouse_scroll,
-)
-
-from .constants import UIElement, Button, Action
-from .image_utils import find_element
-from .game import waitForItOrPass
-from .settings import settings_dict, jposition, jthreshold
-
 import logging
+import re
+import time
+
+from modules.constants import Action, Button, UIElement
+from modules.game import waitForItOrPass
+from modules.image_utils import find_element
+from modules.mouse_utils import move_mouse, mouse_scroll
+from modules.platforms import windowMP
+from modules.settings import jposition, jthreshold, settings_dict
+
 
 log = logging.getLogger(__name__)
 

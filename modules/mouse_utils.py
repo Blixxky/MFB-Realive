@@ -19,7 +19,7 @@ import random
 import time
 import pyautogui
 
-from .settings import settings_dict
+from modules.settings import settings_dict
 
 MOUSE_RANGE = 2
 

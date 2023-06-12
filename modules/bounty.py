@@ -1,23 +1,23 @@
 """
 This module contains functions related to moving from one bounty to the next, quitting when specified, and finding and moving in-between game windows.
 """
-import logging, sys, random, time, json, pathlib
-from .platforms import windowMP
-from .mouse_utils import (
-    move_mouse_and_click,
-    move_mouse,
-    mouse_position,
-    mouse_click,
-    MOUSE_RANGE,
-)
-from .constants import UIElement, Button, Action
-from .image_utils import find_element
-from .game import waitForItOrPass, defaultCase
-from .encounter import selectCardsInHand
-from .campfire import look_at_campfire_completed_tasks
-from .settings import settings_dict, jthreshold
-from .treasure import chooseTreasure
-from .notification import send_notification, send_slack_notification
+import json
+import logging
+import pathlib
+import random
+import sys
+import time
+
+from modules.platforms import windowMP
+from modules.mouse_utils import move_mouse_and_click, move_mouse, mouse_position, mouse_click, MOUSE_RANGE
+from modules.constants import UIElement, Button, Action
+from modules.image_utils import find_element
+from modules.game import waitForItOrPass, defaultCase
+from modules.encounter import selectCardsInHand
+from modules.campfire import look_at_campfire_completed_tasks
+from modules.settings import settings_dict, jthreshold
+from modules.treasure import chooseTreasure
+from modules.notification import send_notification, send_slack_notification
 
 log = logging.getLogger(__name__)
 

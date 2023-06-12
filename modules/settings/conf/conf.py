@@ -10,15 +10,15 @@ Functions:
 - log_setting_dict(setting_name, setting_dict): Log the setting dictionary.
 - log_setting_dict_helper(setting_name, setting_dict, indent): Helper function for logging setting dictionaries.
 """
+import logging
 import os
 import shutil
-import logging
 
-from modules.file_utils import readjson, readINI, writeINI
-from modules.utils import update
 from modules.exceptions import MissingSettingsFile
+from modules.file_utils import readINI, readjson, writeINI
+from modules.settings.conf.settings import get_system_user_settings
+from modules.utils import update
 
-from .settings import get_system_user_settings
 
 log = logging.getLogger(__name__)
 

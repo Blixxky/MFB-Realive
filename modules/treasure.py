@@ -7,18 +7,18 @@ Functions:
 Note: This module requires the 'random', 'time', and 'queue' libraries.
 """
 
+import logging
 import random
 import time
-
 from queue import PriorityQueue
 
-from .platforms import windowMP
-from .mouse_utils import move_mouse_and_click
-from .constants import Button, Action, UIElement
-from .image_utils import find_element
-from .settings import treasures_priority, settings_dict
+from modules.constants import Action, Button, UIElement
+from modules.image_utils import find_element
+from modules.mouse_utils import move_mouse_and_click
+from modules.platforms import windowMP
+from modules.settings import settings_dict, treasures_priority
 
-import logging
+
 
 log = logging.getLogger(__name__)
 

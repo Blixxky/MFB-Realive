@@ -9,23 +9,14 @@ Functions:
 - look_at_campfire_completed_tasks: Look at the campfire screen to find and claim rewards for completed tasks.
 
 """
-
+import logging
 import time
 
-from .platforms import windowMP
-from .mouse_utils import (
-    move_mouse_and_click,
-    move_mouse,
-    mouse_click,
-)
-
-from .constants import UIElement, Button, Action
-from .image_utils import find_element
-
-# from .settings import settings_dict, jposition
-from .game import waitForItOrPass
-
-import logging
+from modules.constants import UIElement, Button, Action
+from modules.game import waitForItOrPass
+from modules.image_utils import find_element
+from modules.mouse_utils import move_mouse_and_click, move_mouse, mouse_click
+from modules.platforms import windowMP
 
 log = logging.getLogger(__name__)
 

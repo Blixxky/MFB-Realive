@@ -9,7 +9,7 @@
 7. Commented out Zone changes in `/modules/log_board.py` and `/modules/encounter.py` as it was game-breaking for some users.
 8. Changed `conf\system\attacks.json` Archmage Khadgar 2nd ability to choose target. Changed #2 bool to true.
 9. Changed `conf\system\combo.ini` Prince Malchezaar=1,3,2 from Prince Malchezaar=1,2,3.
-10. Changed `conf\user\config.py` to use pre_reqs script. Also added `combo.ini` changes upon creation.
+10. Changed `conf\user\config.py` combo.ini info upon creation.
 11. Rewrote `modules/bounty.py` `goToEncounter` into multiple helper functions.
 12. Rewrote `modules/encounter.py` `parse_ability_setting` function.
 13. Rewrote `modules/file_utils.py` `readINI` to not use `_sections`.

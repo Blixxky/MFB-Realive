@@ -1,11 +1,30 @@
-import cv2
 import numpy as np
-from mss import mss
 import mss
 import sys
+import cv2
 
-""" If the bot doesn't find an object (Button, UI Element, ...), use this script
-to test it and find the right 'threshold'
+"""
+This script is used to test and find the right 'threshold' for detecting an object (button, UI element, etc.) in a screenshot.
+
+Usage:
+- To find an object in a screenshot:
+  python script.py '/path/to/screenshot.png' '/path/to/the/imageObject/to/find.png' <threshold>
+
+- To take a screenshot and compare with an object:
+  python script.py '/path/to/the/imageObject/to/find.png' <threshold>
+
+THRESHOLD:
+- A float value ranging from 0 to 1.
+- Higher values (e.g., 0.95) make the detection more precise, while lower values (e.g., 0.75) make it less precise.
+- You can experiment with different values and adjust by increments of 0.1 or 0.5.
+
+Example:
+- To find a button in a screenshot:
+  python script.py '/home/user/myscreenshot.png' '/home/user/theButtonToFind.png' 0.81
+
+- To compare a screenshot with an object:
+  python script.py '/home/user/theButtonToFind.png' 0.81
+
 """
 
 if len(sys.argv) == 4:

@@ -26,7 +26,8 @@ def countdown(t, step=1, msg="Sleeping"):
 
 
 def waitForItOrPass(image, duration, step=0.5):
-    """Wait to find 'image' on screen during 'duration' seconds (max)
+    """
+    Wait to find 'image' on screen during 'duration' seconds (max)
     and continue if you don't find it.
     The purpose is to permit to find a particular part in Hearthstone
     but if the bot doesn't find it, try to go further

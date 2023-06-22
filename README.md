@@ -3,8 +3,6 @@ MFB-Realive : https://github.com/Blixxky/MFB-Realive
 
 ![Image](rejoice.jpg)
 
-# Built on the back of [Mercenaries Farm Bot by @Efemache](https://github.com/Efemache/Mercenaries-Farm-bot)
-
 ## Supported Resolutions
 
 - For fullscreen mode, both the Hearthstone resolution and your screen resolution must match. For example, use **1920x1080** for both.
@@ -365,33 +363,12 @@ If you prefer to support using crypto, you can send your contribution to the fol
  
  (\*) If you send your contribution in a different ERC-20 token on the Ethereum blockchain or a different BEP-20 token on the Binance Smart Chain, please inform us accordingly.
 
-# If you would like to support [@Blixxky](https://github.com/Blixxky):
-
-## Submit code. 
-
-**It's an open-source project. It only works this way. I only have two hands, two eyes and one aging brain.**
-
-## Submit ideas
-
-**If you can't code, no problem. Pitch an idea in the [discord](https://discord.gg/ePghxaUBEK). It might make a lot of sense and be feasible to program, it might not.**
-
-## Submit questions
-
-**If you have a question, join in on the [original MFB Discord](https://discord.gg/ePghxaUBEK) and ask. It's likely that another person would have the same or similar question so we may be able to answer it right away or help others in the future.**
-
-
-
-
-# Roadmap
-1. Write better logic for catching where MFB is in it's routine to better assist with reconnects and sustaining productivity. (1 month)
-2. Create a more intuitive pause/resume system. (1 month)
-3. Create better logging and exception handling for troubleshooting. (1 month)
-4. Implement hslog for handling battle events. (1-2 months)
-5. Receive player input for and build out Treasure preference system data  (2-3 months)
-   - https://hearthstone.fandom.com/wiki/Category:Mercenaries_treasures
-   - https://api.hearthstonejson.com/v1/
-6. Implement an RNN or LSTM to have it learn off of recorded play data in Power.log and respond to new situations. (12+ months)
-   - This will also require a harvest period of using MFB user Power.log data to train off of. 
-7. More to come...
+### Roadmap
+1. Write better logic for catching where MFB is in it's routine to better assist with reconnects and sustaining productivity.
+2. Create a more intuitive pause/resume system.
+3. Create better logging and exception handling for troubleshooting.
+4. Build upon the Treasure preference system, and get more data and screenshots for treasures.
+5. Implement a Convolutional Neural Networks (Alex + Keras + TensorFlow) to have it learn off of recorded play data.
+6. More to come...
 
 

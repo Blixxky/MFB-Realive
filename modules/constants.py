@@ -1,8 +1,29 @@
+"""
+Some filename enumeration, magic numbers
+"""
 from enum import Enum, auto
 
 
 class StrEnum(str, Enum):
+    """
+    An enumeration class that inherits from `str` and `Enum`.
+    """
+
     def __new__(cls, value, *args, **kwargs):
+        """
+        Create a new instance of the `StrEnum` class.
+
+        Args:
+            value (str): The string value of the enumeration.
+            *args: Variable length argument list.
+            **kwargs: Arbitrary keyword arguments.
+
+        Returns:
+            StrEnum: A new instance of the `StrEnum` class.
+
+        Raises:
+            TypeError: If the value is not a string or `auto`.
+        """
         if not isinstance(value, (str, auto)):
             raise TypeError(
                 f"Values of StrEnums must be strings: {value!r} is a {type(value)}"
@@ -10,19 +31,49 @@ class StrEnum(str, Enum):
         return super().__new__(cls, value, *args, **kwargs)
 
     def __str__(self):
+        """
+        Return the string representation of the `StrEnum` instance.
+
+        Returns:
+            str: The string representation of the `StrEnum` instance.
+        """
         return str(self.value)
 
     def _generate_next_value_(name, *_):
+        """
+        Generate the next value for the `StrEnum` enumeration.
+
+        Args:
+            name (str): The name of the enumeration value.
+            *_: Variable length argument list.
+
+        Returns:
+            str: The next value for the `StrEnum` enumeration.
+        """
         return name
 
 
 class ImageFragment(StrEnum):
+    """
+    An enumeration of image fragments.
+    """
+
     @property
     def filename(self):
+        """
+        Get the filename associated with the image fragment.
+
+        Returns:
+            str: The filename of the image fragment.
+        """
         return f"{self._dir_name}/{self.value}.png"
 
 
 class UIElement(ImageFragment):
+    """
+    An enumeration of UI elements.
+    """
+
     _dir_name = "UI_elements"
 
     Alterac = "Alterac"
@@ -78,8 +129,11 @@ class UIElement(ImageFragment):
 
 
 class Button(ImageFragment):
-    _dir_name = "buttons"
+    """
+    An enumeration of buttons.
+    """
 
+    _dir_name = "buttons"
     allready = "allready"
     arrow_prev = "arrow_prev"
     arrow_next = "arrow_next"
@@ -122,6 +176,10 @@ class Button(ImageFragment):
 
 
 class Action(StrEnum):
+    """
+    An enumeration of actions.
+    """
+
     screenshot = "1"
     move = "2"
     get_coords_part_screen = "12"

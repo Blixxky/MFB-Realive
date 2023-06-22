@@ -7,7 +7,7 @@ import logging.config
 log_config = {
     "version": 1,
     "root": {
-        "handlers": ["console"],
+        "handlers": [],  # Initialize as an empty list
         "level": "DEBUG",
     },
     "handlers": {

@@ -5,9 +5,9 @@ Functions:
 - get_window_manager: Returns the window manager instance based on the current operating system.
 
 """
-from .platforms import find_os
-from .window_managers.windows import get_window_mgr_on_windows
-from .window_managers.linux import WindowMgrLinux
+from modules.platforms.platforms import find_os
+from modules.platforms.window_managers.windows import get_window_mgr_on_windows
+from modules.platforms.window_managers.linux import WindowMgrLinux
 
 
 def get_window_manager():
@@ -22,7 +22,9 @@ def get_window_manager():
     if os == "windows":
         WindowMgrWindows = get_window_mgr_on_windows()
         return WindowMgrWindows()
-    elif os == "linux":
+
+    if os == "linux":
         return WindowMgrLinux()
-    else:
-        raise ValueError(f"OS not recognized: {os}")
+
+    raise ValueError(f"OS not recognized: {os}")
+

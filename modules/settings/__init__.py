@@ -2,7 +2,7 @@
 
 Fetches all settings from settings files used by app
 """
-from .conf import (
+from modules.settings.conf import (
     jthreshold,
     jposition,
     mercslist,

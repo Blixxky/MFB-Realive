@@ -1,5 +1,6 @@
 """
-This module provides functions for interacting with the campfire screen in the game. The campfire screen is where completed tasks and rewards can be found.
+This module provides functions for interacting with the campfire screen in the game.
+The campfire screen is where completed tasks and rewards can be found.
 
 Functions:
 - toggle_campfire_screen: Toggle the campfire screen between party and visitor views.
@@ -20,9 +21,11 @@ from modules.platforms import windowMP
 
 log = logging.getLogger(__name__)
 
-# To do : add an option in settings.ini to take screenshots (boolean)
-#           for rewards and completed tasks
-# To do : add mouse position in positions.json
+"""
+To-do:
+Add an option in settings.ini to take screenshots (boolean) for rewards and completed tasks
+Add mouse position in positions.json
+"""
 
 
 def toggle_campfire_screen():
@@ -87,8 +90,8 @@ def claim_task_reward():
     while not find_element(Button.campfire_claim.filename, Action.screenshot):
         time.sleep(0.5)
 
-    # Loop added beause sometimes the bot find the button but
-    # Hearthstone is not ready, so the bot click too soon.
+    # Loop added because sometimes the bot finds the button but
+    # Hearthstone is not ready, so the bot clicks too soon.
     # Need to make a loop to try several time to click
     while find_element(Button.campfire_claim.filename, Action.move_and_click):
         time.sleep(0.5)

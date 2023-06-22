@@ -68,8 +68,12 @@ def travelpointSelection():
                     Action.move_and_click,
                     jthreshold["travelpoints"],
                 )
-            except Exception:
-                log.error("Travel Point unknown : %s", location)
+            except KeyError:
+                log.error("Unknown scroll position tag: %s", tag)
+            except AttributeError:
+                log.error("Unknown location: %s", location)
+            except Exception as e:
+                log.error("Unexpected error occurred: %s", e)
 
         move_mouse(windowMP(), windowMP()[2] // 2, windowMP()[3] // 2)
         time.sleep(0.5)

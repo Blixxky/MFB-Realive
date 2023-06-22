@@ -9,11 +9,11 @@ Functions:
 Note: This module requires the 'cv2' and 'os' libraries.
 """
 
-import cv2
 import logging
 import os
-from .file_utils import copy_dir_and_func_files
-from .settings import settings_dict
+import cv2
+from modules.file_utils import copy_dir_and_func_files
+from modules.settings import settings_dict
 
 
 log = logging.getLogger(__name__)

@@ -17,7 +17,6 @@ from .mouse_utils import move_mouse, move_mouse_and_click, mouse_click
 from .platforms import windowMP
 from .settings import ability_order, mercsAbilities, mercslist, settings_dict
 
-
 log = logging.getLogger(__name__)
 
 default_ability_section = "Mercenary"
@@ -161,6 +160,38 @@ def priorityMercByRole(myMercs, targetrole) -> List[int]:
     return mercs_pos
 
 
+def calculate_positions(number, position):
+    """
+        Calculates the positions based on the given number and position.
+
+        Args:
+            number (int): The number used for position calculation.
+            position (int): The position used for position calculation.
+
+        Returns:
+            tuple: A tuple containing two values - the calculated position index and the corresponding x-coordinate.
+    """
+    cardSize = int(windowMP()[2] / 12)
+    firstOdd = int(windowMP()[2] / 3)
+    firstEven = int(windowMP()[2] / 3.6)
+
+    positionOdd = [int(firstOdd + (i * cardSize)) for i in range(5)]
+    positionEven = [int(firstEven + (i * cardSize)) for i in range(6)]
+
+    pos_and_x_calculations = {
+        0: lambda: (
+            int(2 - (number / 2 - 1) + (position - 1)),
+            positionEven[int(2 - (number / 2 - 1) + (position - 1))],
+        ),
+        1: lambda: (
+            int(2 - (number - 1) / 2 + (position - 1)),
+            positionOdd[int(2 - (number - 1) / 2 + (position - 1))],
+        ),
+    }
+
+    return pos_and_x_calculations[number % 2]()
+
+
 def ability_target_friend(targettype, myMercs, enemies: Enemies, abilitySetting):
     """
     Return the X coord of one of our mercenaries
@@ -243,8 +274,17 @@ def pickBestAllyToBuff(enemies, myMercs, number):
     return position
 
 
-# TODO This could also be moved to an entirely new module
 def findFriendNameInMercs(myMercs, friendName):
+    """
+        Searches for a friend's name in a list of mercenaries.
+
+        Args:
+            myMercs (list): A list of mercenaries.
+            friendName (str): The name of the friend to search for.
+
+        Returns:
+            bool: True if the friend's name is found in the list, False otherwise.
+    """
     for i in myMercs:
         log.debug("***** Looking for our friend %s ... ******", friendName)
         if re.search(rf"\A{friendName}\b", myMercs[i]):
@@ -287,6 +327,24 @@ def get_ability_for_this_turn(name, minionSection, turn, defaultAbility=0):
     return str(ability)
 
 
+DEFAULT_SETTINGS = {
+    "ai": "byColor",
+    "chooseone": 0,
+    "faction": None,
+    "name": None,
+    "role": None,
+    "type": None,
+}
+
+KEY_TO_CAST_FUNC = {
+    "chooseone": lambda x: int(x) - 1,
+    "ai": str,
+    "name": str,
+    "type": str,
+    "role": str,
+}
+
+
 def parse_ability_setting(ability):
     """
     Parses the ability setting from a given string.
@@ -297,35 +355,25 @@ def parse_ability_setting(ability):
     Returns:
         A dictionary containing parsed ability settings.
     """
-    retour = {
-        "ai": "byColor",
-        "chooseone": 0,
-        "faction": None,
-        "name": None,
-        "role": None,
-        "type": None,
-    }
+    retour = DEFAULT_SETTINGS.copy()
 
-    if ":" not in ability:
-        retour["ability"] = int(ability)
-    else:
-        retour["ability"] = int(ability.split(":")[0])
-        retour["config"] = ability.split(":")[1]
+    if ":" in ability:
+        ability_value, config_value = ability.split(":")
+        retour["ability"] = int(ability_value)
+        retour["config"] = config_value
+
         for i in retour["config"].split("&"):
             key, value = i.split("=")
-            if key == "chooseone":
-                retour["chooseone"] = int(value) - 1
-            elif key == "ai":
-                retour["ai"] = value
-            elif key == "name":
-                retour["name"] = value
-            elif key == "type":
-                retour["type"] = value
-            elif key == "role":
-                # "role" should be "Protector", "Caster" or "Fighter"
-                retour["role"] = value
+
+            if key in KEY_TO_CAST_FUNC:
+                retour[key] = KEY_TO_CAST_FUNC[key](value)
             else:
                 log.warning("Unknown parameter")
+    elif ability.isdigit():
+        retour["ability"] = int(ability)
+    else:
+        log.warning("Invalid ability")
+
     return retour
 
 
@@ -804,7 +852,6 @@ def selectCardsInHand(zL=None):
         # and win more XP (for the Hearthstone reward track)
         wait_for_exp = settings_dict["waitforexp"]
         log.info("WaitForEXP - wait (second(s)) : %s", wait_for_exp)
-        # time.sleep(wait_for_exp)
         countdown(wait_for_exp, 10, "Wait for XP : sleeping")
 
         log.debug("windowMP = %s", windowMP())
@@ -860,15 +907,35 @@ class cardsInHand:
     """
 
     def __init__(self, win, zLog, max_on_board):
+        """
+           Initializes an instance of the class.
+
+           Args:
+               win: The window object.
+               zLog: The zone log object.
+               max_on_board (int): The maximum number of mercenaries allowed on the board.
+
+           Returns:
+               None
+        """
         self.win = win
         self.zone_log = zLog
         # used to init (set to False) "AutoCorrectZonesAfterServerChange"
-        self.zone_log.get_zonechanged()
+        # self.zone_log.get_zonechanged()
         self.in_hand = self.zone_log.getHand()
         self.on_board = 0
         self.max_on_board = max_on_board
 
     def send_to_board(self, mercenary):
+        """
+            Sends a mercenary to the board.
+
+            Args:
+                mercenary: The mercenary object to be sent to the board.
+
+            Returns:
+                bool: True if the mercenary was successfully sent to the board, False otherwise.
+        """
         if self.on_board < self.max_on_board:
             coord_x = self.get_coord(mercenary)
             if coord_x == 0:
@@ -878,22 +945,44 @@ class cardsInHand:
             log.debug("Put on board: %s", mercenary)
             self.on_board += 1
             self.in_hand.remove(mercenary)
-            i = 0
+            """
             while not self.zone_log.get_zonechanged():
                 time.sleep(0.5)
                 i += 1
                 if i > 10:
                     log.error("Putting %s on board failed.", mercenary)
                     break
+            """
 
     def clean(self):
+        """
+            Cleans the hand and board by resetting their values.
+
+            Returns:
+                None
+        """
         self.in_hand = []
         self.on_board = 0
 
     def get_size(self):
+        """
+            Gets the size of the hand.
+
+            Returns:
+                int: The size of the hand.
+        """
         return len(self.in_hand)
 
     def get_coord(self, mercenary):
+        """
+            Calculates the x-coordinate for a given mercenary.
+
+            Args:
+                mercenary: The mercenary object.
+
+            Returns:
+                int: The calculated x-coordinate.
+        """
         self.coord_y = self.win[3] // 1.085
         if mercenary not in self.in_hand:
             return 0

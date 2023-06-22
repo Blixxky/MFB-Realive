@@ -1,3 +1,30 @@
+2023-06-22 v1.0.5
+-----------------
+1. Rewrote `HSbotRunner.bat` and `HSbotRunner.sh` to use prereqs script.
+2. Removed all links to AHK since it's deprecated and no longer used.
+3. Defined `modules/platforms/window_managers/windows/win32gui_manager.py` left, top, width, height at the module level.
+4. Removed `modules/platforms/window_managers/windows/factory.py` unnecessary else statement.
+5. Cleaned `modules/platforms/window_managers/windows/factory.py` `_find_window` function.
+6. Created `modules/__init__.py` empty list for root handlers, as it was required later in the module.
+7. Commented out Zone changes in `/modules/log_board.py` and `/modules/encounter.py` as it was game-breaking for some users.
+8. Changed `conf\system\attacks.json` Archmage Khadgar 2nd ability to choose target. Changed #2 bool to true.
+9. Changed `conf\system\combo.ini` Prince Malchezaar=1,3,2 from Prince Malchezaar=1,2,3.
+10. Changed `conf\user\config.py` to use pre_reqs script. Also added `combo.ini` changes upon creation.
+11. Rewrote `modules/bounty.py` `goToEncounter` into multiple helper functions.
+12. Rewrote `modules/encounter.py` `parse_ability_setting` function.
+13. Rewrote `modules/file_utils.py` `readINI` to not use `_sections`.
+14. Removed `modules/file_utils.py` orphan expression `os.path.exists(dstdir) or os.mkdir(dstdir)`.
+15. Added `modules/image_utils.py` better exception handling.
+16. Removed `modules/image_utils.py` `find_element` unnecessary `elif`.
+17. Removed `modules/image_utils.py` `partscreen` `resolution=None`.
+18. Rewrote `modules/log_board.py` `LogHSMercs` class into multiple functions.
+19. Added `modules/log_board.py` some `__init__` declarations.
+20. Added `modules/notification.py` better exception handling.
+21. Added `modules/notification.py` `request.urlopen(req)` with statement to properly release resources.
+22. Added `modules/travelpoint.py` better exception handling.
+23. Added `modules/bounty.py` missing docstrings.
+24. Added `modules/encounter.py` missing docstrings.
+
 2023-06-12 v1.0.4 hotfix
 -----------------
 1. Converted all relative imports to absolute.

@@ -11,27 +11,38 @@ Functions:
 - find_element_center_on_screen: Find element center on the screen.
 """
 
-import cv2
+
 import logging
-import mss
-import numpy as np
 import os.path
 import sys
+import cv2
+import mss
+import numpy as np
 
 from modules.constants import Action
 from modules.mouse_utils import move_mouse, move_mouse_and_click
 from modules.platforms import windowMP
 from modules.settings import jthreshold, settings_dict
-"""
-mss is needed as workaround for Linux
-https://stackoverflow.com/questions/74856512/screenshot-error-xdefaultrootwindow-failed-after-closing-a-tkinter-toplevel
-https://github.com/BoboTiG/python-mss/issues/220
-"""
+
+
 sct = mss.mss()
 # workaround end
 
+"""
+mss is needed as workaround for Linux
+    https://stackoverflow.com/questions/74856512/screenshot-error-xdefaultrootwindow-failed-after-closing-a-tkinter-toplevel
+    https://github.com/BoboTiG/python-mss/issues/220
+"""
 
 log = logging.getLogger(__name__)
+
+
+class ResolutionError(Exception):
+    """Exception raised for resolution-related errors."""
+
+
+class AspectRatioError(ResolutionError):
+    """Exception raised when the aspect ratio of the setting resolution and window resolution are different."""
 
 
 def get_resolution() -> tuple[str, int, int, float]:
@@ -48,13 +59,26 @@ def get_resolution() -> tuple[str, int, int, float]:
         setting_w, setting_h = int(setting_size[0]), int(setting_size[1])
         windows_w, windows_h = windowMP()[2], windowMP()[3]
         if round(windows_w / setting_w, 2) != round(windows_h / setting_h, 2):
-            raise Exception(
-                "Setting resolution and windows resolution are not the same aspect ratio"
+            raise AspectRatioError(
+                "Setting resolution and windows resolution have different aspect ratios"
             )
+
         scale_size = setting_w / windows_w
         return resolution, setting_w, setting_h, scale_size
+    except KeyError as e:
+        log.error("Resolution setting not found in settings_dict: %s", e)
+        sys.exit(1)
+    except (IndexError, ValueError) as e:
+        log.error("Invalid resolution format: %s", e)
+        sys.exit(1)
+    except AspectRatioError as e:
+        log.error(
+            "Setting resolution and windows resolution have different aspect ratios: %s",
+            e,
+        )
+        sys.exit(1)
     except Exception as e:
-        log.error("The resolution %s is not supported: %s", resolution, e)
+        log.error("An unexpected error occurred: %s", e)
         sys.exit(1)
 
 
@@ -124,16 +148,16 @@ def find_element(file, action, threshold="-", new_screen=True):
             Action.screenshot,
         ]:
             return click_coords
-        elif action == Action.move:
+        if action == Action.move:
             window = windowMP()
             move_mouse(window, x, y)
             return True
-        elif action == Action.move_and_click:
+        if action == Action.move_and_click:
             # move mouse and click
             window = windowMP()
             move_mouse_and_click(window, x, y)
             return True
-    elif action in [Action.get_coords_part_screen, Action.get_coords]:
+    if action in [Action.get_coords_part_screen, Action.get_coords]:
         return None
     return False
 
@@ -211,7 +235,6 @@ def partscreen(
     top,
     left,
     debug_mode=False,
-    resolution=None,
     resize_width=None,
     resize_height=None,
     scale_size=1,

@@ -15,18 +15,16 @@ Classes:
 
 import re
 import logging
+import win32gui
+import win32com.client as win32
+from win32api import GetSystemMetrics
 from modules.platforms.window_managers.base import WindowMgr
 from modules.platforms.platforms import find_os
 
 log = logging.getLogger(__name__)
 
 try:
-    import win32gui
-    import win32com.client as win32
-    from win32api import GetSystemMetrics
-
     shell = win32.Dispatch("WScript.Shell")
-
     HAS_WIN32GUI = True
 except ImportError:
     HAS_WIN32GUI = False
@@ -70,18 +68,18 @@ class WindowMgrWindowsWin32Gui(WindowMgr):
 
     def get_window_geometry(self):
         """
-        Fetches the window geometry of the active window. If the active window is 'Battle.net',
-        returns the geometry of the entire screen, else returns the client window geometry.
+        Fetches the window geometry of the active window. If the active window is 'Battle.net'
+        or the executable name is 'Battle.net.exe', it returns the geometry of the entire screen.
+        Otherwise, it returns the client window geometry.
 
         Returns:
             tuple: A tuple representing the window's geometry (x, y, width, height).
         """
-        global left, top, width, height
         # To get the active window name
         WINDOW_NAME = win32gui.GetWindowText(win32gui.GetForegroundWindow())
 
         # Judge which window, fake the BN resolution
-        if WINDOW_NAME == "Battle.net":
+        if WINDOW_NAME == "Battle.net" or "Battle.net.exe" in WINDOW_NAME:
             return (0, 0, GetSystemMetrics(0), GetSystemMetrics(1))
         else:
             left, top, width, height = win32gui.GetClientRect(self._handle)
@@ -116,10 +114,12 @@ class WindowMgrWindowsWin32Gui(WindowMgr):
         if len(self._handles) < 1:
             log.info("Matched no window")
             return False
-        if len(self._handles) > 1:
+        elif len(self._handles) > 1:
             self._handle = self._handles[BNCount]
         else:
             self._handle = self._handles[0]
+
+        return True  # Added this line
 
     def _show_window(self):
         """

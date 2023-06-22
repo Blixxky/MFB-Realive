@@ -301,7 +301,7 @@
     },
     "Archmage Khadgar": {
         "1": true,
-        "2": false,
+        "2": true,
         "3": "chooseone3"
     },
     "Kazakus, Golem Shaper": {

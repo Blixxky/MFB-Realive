@@ -14,11 +14,11 @@ Dependencies:
 - logging: The standard Python logging module.
 """
 
+import logging
 from urllib import request, parse, error
 
 from .settings import settings_dict
 
-import logging
 
 log = logging.getLogger(__name__)
 
@@ -33,21 +33,29 @@ def send_notification(message: dict):
     Raises:
         error.HTTPError: If there is an HTTP error.
         error.URLError: If there is a URL error.
+        Exception: For any other unexpected error.
     """
     if "notificationurl" not in settings_dict or not settings_dict["notificationurl"]:
         return
+
     url = settings_dict["notificationurl"]
     try:
         data = parse.urlencode(message).encode()
         req = request.Request(url, data, method="POST")
-        request.urlopen(req)
-        log.info("notification sent: %s", message)
+        with request.urlopen(req) as response:
+            # Handle response if needed
+            pass
+
+        log.info("Notification sent: %s", message)
     except error.HTTPError as e:
-        log.error("notification HTTP error: %s", e.code)
+        log.error("Notification HTTP error: %s", e.code)
+        raise
     except error.URLError as e:
-        log.error("notification URL error: %s", e.reason)
+        log.error("Notification URL error: %s", e.reason)
+        raise
     except Exception as e:
-        log.error("notification error: %s", e)
+        log.error("Unexpected notification error: %s", e)
+        raise
 
 
 def send_slack_notification(message):
@@ -66,17 +74,24 @@ def send_slack_notification(message):
         or not settings_dict["slacknotificationurl"]
     ):
         return
+
     url = settings_dict["slacknotificationurl"]
     headers = {"content-type": "application/json --data"}
 
     try:
         data = bytes(message, "utf-8")
         req = request.Request(url, data, headers=headers, method="POST")
-        request.urlopen(req)
-        log.info("notification sent: %s", message)
+        with request.urlopen(req) as response:
+            # Handle response if needed
+            pass
+
+        log.info("Notification sent: %s", message)
     except error.HTTPError as e:
-        log.error("notification HTTP error: %s", e.code)
+        log.error("Notification HTTP error: %s", e.code)
+        raise
     except error.URLError as e:
-        log.error("notification URL error: %s", e.reason)
+        log.error("Notification URL error: %s", e.reason)
+        raise
     except Exception as e:
-        log.error("notification error: %s", e)
+        log.error("Unexpected notification error: %s", e)
+        raise

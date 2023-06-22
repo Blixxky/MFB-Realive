@@ -9,7 +9,13 @@ import sys
 import time
 
 from modules.platforms import windowMP
-from modules.mouse_utils import move_mouse_and_click, move_mouse, mouse_position, mouse_click, MOUSE_RANGE
+from modules.mouse_utils import (
+    move_mouse_and_click,
+    move_mouse,
+    mouse_position,
+    mouse_click,
+    MOUSE_RANGE,
+)
 from modules.constants import UIElement, Button, Action
 from modules.image_utils import find_element
 from modules.game import waitForItOrPass, defaultCase
@@ -211,6 +217,85 @@ def searchForEncounter():
     return retour
 
 
+def check_boss_battle():
+    if settings_dict["stopatbossfight"] is True and find_element(
+        UIElement.boss.filename, Action.screenshot
+    ):
+        send_notification({"message": "Stopping before Boss battle."})
+        send_slack_notification(
+            json.dumps({"text": "@channel Stopping before Boss battle."})
+        )
+        log.info("Stopping before Boss battle.")
+        sys.exit()
+
+    if settings_dict["quitbeforebossfight"] is True and find_element(
+        UIElement.boss.filename, Action.screenshot
+    ):
+        time.sleep(1)
+        return quitBounty()
+
+    return False
+
+
+def handle_win():
+    """
+        Handles the actions to be performed when the battle is won.
+
+        Returns:
+            bool: True if the battle was won and rewards were collected, False otherwise.
+    """
+    log.info("goToEncounter : Battle won")
+    while True:
+        if not find_element(UIElement.take_grey.filename, Action.screenshot):
+            mouse_click()
+            time.sleep(0.5)
+        else:
+            chooseTreasure()
+            break
+
+        if not find_element(UIElement.replace_grey.filename, Action.screenshot):
+            mouse_click()
+            time.sleep(0.5)
+        else:
+            chooseTreasure()
+            break
+
+        if find_element(UIElement.reward_chest.filename, Action.screenshot):
+            send_notification({"message": "Boss defeated. Time for REWARDS !!!"})
+            send_slack_notification(
+                json.dumps({"text": "Boss defeated. Time for REWARDS !!!"})
+            )
+            log.info("goToEncounter : " "Boss defeated. Time for REWARDS !!!")
+            collect()
+            return True
+
+    return False
+
+
+def handle_lose():
+    """
+        Handles the actions to be performed when the battle is lost.
+
+        Returns:
+            bool: Always returns True.
+    """
+    send_notification({"message": "goToEncounter : Battle lost"})
+    send_slack_notification(json.dumps({"text": "goToEncounter : Battle lost"}))
+    log.info("goToEncounter : Battle lost")
+    return True
+
+
+def handle_unknown():
+    """
+        Handles the actions to be performed when it's unknown what happened in the battle.
+
+        Returns:
+            bool: Always returns True.
+    """
+    log.info("goToEncounter : don't know what happened !")
+    return True
+
+
 def goToEncounter():
     """
     Start new fight,
@@ -222,78 +307,23 @@ def goToEncounter():
 
     while not travelEnd:
         if find_element(Button.play.filename, Action.screenshot):
-            if settings_dict["stopatbossfight"] is True and find_element(
-                UIElement.boss.filename, Action.screenshot
-            ):
-                send_notification({"message": "Stopping before Boss battle."})
-                send_slack_notification(
-                    json.dumps({"text": "@channel Stopping before Boss battle."})
-                )
-                log.info("Stopping before Boss battle.")
-                sys.exit()
-
-            if settings_dict["quitbeforebossfight"] is True and find_element(
-                UIElement.boss.filename, Action.screenshot
-            ):
-                time.sleep(1)
-                travelEnd = quitBounty()
+            travelEnd = check_boss_battle()
+            if travelEnd:
                 break
 
-            # fix the problem with Hearthstone showing campfire just
-            # after clicking on Play button
             while find_element(Button.play.filename, Action.move_and_click):
                 time.sleep(1)
-            # waitForItOrPass(UIElement.campfire, 3)
-            # if look_at_campfire_completed_tasks():
-            #    break
 
             retour = selectCardsInHand()
             log.info("goToEncounter - retour = %s", retour)
             time.sleep(1)
+
             if retour == "win":
-                log.info("goToEncounter : Battle won")
-                while True:
-                    if not find_element(
-                        UIElement.take_grey.filename, Action.screenshot
-                    ):
-                        mouse_click()
-                        time.sleep(0.5)
-                    else:
-                        chooseTreasure()
-                        break
-
-                    if not find_element(
-                        UIElement.replace_grey.filename, Action.screenshot
-                    ):
-                        mouse_click()
-                        time.sleep(0.5)
-                    else:
-                        chooseTreasure()
-                        break
-
-                    if find_element(UIElement.reward_chest.filename, Action.screenshot):
-                        send_notification(
-                            {"message": "Boss defeated. Time for REWARDS !!!"}
-                        )
-                        send_slack_notification(
-                            json.dumps({"text": "Boss defeated. Time for REWARDS !!!"})
-                        )
-                        log.info(
-                            "goToEncounter : " "Boss defeated. Time for REWARDS !!!"
-                        )
-                        collect()
-                        travelEnd = True
-                        break
+                travelEnd = handle_win()
             elif retour == "lose":
-                travelEnd = True
-                send_notification({"message": "goToEncounter : Battle lost"})
-                send_slack_notification(
-                    json.dumps({"text": "goToEncounter : Battle lost"})
-                )
-                log.info("goToEncounter : Battle lost")
+                travelEnd = handle_lose()
             else:
-                travelEnd = True
-                log.info("goToEncounter : don't know what happened !")
+                travelEnd = handle_unknown()
 
         else:
             if not nextlvl():

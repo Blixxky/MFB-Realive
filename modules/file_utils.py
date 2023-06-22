@@ -76,7 +76,12 @@ def readINI(inifile):
         log.error("Error while reading ini file %s", err)
         raise SettingsError(f"Duplicate Option in Settings File: {err}") from err
 
-    return config._sections
+    # Convert the ConfigParser object to a dictionary
+    ini_data = {}
+    for section in config.sections():
+        ini_data[section] = dict(config[section])
+
+    return ini_data
 
 
 def writeINI(file, data):
@@ -114,7 +119,6 @@ def copy_dir_and_func_files(srcdir, dstdir, ext, func, func_params):
         - The specified function will be applied to each copied file with the provided function parameters.
         - The `func_params` argument is an optional tuple of additional parameters to be passed to the function.
     """
-    os.path.exists(dstdir) or os.mkdir(dstdir)
 
     for name in os.listdir(srcdir):
         if os.path.isdir(f"{srcdir}/{name}"):

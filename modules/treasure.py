@@ -19,7 +19,6 @@ from modules.platforms import windowMP
 from modules.settings import settings_dict, treasures_priority
 
 
-
 log = logging.getLogger(__name__)
 
 TREASURES_DIR = "treasures"

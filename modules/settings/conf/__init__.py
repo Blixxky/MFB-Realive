@@ -7,7 +7,10 @@ from both system and user setting folders
 """
 import logging
 
-from .conf import initusersettings as _initusersettings, get_config as _get_config
+from modules.settings.conf.conf import (
+    initusersettings as _initusersettings,
+    get_config as _get_config,
+)
 
 
 _log = logging.getLogger(__name__)

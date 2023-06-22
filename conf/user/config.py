@@ -23,9 +23,7 @@ if not os.path.isfile(timestamp_path):
         file.write(f"{str(datetime.now().date())}\n")
 
     try:
-        subprocess.check_call(
-            [sys.executable, "-m", "pip", "install", "ttkthemes==3.2.2"]
-        )
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "ttkthemes==3.2.2"])
     except subprocess.CalledProcessError:
         try:
             subprocess.check_call([sys.executable, "-m", "pip", "install", "ttkthemes"])
@@ -34,21 +32,15 @@ if not os.path.isfile(timestamp_path):
             pass
 
     try:
-        subprocess.check_call(
-            [sys.executable, "-m", "pip", "install", "configparser==5.3.0"]
-        )
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "configparser==5.3.0"])
     except subprocess.CalledProcessError:
         pass
 
     try:
-        subprocess.check_call(
-            [sys.executable, "-m", "pip", "install", "types-ttkthemes==3.2.4.5"]
-        )
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "types-ttkthemes==3.2.4.5"])
     except subprocess.CalledProcessError:
         try:
-            subprocess.check_call(
-                [sys.executable, "-m", "pip", "install", "types-ttkthemes"]
-            )
+            subprocess.check_call([sys.executable, "-m", "pip", "install", "types-ttkthemes"])
         except subprocess.CalledProcessError:
             pass
 
@@ -182,6 +174,7 @@ Alexstrasza=1,3
 Anduin Wrynn=1,2
 Antonidas=1
 Aranna Starseeker=2,3,1
+Archimonde=1,3,2,1
 Baine Bloodhoof=1
 Balinda Stonehearth=1,2,3:chooseone=2
 Baron Geddon=2
@@ -237,7 +230,7 @@ Nefarian=1,3
 Nemsy Necrofizzle=1,3,2
 Niuzao=1,3
 Patches the Pirate=1,2,3
-Prince Malchezaar=1,2,3
+Prince Malchezaar=1,2,1,3
 Old Murk-Eye=1,2,3,2,3,2,3
 Onyxia=1,3
 Prophet Velen=1,3
@@ -286,6 +279,7 @@ Boggy=1
 Devilsaur=1
 Dragonmaw Poacher=1
 Drakonid=1
+Drakonid 3=1
 Eudora's Cannon=1
 Elementium Terror=1
 Fathom Guard=1
@@ -299,6 +293,7 @@ Huffer=1
 Hulking Overfiend=1
 Hungry Naga=1
 Imp Familiar=2
+Imp Familiar 4=2
 Jade Golem=1
 Lesser Fire Elemental=2
 Lesser Water Elemental=1
@@ -307,8 +302,10 @@ Misha=1
 Mogu Conqueror=1
 Mukla's big brother=1
 Nightmare Viper=1
+Nightmare Viper 5=1
 Patchling=1
 Pufferfisher=1
+Rescued Student=1
 Saurok Raider=1
 Spawn of N'Zoth=1
 Spud M.E.=1
@@ -666,7 +663,6 @@ def handle_boon_checkbox(var: tk.BooleanVar):
     if checked_count > 2:
         var.set(False)  # Reset the checkbox if the maximum is reached
 
-
 def initialize_config_parser():
     class CustomConfigParser(configparser.ConfigParser):
         def __init__(self):
@@ -679,11 +675,10 @@ def initialize_config_parser():
     config.read("settings.ini")
 
     return config
-
-
+        
 # Call the function to initialize the config parser
 config = initialize_config_parser()
-
+        
 # Create the checkbox for preferbooncaster
 preferbooncaster_var = tk.BooleanVar()
 preferbooncaster_var.set(config.getboolean("BotSettings", "preferbooncaster"))

@@ -1,3 +1,9 @@
+2023-06-23
+----------
+1. Changed `HSbotRunner.bat` and `HSbotRunner.sh` to force a Python 3.11 venv.
+2. Fixed `/conf/user/config.py` read issues from settings, and adjusting checkboxes appropriately.
+3. Configured `/conf/user/config.py` to use the MFB venv and prereqs scripts.
+
 2023-06-22 v1.0.5
 -----------------
 1. Rewrote `HSbotRunner.bat` and `HSbotRunner.sh` to use prereqs script.

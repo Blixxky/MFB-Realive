@@ -4,48 +4,44 @@ MFB Config Engine - GUI for MFB settings by Blixxky
 
 This module provides a graphical user interface for MFB settings configuration.
 """
-import os
 import os.path
+import platform
 import subprocess
 import sys
 import tkinter as tk
-from datetime import datetime
 from tkinter import font, messagebox, filedialog, ttk
 from typing import List
 
-current_dir = os.getcwd()
-timestamp_path = os.path.join(current_dir, "timestamp.txt")
-NEEDS_INSTALLATION = False
+venv_path = os.path.join('..', '..', 'MFB')
 
-if not os.path.isfile(timestamp_path):
-    NEEDS_INSTALLATION = True
-    with open(timestamp_path, "w", encoding="utf-8") as file:
-        file.write(f"{str(datetime.now().date())}\n")
+if platform.system() == 'Windows':
+    activate_script = os.path.join(venv_path, 'Scripts', 'Activate.ps1')
+    subprocess.run(["powershell.exe", "-ExecutionPolicy", "Bypass", "-File", activate_script], check=True)
+elif platform.system() == 'Linux':
+    activate_script = os.path.join(venv_path, 'bin', 'activate')
+    subprocess.run(["bash", "-c", "source {}".format(activate_script)], check=True)
+else:
+    print("Unsupported platform.")
+    sys.exit(1)
 
-    try:
-        subprocess.check_call([sys.executable, "-m", "pip", "install", "ttkthemes==3.2.2"])
-    except subprocess.CalledProcessError:
-        try:
-            subprocess.check_call([sys.executable, "-m", "pip", "install", "ttkthemes"])
-            file.write("Dependencies installed: ttkthemes\n")
-        except subprocess.CalledProcessError:
-            pass
+script_dir = os.path.dirname(os.path.abspath(__file__))
+two_dirs_back = os.path.join(script_dir, '..', '..')
+os.chdir(two_dirs_back)
 
-    try:
-        subprocess.check_call([sys.executable, "-m", "pip", "install", "configparser==5.3.0"])
-    except subprocess.CalledProcessError:
-        pass
+prereqs_win_path = os.path.join(two_dirs_back, 'prereqs_win.py')
+prereqs_linux_path = os.path.join(two_dirs_back, 'prereqs_linux.py')
 
-    try:
-        subprocess.check_call([sys.executable, "-m", "pip", "install", "types-ttkthemes==3.2.4.5"])
-    except subprocess.CalledProcessError:
-        try:
-            subprocess.check_call([sys.executable, "-m", "pip", "install", "types-ttkthemes"])
-        except subprocess.CalledProcessError:
-            pass
+# Execute the prereqs script based on the platform
+if platform.system() == 'Windows':
+    subprocess.run([sys.executable, prereqs_win_path], check=True)
+elif platform.system() == 'Linux':
+    subprocess.run([sys.executable, prereqs_linux_path], check=True)
+else:
+    print("Unsupported platform.")
 
 import configparser
 from ttkthemes import ThemedStyle
+
 
 # Initialize variables
 SETTINGS_INI_CREATED = False
@@ -61,11 +57,13 @@ hearthstone_dir = os.path.join(
 )
 log_config_file = os.path.join(hearthstone_dir, "log.config")
 
-if not os.path.isfile("settings.ini"):
+settings_ini_path = os.path.join('conf', 'user', 'settings.ini')
+
+if not os.path.isfile(settings_ini_path):
     SETTINGS_INI_CREATED = True
     print("settings.ini was not found and created with default values.")
     # Create the settings.ini file with default content
-    with open("settings.ini", "w", encoding="utf-8") as settingsfile:
+    with open(settings_ini_path, "w", encoding="utf-8") as settingsfile:
         settingsfile.write(
             """[BotSettings]
 monitor=1
@@ -76,7 +74,7 @@ mode=
 level=
 preferelite=false
 notificationurl=
-mousespeed=0.2
+mousespeed=0.3
 gamedir=
 preferbooncaster=false
 preferboonfighter=false
@@ -163,11 +161,13 @@ ScreenPrinting=false"""
                 )
 
 # Check if combo.ini file exists
-if not os.path.isfile("combo.ini"):
+combo_ini_path = os.path.join('conf', 'user', 'combo.ini')
+
+if not os.path.isfile(combo_ini_path):
     print("combo.ini was not found and was created with default values.")
     COMBO_INI_CREATED = True
     # Create the combo.ini file with default content
-    with open("combo.ini", "w", encoding="utf-8") as configfile:
+    with open(combo_ini_path, "w", encoding="utf-8") as configfile:
         configfile.write(
             """[Mercenary]
 Alexstrasza=1,3
@@ -230,7 +230,7 @@ Nefarian=1,3
 Nemsy Necrofizzle=1,3,2
 Niuzao=1,3
 Patches the Pirate=1,2,3
-Prince Malchezaar=1,2,1,3
+Prince Malchezaar=1,3,2
 Old Murk-Eye=1,2,3,2,3,2,3
 Onyxia=1,3
 Prophet Velen=1,3
@@ -293,7 +293,6 @@ Huffer=1
 Hulking Overfiend=1
 Hungry Naga=1
 Imp Familiar=2
-Imp Familiar 4=2
 Jade Golem=1
 Lesser Fire Elemental=2
 Lesser Water Elemental=1
@@ -332,7 +331,7 @@ def update_settings():
     """
     custom_config = configparser.ConfigParser()
     custom_config.optionxform = str
-    custom_config.read("settings.ini", encoding="utf-8")
+    custom_config.read(settings_ini_path, encoding="utf-8")
 
     # Define the settings dictionary
     settings = {
@@ -359,7 +358,7 @@ def update_settings():
     custom_config["BotSettings"].update(settings)
 
     # Write the updated settings to the settings.ini file
-    with open("settings.ini", "w", encoding="utf-8") as config_file:
+    with open(settings_ini_path, "w", encoding="utf-8") as config_file:
         custom_config.write(config_file)
 
     messagebox.showinfo("Success", "Settings updated successfully.")
@@ -373,7 +372,7 @@ def browse_and_write_game_dir():
     if hs_dir:
         # Write the game directory to settings.ini
         setdir = configparser.ConfigParser()
-        setdir.read("settings.ini", encoding="utf-8")
+        setdir.read(settings_ini_path, encoding="utf-8")
 
         # Check if the "[BotSettings]" section exists
         if not setdir.has_section("BotSettings"):
@@ -383,7 +382,7 @@ def browse_and_write_game_dir():
         # Update the existing or create a new "gamedir" entry under the "[BotSettings]" section
         setdir.set("BotSettings", "gamedir", hs_dir)
 
-        with open("settings.ini", "w", encoding="utf-8") as config_file:
+        with open(settings_ini_path, "w", encoding="utf-8") as config_file:
             setdir.write(config_file)
 
         # Update the game directory value in the GUI
@@ -663,6 +662,7 @@ def handle_boon_checkbox(var: tk.BooleanVar):
     if checked_count > 2:
         var.set(False)  # Reset the checkbox if the maximum is reached
 
+
 def initialize_config_parser():
     class CustomConfigParser(configparser.ConfigParser):
         def __init__(self):
@@ -672,48 +672,55 @@ def initialize_config_parser():
             return optionstr
 
     config = CustomConfigParser()
-    config.read("settings.ini")
+    config.read(settings_ini_path)
 
     return config
-        
+
+
+# Create a list to store the checkbox variables
+boon_checkboxes: List[tk.BooleanVar] = []
+
 # Call the function to initialize the config parser
 config = initialize_config_parser()
-        
-# Create the checkbox for preferbooncaster
+
+# Create the BooleanVar variables
 preferbooncaster_var = tk.BooleanVar()
-preferbooncaster_var.set(config.getboolean("BotSettings", "preferbooncaster"))
+preferboonfighter_var = tk.BooleanVar()
+preferboonprotector_var = tk.BooleanVar()
+
+if "BotSettings" in config:
+    preferbooncaster_var.set(config["BotSettings"].getboolean("preferbooncaster", False))
+    preferboonfighter_var.set(config["BotSettings"].getboolean("preferboonfighter", False))
+    preferboonprotector_var.set(config["BotSettings"].getboolean("preferboonprotector", False))
+
+# Create the checkbox for preferbooncaster
 preferbooncaster_checkbox = ttk.Checkbutton(
-    window,
-    text="Prefer Caster Boon",
-    variable=preferbooncaster_var,
-    command=lambda: handle_boon_checkbox(preferbooncaster_var),
+    window, text="Prefer Caster Boon", variable=preferbooncaster_var,
+    command=lambda: handle_boon_checkbox(preferbooncaster_var)
 )
 preferbooncaster_checkbox.pack(anchor="w", padx=(150, 0))
 boon_checkboxes.append(preferbooncaster_var)
 
 # Create the checkbox for preferboonfighter
-preferboonfighter_var = tk.BooleanVar()
-preferboonfighter_var.set(config.getboolean("BotSettings", "preferboonfighter"))
 preferboonfighter_checkbox = ttk.Checkbutton(
-    window,
-    text="Prefer Fighter Boon",
-    variable=preferboonfighter_var,
-    command=lambda: handle_boon_checkbox(preferboonfighter_var),
+    window, text="Prefer Fighter Boon", variable=preferboonfighter_var,
+    command=lambda: handle_boon_checkbox(preferboonfighter_var)
 )
 preferboonfighter_checkbox.pack(anchor="w", padx=(150, 0))
 boon_checkboxes.append(preferboonfighter_var)
 
 # Create the checkbox for preferboonprotector
-preferboonprotector_var = tk.BooleanVar()
-preferboonprotector_var.set(config.getboolean("BotSettings", "preferboonprotector"))
 preferboonprotector_checkbox = ttk.Checkbutton(
-    window,
-    text="Prefer Protector Boon",
-    variable=preferboonprotector_var,
-    command=lambda: handle_boon_checkbox(preferboonprotector_var),
+    window, text="Prefer Protector Boon", variable=preferboonprotector_var,
+    command=lambda: handle_boon_checkbox(preferboonprotector_var)
 )
 preferboonprotector_checkbox.pack(anchor="w", padx=(150, 0))
 boon_checkboxes.append(preferboonprotector_var)
+
+# Force a redraw of the window to ensure the checkboxes reflect their BooleanVar values
+window.update_idletasks()
+
+
 
 
 header_label = ttk.Label(
@@ -738,7 +745,7 @@ def handle_fight_checkbox(var: tk.BooleanVar):
 
 # Create the checkbox for prefercaster
 prefercaster_var = tk.BooleanVar()
-prefercaster_var.set(config.getboolean("BotSettings", "prefercaster"))
+prefercaster_var.set(config["BotSettings"].getboolean("prefercaster", False))
 prefercaster_checkbox = ttk.Checkbutton(
     window,
     text="Prefer Caster",
@@ -750,7 +757,7 @@ fight_checkboxes.append(prefercaster_var)
 
 # Create the checkbox for preferfighter
 preferfighter_var = tk.BooleanVar()
-preferfighter_var.set(config.getboolean("BotSettings", "preferfighter"))
+preferfighter_var.set(config["BotSettings"].getboolean("preferfighter", False))
 preferfighter_checkbox = ttk.Checkbutton(
     window,
     text="Prefer Fighter",
@@ -762,7 +769,7 @@ fight_checkboxes.append(preferfighter_var)
 
 # Create the checkbox for preferprotector
 preferprotector_var = tk.BooleanVar()
-preferprotector_var.set(config.getboolean("BotSettings", "preferprotector"))
+preferprotector_var.set(config["BotSettings"].getboolean("preferprotector", False))
 preferprotector_checkbox = ttk.Checkbutton(
     window,
     text="Prefer Protector",
@@ -771,9 +778,11 @@ preferprotector_checkbox = ttk.Checkbutton(
 )
 preferprotector_checkbox.pack(anchor="w", padx=(150, 0))
 fight_checkboxes.append(preferprotector_var)
+
 header_label = ttk.Label(
     window, text="Miscellaneous", style="Header.TLabel", anchor="center"
 )
+
 
 header_label.pack(padx=(70, 70), pady=(10, 5))
 wait_for_exp_label = ttk.Label(window, text="Wait For Exp in seconds")
@@ -860,20 +869,6 @@ if "BotSettings" in config:
     level_var.set(config["BotSettings"].get("level", ""))
     mouse_speed_var.set(config["BotSettings"].get("mousespeed", ""))
     game_dir_var.set(config["BotSettings"].get("gamedir", ""))
-    preferbooncaster_var.set(
-        config["BotSettings"].getboolean("preferbooncaster", False)
-    )
-    preferboonfighter_var.set(
-        config["BotSettings"].getboolean("preferboonfighter", False)
-    )
-    preferboonprotector_var.set(
-        config["BotSettings"].getboolean("preferboonprotector", False)
-    )
-    preferboonprotector_var.set(
-        config["BotSettings"].getboolean("preferprotector", False)
-    )
-    preferboonfighter_var.set(config["BotSettings"].getboolean("preferfighter", False))
-    preferbooncaster_var.set(config["BotSettings"].getboolean("prefercaster", False))
     wait_for_exp_var.set(int(config["BotSettings"].get("waitforexp", "0")))
     quit_before_boss_var.set(
         config["BotSettings"].getboolean("quitbeforebossfight", False)

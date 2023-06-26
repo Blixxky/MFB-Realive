@@ -90,7 +90,11 @@ def enter_from_battlenet():
         time.sleep(20)
 
     else:
-        log.info("Wait for play button to be available")
+        log.info("Battle.net wasn't found, attempting to snap to process.")
+        if platform.system( ) == 'Windows':
+            bring_to_focus_windows( )
+        elif platform.system( ) == 'Linux':
+            bring_to_focus_linux( )
         time.sleep(3)
 
     return True

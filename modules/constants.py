@@ -74,6 +74,8 @@ class UIElement(ImageFragment):
     An enumeration of UI elements.
     """
 
+    partywipe = "wipe_button"
+    reconnect_button = "reconnect_button"
     _dir_name = "UI_elements"
 
     Alterac = "Alterac"
@@ -133,6 +135,8 @@ class Button(ImageFragment):
     An enumeration of buttons.
     """
 
+    reconnect_button = "reconnect_button"
+    game_closed = "closed_sign"
     _dir_name = "buttons"
     allready = "allready"
     arrow_prev = "arrow_prev"

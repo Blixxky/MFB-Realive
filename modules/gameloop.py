@@ -7,6 +7,7 @@ import logging
 import sys
 import time
 
+
 from modules.bounty import selectGroup, travelToLevel, goToEncounter
 from modules.travelpoint import travelpointSelection
 from modules.constants import UIElement, Button, Action
@@ -17,6 +18,7 @@ from modules.settings import jposition
 from modules.mouse_utils import move_mouse
 from modules.platforms import windowMP
 from modules.resolution import check_resolution
+from modules.reconnects import click_wipe_button, click_reconnect
 
 log = logging.getLogger(__name__)
 
@@ -36,7 +38,7 @@ def where():
 
     find_element(Button.join_button.filename, Action.move_and_click)
 
-    # Find PVE adventure payed, free or portal
+    # Find PVE adventure paid, free or portal
     if (
         find_element(UIElement.battle_portal.filename, Action.move_and_click)
         or find_element(UIElement.battle.filename, Action.move_and_click)
@@ -63,6 +65,12 @@ def where():
 
     if find_element(UIElement.campfire.filename, Action.screenshot):
         look_at_campfire_completed_tasks()
+
+    if find_element(UIElement.partywipe.filename, Action.screenshot):
+        click_wipe_button()
+
+    if find_element(UIElement.reconnect_button.filename, Action.screenshot):
+        click_reconnect()
 
     else:
         defaultCase()

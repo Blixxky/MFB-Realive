@@ -1,3 +1,16 @@
+2023-06-26 v1.0.6
+-----------------
+1. Added `HSBotRunner.bat` system variable %~dp0 back so we can Run as Admin properly.
+2. Added `modules\reconnects.py` for various reconnect scenarios.
+3. Added `modules\gameloop.py` checks for reconnects.
+4. Added `modules\game.py` checks for reconnects.
+5. Created `files\1920x1080\UI_elements\reconnect_button.png` 
+6. Created `files\1920x1080\UI_elements\closed_sign.png`
+7. Created `files\1920x1080\UI_elements\wipe_button.png`
+8. Modified `modules\encounter.py` to omit certain print strings regarding Zone change.
+9. Added `modules\constants.py` new UIelements
+10. Added `modules\battlenetloop.py` attempts to set Battle.net as window focus
+
 2023-06-23
 ----------
 1. Changed `HSbotRunner.bat` and `HSbotRunner.sh` to force a Python 3.11 venv.
@@ -15,7 +28,7 @@
 7. Commented out Zone changes in `/modules/log_board.py` and `/modules/encounter.py` as it was game-breaking for some users.
 8. Changed `conf\system\attacks.json` Archmage Khadgar 2nd ability to choose target. Changed #2 bool to true.
 9. Changed `conf\system\combo.ini` Prince Malchezaar=1,3,2 from Prince Malchezaar=1,2,3.
-10. Changed `conf\user\config.py` combo.ini info upon creation.
+10. Changed `conf\user\config.py` to use pre_reqs script. Also added `combo.ini` changes upon creation.
 11. Rewrote `modules/bounty.py` `goToEncounter` into multiple helper functions.
 12. Rewrote `modules/encounter.py` `parse_ability_setting` function.
 13. Rewrote `modules/file_utils.py` `readINI` to not use `_sections`.

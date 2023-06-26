@@ -12,7 +12,7 @@ from modules.constants import Action, UIElement, Button
 from modules.settings import jposition
 from modules.mouse_utils import move_mouse, move_mouse_and_click, mouse_position
 from modules.platforms import windowMP
-
+from modules.reconnects import click_reconnect, game_closed
 
 log = logging.getLogger(__name__)
 
@@ -60,8 +60,13 @@ def defaultCase():
         my = jposition["mouse.neutral.y"]
         move_mouse_and_click(windowMP(), windowMP()[2] / mx, windowMP()[3] / my)
         move_mouse(windowMP(), x, y)
-    elif find_element(Button.reconnect.filename, Action.move_and_click):
-        # Handle the disconnect case
-        log.info("Game disconnected")
-    # To Do: Is "else" needed to skip other screens ?
-    # To Do: need to add a 'find_element' on the "Closed HS" screen
+    if find_element(Button.reconnect_button.filename, Action.move_and_click):
+        log.info("Game disconnected...attempting reconnect.")
+        click_reconnect()
+        time.sleep(10)
+        click_reconnect()
+        time.sleep(10)
+        click_reconnect()
+    if find_element(Button.game_closed.filename, Action.move_and_click):
+        game_closed()
+        log.info("Game closed...attempting to re-open Hearthstone.")

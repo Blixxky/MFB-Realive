@@ -162,14 +162,14 @@ def priorityMercByRole(myMercs, targetrole) -> List[int]:
 
 def calculate_positions(number, position):
     """
-        Calculates the positions based on the given number and position.
+    Calculates the positions based on the given number and position.
 
-        Args:
-            number (int): The number used for position calculation.
-            position (int): The position used for position calculation.
+    Args:
+        number (int): The number used for position calculation.
+        position (int): The position used for position calculation.
 
-        Returns:
-            tuple: A tuple containing two values - the calculated position index and the corresponding x-coordinate.
+    Returns:
+        tuple: A tuple containing two values - the calculated position index and the corresponding x-coordinate.
     """
     cardSize = int(windowMP()[2] / 12)
     firstOdd = int(windowMP()[2] / 3)
@@ -276,14 +276,14 @@ def pickBestAllyToBuff(enemies, myMercs, number):
 
 def findFriendNameInMercs(myMercs, friendName):
     """
-        Searches for a friend's name in a list of mercenaries.
+    Searches for a friend's name in a list of mercenaries.
 
-        Args:
-            myMercs (list): A list of mercenaries.
-            friendName (str): The name of the friend to search for.
+    Args:
+        myMercs (list): A list of mercenaries.
+        friendName (str): The name of the friend to search for.
 
-        Returns:
-            bool: True if the friend's name is found in the list, False otherwise.
+    Returns:
+        bool: True if the friend's name is found in the list, False otherwise.
     """
     for i in myMercs:
         log.debug("***** Looking for our friend %s ... ******", friendName)
@@ -836,7 +836,7 @@ def selectCardsInHand(zL=None):
         zL.find_battle_start_log()
         zL.start()
         while not zL.eof:
-            print("Reaching Zone.log end before starting")
+            # print("Reaching Zone.log end before starting")
             time.sleep(1)
 
         # check if HS is ready for the battle
@@ -908,15 +908,15 @@ class cardsInHand:
 
     def __init__(self, win, zLog, max_on_board):
         """
-           Initializes an instance of the class.
+        Initializes an instance of the class.
 
-           Args:
-               win: The window object.
-               zLog: The zone log object.
-               max_on_board (int): The maximum number of mercenaries allowed on the board.
+        Args:
+            win: The window object.
+            zLog: The zone log object.
+            max_on_board (int): The maximum number of mercenaries allowed on the board.
 
-           Returns:
-               None
+        Returns:
+            None
         """
         self.win = win
         self.zone_log = zLog
@@ -926,15 +926,15 @@ class cardsInHand:
         self.on_board = 0
         self.max_on_board = max_on_board
 
-    def send_to_board(self, mercenary):
+    def send_to_board(self, mercenary, i=None):
         """
-            Sends a mercenary to the board.
+        Sends a mercenary to the board.
 
-            Args:
-                mercenary: The mercenary object to be sent to the board.
+        Args:
+            mercenary: The mercenary object to be sent to the board.
 
-            Returns:
-                bool: True if the mercenary was successfully sent to the board, False otherwise.
+        Returns:
+            bool: True if the mercenary was successfully sent to the board, False otherwise.
         """
         if self.on_board < self.max_on_board:
             coord_x = self.get_coord(mercenary)
@@ -945,43 +945,43 @@ class cardsInHand:
             log.debug("Put on board: %s", mercenary)
             self.on_board += 1
             self.in_hand.remove(mercenary)
-            """
+
             while not self.zone_log.get_zonechanged():
                 time.sleep(0.5)
                 i += 1
                 if i > 10:
                     log.error("Putting %s on board failed.", mercenary)
                     break
-            """
 
+            
     def clean(self):
         """
-            Cleans the hand and board by resetting their values.
+        Cleans the hand and board by resetting their values.
 
-            Returns:
-                None
+        Returns:
+            None
         """
         self.in_hand = []
         self.on_board = 0
 
     def get_size(self):
         """
-            Gets the size of the hand.
+        Gets the size of the hand.
 
-            Returns:
-                int: The size of the hand.
+        Returns:
+            int: The size of the hand.
         """
         return len(self.in_hand)
 
     def get_coord(self, mercenary):
         """
-            Calculates the x-coordinate for a given mercenary.
+        Calculates the x-coordinate for a given mercenary.
 
-            Args:
-                mercenary: The mercenary object.
+        Args:
+            mercenary: The mercenary object.
 
-            Returns:
-                int: The calculated x-coordinate.
+        Returns:
+            int: The calculated x-coordinate.
         """
         self.coord_y = self.win[3] // 1.085
         if mercenary not in self.in_hand:

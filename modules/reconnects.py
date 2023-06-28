@@ -6,6 +6,20 @@ from modules.battlenetloop import enter_from_battlenet
 from modules.mouse_utils import move_mouse_and_click
 from modules.platforms import windowMP
 
+def choose_mode():
+    """
+    This is to address the new Menu released 6.28.23
+    Blizzard moved Mercenaries into Modes menu
+    """
+    mode_coord_x = 1337 / 1920
+    mode_coord_y = 276 / 1080
+    choose_coord_x = 1367 / 1920
+    choose_coord_y = 750 / 1080
+
+    move_mouse_and_click(windowMP( ), windowMP( )[2] * mode_coord_x, windowMP( )[3] * mode_coord_y)
+    time.sleep(1)
+    move_mouse_and_click(windowMP( ), windowMP( )[2] * choose_coord_x, windowMP( )[3] * choose_coord_y)
+
 
 def click_wipe_button():
     """
@@ -44,6 +58,10 @@ def game_closed():
     It's been a while since your last Hearthstone action
     and your connection was shut down.
     Relaunch the game when you're ready!
+    Or
+    Oops! Playful sprites have disrupted Hearthstone as it
+    was connecting to our servers. Please wait for a few minutes
+    for them to disperse and try again.
 
     First it attempts to use psutil to kill the process;
     then it attempts OS specific commands before trying to relaunch the game.

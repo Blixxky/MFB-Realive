@@ -1,3 +1,11 @@
+2023-06-28 v1.0.7
+-----------------
+1. Added `modules/gameloop.py` checks for new menu buttons
+2. Added `modules/reconnects.py` choose_mode function 
+3. Added `modules/constants.py` choose_mode button
+4. Updated `requirements_win.txt` to add PSutil 
+5. Updated `requirements_linux.txt` to add PSutil
+
 2023-06-26 v1.0.6
 -----------------
 1. Added `HSBotRunner.bat` system variable %~dp0 back so we can Run as Admin properly.

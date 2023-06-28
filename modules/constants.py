@@ -74,6 +74,8 @@ class UIElement(ImageFragment):
     An enumeration of UI elements.
     """
 
+    game_closed = "closed_sign"
+    closed_sign = "closed_sign"
     partywipe = "wipe_button"
     reconnect_button = "reconnect_button"
     _dir_name = "UI_elements"
@@ -135,8 +137,6 @@ class Button(ImageFragment):
     An enumeration of buttons.
     """
 
-    reconnect_button = "reconnect_button"
-    game_closed = "closed_sign"
     _dir_name = "buttons"
     allready = "allready"
     arrow_prev = "arrow_prev"
@@ -177,6 +177,7 @@ class Button(ImageFragment):
     battlenet_play = "battlenet_play"
     battlenet = "battlenet"
     battlenet_hearthstone = "battlenet_hearthstone"
+    choose_mode = "choose_mode"
 
 
 class Action(StrEnum):

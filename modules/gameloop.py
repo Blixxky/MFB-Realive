@@ -18,7 +18,7 @@ from modules.settings import jposition
 from modules.mouse_utils import move_mouse
 from modules.platforms import windowMP
 from modules.resolution import check_resolution
-from modules.reconnects import click_wipe_button, click_reconnect
+from modules.reconnects import click_wipe_button, click_reconnect, choose_mode
 
 log = logging.getLogger(__name__)
 
@@ -37,6 +37,10 @@ def where():
         sys.exit()
 
     find_element(Button.join_button.filename, Action.move_and_click)
+
+    if find_element(Button.choose_mode.filename, Action.screenshot):
+        choose_mode()
+
 
     # Find PVE adventure paid, free or portal
     if (
@@ -71,6 +75,9 @@ def where():
 
     if find_element(UIElement.reconnect_button.filename, Action.screenshot):
         click_reconnect()
+
+    if find_element(UIElement.game_closed.filename, Action.screenshot):
+        game_closed()
 
     else:
         defaultCase()

@@ -45,6 +45,8 @@ MFB-Realive : https:\\github.com\Blixxky\MFB-Realive
 8. Set GameDir by browsing in the GUI or putting the path in settings.ini under "GameDir". This is where 'hearthstone.exe' is located.
 9. Create or edit your Hearthstone log.config file (https://github.com/Efemache/Mercenaries-Farm-bot/wiki/Settings#logconfig).
 10. Start Hearthstone with the same resolution as set in conf\user\settings.ini. The default resolution is 1920x1080.
+11. The default group name is now "Medusa". [Please change the group name ASAP for security reasons](#security).
+
 
 ## Start the bot
 

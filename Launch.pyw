@@ -13,19 +13,20 @@ import sys
 import tkinter as tk
 from tkinter import font, messagebox, filedialog, ttk
 from typing import List
-
-if platform.system() == 'Windows':
-    requirements_file = 'requirements_win.txt'
-elif platform.system() == 'Linux':
-    requirements_file = 'requirements_linux.txt'
-else:
-    raise RuntimeError(f'Unsupported platform: {platform.system()}')
+from ttkthemes import ThemedStyle
 
 log = logging.getLogger(__name__)
 venv_path = os.path.join('MFB')
+activate_script = os.path.join(venv_path, 'Scripts', 'activate' if platform.system() == 'Windows' else 'activate')
 
-# Check if the venv exists
-if not os.path.exists(venv_path):
+if os.path.exists(activate_script):
+    try:
+        subprocess.run(activate_script, shell=True, check=True)
+
+    except subprocess.CalledProcessError as e:
+        print(f"Error occurred while activating virtual environment: {e}")
+        sys.exit(1)
+else:
     # Create venv
     if platform.system() == 'Windows':
         subprocess.run(["py", "-3.11", "-m", "venv", "MFB"], check=True)
@@ -35,32 +36,6 @@ if not os.path.exists(venv_path):
         print("Unsupported platform.")
         sys.exit(1)
 
-# Activate venv
-try:
-    if platform.system() == 'Windows':
-        # Attempt to use Activate.ps1 first
-        activate_script_ps1 = os.path.join(venv_path, 'Scripts', 'Activate.ps1')
-        subprocess.run(["powershell.exe", "-ExecutionPolicy", "Bypass", "-File", activate_script_ps1], check=True)
-    elif platform.system() == 'Linux':
-        activate_script = os.path.join(venv_path, 'bin', 'activate')
-        subprocess.run(["bash", "-c", "source {}".format(activate_script)], check=True)
-    else:
-        print("Unsupported platform.")
-        sys.exit(1)
-
-    # Install requirements in the venv
-    subprocess.check_call([sys.executable, '-m', 'pip', 'install', '-r', requirements_file])
-    
-except subprocess.CalledProcessError:
-    # If the initial attempt fails, try with activate.bat
-    if platform.system() == 'Windows':
-        activate_script_bat = os.path.join(venv_path, 'Scripts', 'activate.bat')
-        subprocess.run([activate_script_bat], shell=True, check=True)
-        
-        # Install requirements in the venv
-        subprocess.check_call([sys.executable, '-m', 'pip', 'install', '-r', requirements_file])
-
-from ttkthemes import ThemedStyle
 
 # Initialize variables
 SETTINGS_INI_CREATED = False
@@ -602,7 +577,6 @@ status_var = tk.StringVar( )
 status_var.set("Start")
 
 
-# Define the toggle_start_stop function
 def toggle_start_stop():
     global script_running
     global main_process
@@ -610,7 +584,7 @@ def toggle_start_stop():
 
     if script_running:
         # If script is already running, stop it
-        main_process.kill( )
+        main_process.kill()
         script_running = False
         status_var.set("Start")
     else:
@@ -618,23 +592,27 @@ def toggle_start_stop():
         script_running = True
         status_var.set("Stop")
 
-        # Check the system platform
-        if platform.system( ) == "Windows":
+        # Define the commands based on the system platform
+        if platform.system() == "Windows":
             # This is a Windows machine
             python_command = ["py", "-3.11", "-m", "venv", "MFB"]
-            main_command = ["MFB\\Scripts\\python.exe", "main.py"]
-        elif platform.system( ) == "Linux":
+            python_interpreter = os.path.join("MFB", "Scripts", "python.exe")
+            main_command = [python_interpreter, "main.py"]
+        elif platform.system() == "Linux":
             # This is a Linux machine
             python_command = ["python3.11", "-m", "venv", "MFB"]
-            main_command = ["./MFB/bin/python", "main.py"]
+            python_interpreter = os.path.join("MFB", "bin", "python")
+            main_command = [python_interpreter, "main.py"]
         else:
-            print(f"Unsupported platform: {platform.system( )}")
+            print(f"Unsupported platform: {platform.system()}")
             return
 
-        # Run the Python command
+        # Run the Python command to create/activate the venv if needed
         subprocess.run(python_command)
-        # Start the main script and keep track of the process
+
+        # Start the main script within the activated venv and keep track of the process
         main_process = subprocess.Popen(main_command)
+
 
 
 # Create the button that will run toggle_start_stop when pressed

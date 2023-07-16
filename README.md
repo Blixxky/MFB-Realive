@@ -21,27 +21,32 @@ MFB-Realive : https:\\github.com\Blixxky\MFB-Realive
 ## Installation
 
 ### Windows
-1. Install [Python 3.11](https:\\www.python.org\ftp\python\3.11.0\python-3.11.0-amd64-webinstall.exe) (⚠️ select the "Add Python 3.11 to PATH" during installation) 
-2. Download the project
-3.    - [MFB-Realive](https:\\github.com\Blixxky\MFB-Realive)
-4. Run *`Launch.py`* or *`Launch.pyw`* and set your preferences.
-5. Set **GameDir** by browsing in the GUI or putting the path in *`settings.ini`* under "GameDir". This is where '*hearthstone.exe*' is.
-6. Create\Edit your Hearthstone [log.config file](https:\\github.com\Efemache\Mercenaries-Farm-bot\wiki\Settings#logconfig)
-7. Start Hearthstone with same resolution as set in *`conf\user\settings.ini`*, MFB GUI creates settings with defaults of 1920x1080.
-8. The default group name is now "Medusa", [but you're encouraged to change the group name ASAP](#security).
+1. Install Python 3.11 (⚠️ Select the "Add Python 3.11 to PATH" option during installation) from: [Python 3.11](https://www.python.org/ftp/python/3.11.0/python-3.11.0-amd64-webinstall.exe)
+2. Download the project:
+   - [MFB-Realive](https://github.com/Blixxky/MFB-Realive)
+3. Run `Runonce.bat` (for Windows) or `Runonce.sh` (for Linux) for initial setup tasks.
+4. Run `Launch.py` or `Launch.pyw` and set your preferences.
+5. Set `GameDir` by browsing in the GUI or putting the path in `settings.ini` under "GameDir". This is where 'hearthstone.exe' is located.
+6. Create or edit your Hearthstone `log.config` file. Refer to: [Hearthstone log.config file](https://github.com/Efemache/Mercenaries-Farm-bot/wiki/Settings#logconfig).
+7. Start Hearthstone with the same resolution as set in `conf\user\settings.ini`. The MFB GUI creates settings with defaults of 1920x1080.
+8. The default group name is now "Medusa". [Please change the group name ASAP for security reasons](#security).
+
+.
 
 
 ### Linux
-1. Install python3-venv: `sudo apt install python3.11-venv`
-2. Install gir1.2-wnck-3.0: `sudo apt install gir1.2-wnck-3.0`
-3. Install libharfbuzz-gobject0, if needed: `sudo apt install libharfbuzz-gobject0`
-4. Install either wmctrl or xdotool (your choice): `sudo apt install wmctrl` OR `sudo apt install xdotool`
-5. Download the project: [MFB-Realive](https://github.com/Blixxky/MFB-Realive)
-6. Run `Launch.py` or `Launch.pyw` and set your preferences.
-7. Set **GameDir** by browsing in the GUI or putting the path in `settings.ini` under "GameDir". This is where 'hearthstone.exe' is.
-8. Create or edit your Hearthstone [log.config file](https://github.com/Efemache/Mercenaries-Farm-bot/wiki/Settings#logconfig)
-9. Start Hearthstone with the same resolution as set in `conf\user\settings.ini`, MFB GUI creates settings with defaults of 1920x1080.
-10. The default group name is now "Medusa", [but you're encouraged to change the group name ASAP](#security).
+1. Install python3-venv: sudo apt install python3.11-venv
+2. Install gir1.2-wnck-3.0: sudo apt install gir1.2-wnck-3.0
+3. Install libharfbuzz-gobject0, if needed: sudo apt install libharfbuzz-gobject0
+4. Install either wmctrl or xdotool (your choice): sudo apt install wmctrl OR sudo apt install xdotool
+5. Download the project: MFB-Realive (https://github.com/Blixxky/MFB-Realive)
+6. Run Runonce.bat or Runonce.sh depending on your system for initial setup tasks.
+7. Run Launch.py or Launch.pyw and set your preferences.
+8. Set GameDir by browsing in the GUI or putting the path in settings.ini under "GameDir". This is where 'hearthstone.exe' is located.
+9. Create or edit your Hearthstone log.config file (https://github.com/Efemache/Mercenaries-Farm-bot/wiki/Settings#logconfig).
+10. Start Hearthstone with the same resolution as set in conf\user\settings.ini. The default resolution is 1920x1080.
+
+
 
 
 ### While the bot is running...
@@ -56,6 +61,7 @@ MFB-Realive : https:\\github.com\Blixxky\MFB-Realive
 * Starts from Battle.net with a screen resolution of 1080.
 * Supports Up to "March of the Lich King" expansion and Returns to Naxxramas mini-set release.
 * Completes a lot of campfire tasks and some bounties.
+* Uses Bezier curves to simulate human mouse movements.
 * Transitions to Travel point selection.
 * Transitions to Level\Bounty selection.
 * Smooth transitions between encounters.
@@ -357,29 +363,39 @@ If you encounter the following errors:
 - "Settings file is missing section 'BotSettings'": Run conf\user\config.py or edit a conf\user\settings.ini file  the `conf\user\settings.sample.ini` file to `conf\user\settings.ini` to resolve this error. Read the settings wiki page for configuring user parameters and ensure to set the mandatory settings.
 
 - "The mouse pointer doesn't move at all (Windows)": Starting the .bat file as an administrator might resolve this issue for some users. If you encounter an error like "No such file or directory," refer to the solution below:
-<details><summary><i>Run as Admin<\i><\summary>
-To start the bot as an administrator, follow these steps:<br>
-1. Start CMD as an Admin.<br>
-2. In the Command Prompt, type `C:` if MFB is installed in the "C:" drive. Adjust the drive letter accordingly if it's installed in a different location.<br>
-3. If you are in *`C:\WINDOWS\system32`*, type *`cd ..\..`* to navigate to the root of your drive ("C:" or "D:" or "E:" etc.)<br>
-4. Go to the MFB directory by typing *`cd \my\path\to\Mercenaries-Farm-Bot\`*<br>
-5. Start the *`Launch.py`* file from there using `py Launch.py`<br>
 
-<\details>
+<details>
+<summary>
+To start the bot as an administrator, follow these steps:
+</summary>
+
+1. Start CMD as an Admin.
+2. In the Command Prompt, type `C:` if MFB is installed in the "C:" drive. Adjust the drive letter accordingly if it's installed in a different location.
+3. If you are in `C:\WINDOWS\system32`, type `cd ..\..` to navigate to the root of your drive ("C:" or "D:" or "E:" etc.)
+4. Go to the MFB directory by typing `cd \my\path\to\Mercenaries-Farm-Bot\`
+5. Start the `Launch.py` file from there using `py Launch.py`
+
+</details>
+
 - "No such file or directory":
 
   - For installing requirements: If you see an error like `ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'requirements_win.txt'`, make sure you are running the command from the correct directory.
 
   - For running *`main.py`*: If you see an error like *`C:\Users\user\AppData\Local\Programs\Python\Python310\python.exe`*: can't open file *`C:\Windows\system32\main.py`*: [Errno 2] No such file or directory`, try running the bot as a regular user. If it still doesn't work, refer to solution below.
 
-<details><summary><i>Run as Admin<\i><\summary>
-To start the bot as an administrator, follow these steps:<br>
-1. Start CMD as an Admin.<br>
-2. In the Command Prompt, type `C:` if MFB is installed in the "C:" drive. Adjust the drive letter accordingly if it's installed in a different location.<br>
-3. If you are in *`C:\WINDOWS\system32`*, type *`cd ..\..`* to navigate to the root of your drive ("C:" or "D:" or "E:" etc.)<br>
-4. Go to the MFB directory by typing *`cd \my\path\to\Mercenaries-Farm-Bot\`*<br>
-5. Start the *`Launch.py`* file from there using `py Launch.py`<br>
-<\details>
+<details>
+<summary><i>Run as Admin</i></summary>
+
+To start the bot as an administrator, follow these steps:
+
+1. Start CMD as an Admin.
+2. In the Command Prompt, type `C:` if MFB is installed in the "C:" drive. Adjust the drive letter accordingly if it's installed in a different location.
+3. If you are in `C:\WINDOWS\system32`, type `cd ..\..` to navigate to the root of your drive ("C:" or "D:" or "E:" etc.)
+4. Go to the MFB directory by typing `cd \my\path\to\Mercenaries-Farm-Bot\`
+5. Start the `Launch.py` file from there using `py Launch.py`
+
+</details>
+
 
 # If you would like to support [@Efemache](https:\\github.com\Efemache) for their great work:
 

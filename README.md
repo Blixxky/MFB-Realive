@@ -35,17 +35,19 @@ MFB-Realive : https:\\github.com\Blixxky\MFB-Realive
 
 
 ### Linux
-1. Install python3-venv: sudo apt install python3.11-venv
-2. Install gir1.2-wnck-3.0: sudo apt install gir1.2-wnck-3.0
-3. Install libharfbuzz-gobject0, if needed: sudo apt install libharfbuzz-gobject0
-4. Install either wmctrl or xdotool (your choice): sudo apt install wmctrl OR sudo apt install xdotool
-5. Download the project: MFB-Realive (https://github.com/Blixxky/MFB-Realive)
-6. Run *`Runonce.sh`* for initial venv setup and dependency installation tasks.
-7. Run *`Launch.py`* or Launch.pyw and set your preferences.
-8. Set GameDir by browsing in the GUI or putting the path in settings.ini under "GameDir". This is where *`hearthstone.exe`* is located.
-9. Create or edit your Hearthstone log.config file (https://github.com/Efemache/Mercenaries-Farm-bot/wiki/Settings#logconfig).
-10. Start Hearthstone with the same resolution as set in *`conf\user\settings.ini`*. The default resolution is 1920x1080.
-11. The default group name is now "Medusa". [Please change the group name ASAP for security reasons](#security).
+1. *`sudo apt install python3.11-venv && sudo apt install gir1.2-wnck-3.0 && sudo apt install libharfbuzz-gobject0 && sudo apt install wmctrl xdotool`*
+   - `python3.11-venv`: Python 3.11 venv package
+   - `gir1.2-wnck-3.0`: Gir package for Wnck 3.0
+   - `libharfbuzz-gobject0`: OpenType text shaping engine package
+   - `wmctrl`: Window manipulation tool
+   - `xdotool`: Window manipulation tool
+2. Download the project: MFB-Realive (https://github.com/Blixxky/MFB-Realive)
+3. Run *`Runonce.sh`* for initial venv setup and dependency installation tasks.
+4. Run *`Launch.py`* or Launch.pyw and set your preferences.
+5. Set GameDir by browsing in the GUI or putting the path in settings.ini under "GameDir". This is where *`hearthstone.exe`* is located.
+6. Create or edit your Hearthstone log.config file (https://github.com/Efemache/Mercenaries-Farm-bot/wiki/Settings#logconfig).
+7. Start Hearthstone with the same resolution as set in *`conf\user\settings.ini`*. The default resolution is 1920x1080.
+8. The default group name is now "Medusa". [Please change the group name ASAP for security reasons](#security).
 
 
 ## Start the bot
@@ -424,6 +426,5 @@ If you prefer to support using crypto, you can send your contribution to the fol
 3. Create better logging and exception handling for troubleshooting.
 4. Build upon the Treasure preference system, and get more data and screenshots for treasures.
 5. Implement a Neural Network to have it learn off of recorded play data.
-
 
 

@@ -24,14 +24,14 @@ MFB-Realive : https:\\github.com\Blixxky\MFB-Realive
 1. Install Python 3.11 (⚠️ Select the "Add Python 3.11 to PATH" option during installation) from: [Python 3.11](https://www.python.org/ftp/python/3.11.0/python-3.11.0-amd64-webinstall.exe)
 2. Download the project:
    - [MFB-Realive](https://github.com/Blixxky/MFB-Realive)
-3. Run `Runonce.bat` for initial venv setup and dependency installation tasks.
-4. Run `Launch.py` or `Launch.pyw` and set your preferences.
-5. Set `GameDir` by browsing in the GUI or putting the path in `settings.ini` under "GameDir". This is where 'hearthstone.exe' is located.
-6. Create or edit your Hearthstone `log.config` file. Refer to: [Hearthstone log.config file](https://github.com/Efemache/Mercenaries-Farm-bot/wiki/Settings#logconfig).
-7. Start Hearthstone with the same resolution as set in `conf\user\settings.ini`. The MFB GUI creates settings with defaults of 1920x1080.
+3. Run *`Runonce.bat`* for initial venv setup and dependency installation tasks.
+4. Run *`Launch.py`* or *`Launch.pyw`* and set your preferences.
+5. Set `GameDir` by browsing in the GUI or putting the path in *`conf\user\settings.ini`* under "GameDir". This is where *'hearthstone.exe'* is located.
+6. Create or edit your Hearthstone *`log.config`* file. Refer to: [Hearthstone log.config file](https://github.com/Efemache/Mercenaries-Farm-bot/wiki/Settings#logconfig).
+7. Start Hearthstone with the same resolution as set in *`conf\user\settings.ini`*. The MFB GUI creates settings with defaults of 1920x1080.
 8. The default group name is now "Medusa". [Please change the group name ASAP for security reasons](#security).
 
-.
+
 
 
 ### Linux
@@ -40,17 +40,17 @@ MFB-Realive : https:\\github.com\Blixxky\MFB-Realive
 3. Install libharfbuzz-gobject0, if needed: sudo apt install libharfbuzz-gobject0
 4. Install either wmctrl or xdotool (your choice): sudo apt install wmctrl OR sudo apt install xdotool
 5. Download the project: MFB-Realive (https://github.com/Blixxky/MFB-Realive)
-6. Run `Runonce.sh` for initial venv setup and dependency installation tasks.
-7. Run Launch.py or Launch.pyw and set your preferences.
-8. Set GameDir by browsing in the GUI or putting the path in settings.ini under "GameDir". This is where 'hearthstone.exe' is located.
+6. Run *`Runonce.sh`* for initial venv setup and dependency installation tasks.
+7. Run *`Launch.py`* or Launch.pyw and set your preferences.
+8. Set GameDir by browsing in the GUI or putting the path in settings.ini under "GameDir". This is where *`hearthstone.exe`* is located.
 9. Create or edit your Hearthstone log.config file (https://github.com/Efemache/Mercenaries-Farm-bot/wiki/Settings#logconfig).
-10. Start Hearthstone with the same resolution as set in conf\user\settings.ini. The default resolution is 1920x1080.
+10. Start Hearthstone with the same resolution as set in *`conf\user\settings.ini`*. The default resolution is 1920x1080.
 11. The default group name is now "Medusa". [Please change the group name ASAP for security reasons](#security).
 
 
 ## Start the bot
 
-After the initial setup you only need to run Launch.py, or Launch.pyw for no console. *You can also change the name of these files to your liking for more obscurity*. Most of the settings are configurable through the GUI. Just click Update Settings and then Start at the top of the GUI to start the bot.
+After the initial setup you only need to run *`Launch.py`*, or *`Launch.pyw`* for no console. **You can also change the name of these files to your liking for more obscurity**. Most of the settings are configurable through the GUI. Just click Update Settings and then Start at the top of the GUI to start the bot.
 
 
 ### While the bot is running...

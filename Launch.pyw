@@ -10,7 +10,6 @@ import os.path
 import platform
 import subprocess
 import sys
-import threading
 import tkinter as tk
 from tkinter import font, messagebox, filedialog, ttk
 from typing import List
@@ -21,10 +20,6 @@ elif platform.system() == 'Linux':
     requirements_file = 'requirements_linux.txt'
 else:
     raise RuntimeError(f'Unsupported platform: {platform.system()}')
-
-subprocess.check_call([sys.executable, '-m', 'pip', 'install', '-r', requirements_file])
-
-from ttkthemes import ThemedStyle
 
 log = logging.getLogger(__name__)
 venv_path = os.path.join('MFB')
@@ -42,21 +37,30 @@ if not os.path.exists(venv_path):
 
 # Activate venv
 try:
-    if platform.system( ) == 'Windows':
+    if platform.system() == 'Windows':
         # Attempt to use Activate.ps1 first
         activate_script_ps1 = os.path.join(venv_path, 'Scripts', 'Activate.ps1')
         subprocess.run(["powershell.exe", "-ExecutionPolicy", "Bypass", "-File", activate_script_ps1], check=True)
-    elif platform.system( ) == 'Linux':
+    elif platform.system() == 'Linux':
         activate_script = os.path.join(venv_path, 'bin', 'activate')
         subprocess.run(["bash", "-c", "source {}".format(activate_script)], check=True)
     else:
         print("Unsupported platform.")
         sys.exit(1)
+
+    # Install requirements in the venv
+    subprocess.check_call([sys.executable, '-m', 'pip', 'install', '-r', requirements_file])
+    
 except subprocess.CalledProcessError:
     # If the initial attempt fails, try with activate.bat
-    if platform.system( ) == 'Windows':
+    if platform.system() == 'Windows':
         activate_script_bat = os.path.join(venv_path, 'Scripts', 'activate.bat')
         subprocess.run([activate_script_bat], shell=True, check=True)
+        
+        # Install requirements in the venv
+        subprocess.check_call([sys.executable, '-m', 'pip', 'install', '-r', requirements_file])
+
+from ttkthemes import ThemedStyle
 
 # Initialize variables
 SETTINGS_INI_CREATED = False

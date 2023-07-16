@@ -32,15 +32,15 @@ MFB-Realive : https:\\github.com\Blixxky\MFB-Realive
 
 
 ### Linux
-1. Install python3-venv *`sudo apt install python3.11-venv`*
-2. Install gir1.2-wnck-3.0 *`sudo apt install gir1.2-wnck-3.0`*
-3. Install - if needed - libharfbuzz-gobject0 *`sudo apt install libharfbuzz-gobject0`*
-4. Download the project
-5.    - [MFB-Realive](https:\\github.com\Blixxky\MFB-Realive)
-6. Run *`Launch.py`* or *`Launch.pyw`* and set your preferences.
-7. Set **GameDir** by browsing in the GUI or putting the path in *`settings.ini`* under "GameDir". This is where '*hearthstone.exe*' is.
-8. Create\Edit your Hearthstone [log.config file](https:\\github.com\Efemache\Mercenaries-Farm-bot\wiki\Settings#logconfig)
-9. Start Hearthstone with same resolution as set in *`conf\user\settings.ini`*, MFB GUI creates settings with defaults of 1920x1080.
+1. Install python3-venv: `sudo apt install python3.11-venv`
+2. Install gir1.2-wnck-3.0: `sudo apt install gir1.2-wnck-3.0`
+3. Install libharfbuzz-gobject0, if needed: `sudo apt install libharfbuzz-gobject0`
+4. Install either wmctrl or xdotool (your choice): `sudo apt install wmctrl` OR `sudo apt install xdotool`
+5. Download the project: [MFB-Realive](https://github.com/Blixxky/MFB-Realive)
+6. Run `Launch.py` or `Launch.pyw` and set your preferences.
+7. Set **GameDir** by browsing in the GUI or putting the path in `settings.ini` under "GameDir". This is where 'hearthstone.exe' is.
+8. Create or edit your Hearthstone [log.config file](https://github.com/Efemache/Mercenaries-Farm-bot/wiki/Settings#logconfig)
+9. Start Hearthstone with the same resolution as set in `conf\user\settings.ini`, MFB GUI creates settings with defaults of 1920x1080.
 10. The default group name is now "Medusa", [but you're encouraged to change the group name ASAP](#security).
 
 

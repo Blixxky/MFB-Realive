@@ -3,15 +3,16 @@ This module contains functions related to entering the game from Battle.net.
 """
 
 import logging
-import time
 import platform
-import subprocess
-import pygetwindow as gw
-import pyautogui
 import re
+import subprocess
+import time
+
+import pyautogui
+import pygetwindow as gw
+
 from modules.constants import Button, Action
 from modules.image_utils import find_element
-
 
 log = logging.getLogger(__name__)
 
@@ -25,12 +26,13 @@ def bring_to_focus_windows():
     """
     try:
         # Run a WMIC command to get the process id
-        output = subprocess.check_output("wmic process where (name='Battle.net.exe' or name='Battle.net') get ProcessId", shell=True).decode(
+        output = subprocess.check_output(
+            "wmic process where (name='Battle.net.exe' or name='Battle.net') get ProcessId", shell=True).decode(
             "utf-8")
         pid = int(re.findall('\d+', output)[0])
 
         # Get list of all windows that match the pid
-        windows = gw.getAllWindows()
+        windows = gw.getAllWindows( )
 
         for window in windows:
             if window.processId == pid:
@@ -38,7 +40,7 @@ def bring_to_focus_windows():
                 pyautogui.moveTo(window.left + window.width / 2, window.top + window.height / 2)
 
                 # Bring the window into focus
-                window.activate()
+                window.activate( )
 
     except Exception as e:
         log.error(f"Failed to bring window with PID Battle.net.exe or Battle.net to focus. Error: {str(e)}")
@@ -64,11 +66,10 @@ def bring_to_focus_linux():
         log.error(f"Failed to bring window with PID Battle.net or Battle.net.exe to focus. Error: {str(e)}")
 
 
-if platform.system() == 'Windows':
-    bring_to_focus_windows()
-elif platform.system() == 'Linux':
-    bring_to_focus_linux()
-
+if platform.system( ) == 'Windows':
+    bring_to_focus_windows( )
+elif platform.system( ) == 'Linux':
+    bring_to_focus_linux( )
 
 
 def enter_from_battlenet():

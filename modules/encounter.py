@@ -132,10 +132,6 @@ def priorityMercByRole(myMercs, targetrole) -> List[int]:
     """
     Prioritizes a list of mercenaries by a specified role.
 
-    Args:
-        my_mercs: A list of mercenaries.
-        target_role: A role that should be prioritized when sorting the list.
-
     Returns:
         A list of mercenary positions where mercenaries of the target role come first, followed by non-target roles and minions at the end.
     """
@@ -252,7 +248,6 @@ def pickBestAllyToBuff(enemies, myMercs, number):
 
     Args:
         enemies: A list of enemy mercenaries.
-        my_mercs: A list of our mercenaries.
         number: The total number of our mercenaries.
 
     Returns:
@@ -299,9 +294,7 @@ def get_ability_for_this_turn(name, minionSection, turn, defaultAbility=0):
 
     Args:
         name: The name of the mercenary or minion.
-        minion_section: The section of minions.
         turn: The current turn.
-        default_ability: The default ability to use if no specific ability is configured.
 
     Returns:
         The ability to use for this turn.
@@ -383,9 +376,7 @@ def didnt_find_a_name_for_this_one(name, minionSection, turn, defaultAbility=0):
 
     Args:
         name: The name of the mercenary or minion.
-        minion_section: The section of minions.
         turn: The current turn.
-        default_ability: The default ability to use if no specific ability is configured.
 
     Returns:
         The configuration of the selected ability.
@@ -449,10 +440,7 @@ def select_ability(localhero, myBoard, enemies: Enemies, raund):
     Selects an ability for a mercenary based on available abilities and the current round.
 
     Args:
-        local_hero: The name of the mercenary for which to select an ability.
-        my_board: The current state of our board.
         enemies: A list of enemy mercenaries.
-        round: The current round.
 
     Returns:
         A boolean indicating whether or not an ability was successfully selected.

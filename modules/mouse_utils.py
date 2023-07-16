@@ -7,19 +7,17 @@ Functions:
 - mouse_position: Get the current mouse position relative to a given window.
 - move_mouse_and_click: Move the mouse to specified coordinates within a window and perform a click.
 - move_mouse: Move the mouse to specified coordinates within a window.
-- mouse_random_movement: Generate a random mouse movement function.
 
 Constants:
 - MOUSE_RANGE: The range of random mouse movement.
-
-Note: This module requires the 'pyautogui' library.
 """
 
-import random
 import time
+import random
 import pyautogui
 
-from modules.settings import settings_dict
+from modules.humanclicker import HumanClicker
+from modules.humancurve import HumanCurve
 
 MOUSE_RANGE = 2
 
@@ -58,8 +56,8 @@ def mouse_position(window):
     Returns:
         tuple: The current mouse position relative to the window's top left corner.
     """
-    x, y = pyautogui.position()
-    return (x - window[0], y - window[1])
+    x, y = pyautogui.position( )
+    return x - window[0], y - window[1]
 
 
 def move_mouse_and_click(window, x, y):
@@ -71,48 +69,30 @@ def move_mouse_and_click(window, x, y):
         x (int): The x-coordinate for the mouse to move to, relative to the window.
         y (int): The y-coordinate for the mouse to move to, relative to the window.
     """
-    move_mouse(window, x, y, with_random=True)
+    move_mouse(window, x, y)
     time.sleep(0.1)
-    pyautogui.click()
+    pyautogui.click( )
 
 
-def move_mouse(window, x, y, with_random=False):
+def move_mouse(window, x, y):
     """
-    Moves the mouse to a specified location relative to a window, optionally with random offset.
-
-    Args:
+    Moves the mouse using Bézier curves to a specified location relative to a window.    Args:
         window (tuple): The (x, y) position of the window's top left corner.
         x (int): The x-coordinate for the mouse to move to, relative to the window.
         y (int): The y-coordinate for the mouse to move to, relative to the window.
-        with_random (bool, optional): If True, a random offset is added to the x and y coordinates. Defaults to False.
     """
-    p = random.randint(-MOUSE_RANGE, MOUSE_RANGE) if with_random else 0
-    s = random.randint(-MOUSE_RANGE, MOUSE_RANGE) if with_random else 0
+    fromPoint = pyautogui.position()
+    toPoint = (window[0] + x, window[1] + y)
+    hc = HumanClicker()
+    options = {
+        "knotsCount": 2,
+    }
+
+    human_curve = HumanCurve(fromPoint=fromPoint, toPoint=toPoint, **options)
+    duration = random.uniform(0.33, 0.97)
 
     try:
-        pyautogui.moveTo(
-            window[0] + x + p,
-            window[1] + y + s,
-            settings_dict["mousespeed"],
-            mouse_random_movement(),
-        )
+        hc.move((x, y), duration=duration, humanCurve=human_curve)
     except pyautogui.FailSafeException:
         pyautogui.alert(text="Do you want to resume ?", title="Paused", button="Yes")
-        pyautogui.moveTo(
-            window[0] + x + p,
-            window[1] + y + s,
-            settings_dict["mousespeed"],
-            mouse_random_movement(),
-        )
-
-
-def mouse_random_movement():
-    """
-    Randomly selects a PyAutoGUI easing function to use for mouse movement.
-
-    Returns:
-        function: A PyAutoGUI easing function.
-    """
-    return random.choices(
-        [pyautogui.easeInQuad, pyautogui.easeOutQuad, pyautogui.easeInOutQuad]
-    )[0]
+        hc.move((x, y), duration=duration, humanCurve=human_curve)

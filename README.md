@@ -95,232 +95,252 @@ There are two ways to configure MFB now:
 2. You can edit the *`conf\user\settings.ini`* file, the *`conf\user\combo.ini`* file, and the *`log.config`* file (WINE - *`USER\AppData\Local\Blizzard\Hearthstone\`* or Windows - *`%LocalAppData%\Blizzard\Hearthstone`*) in a text editor.
 
 
-* "settings.ini" handles most of the bots settings and preferences. 
-<details><summary><i>Click here for a default settings.ini file<\i><\summary>
-[BotSettings]<br>
-monitor = 1<br>
-resolution = 1920x1080<br>
-logs = True<br>
-location = Felwood<br>
-mode = Normal<br>
-level = 25<br>
-preferelite = False<br>
-notificationurl =<br>
-GameDir = C:\Program Files (x86)\Hearthstone<br>
-preferbooncaster = False<br>
-preferboonfighter = False<br>
-preferboonprotector = False<br>
-preferprotector = False<br>
-preferfighter = False<br>
-prefercaster = False<br>
-waitForEXP = True<br>
-quitBeforeBossFight = False<br>
-stopAtBossFight = False<br>
-preferPassiveTreasures = True<br>
-<\details>
+* "settings.ini" handles most of the bots settings and preferences.
+
+<details>
+<summary>Click here for a default settings.ini file</summary>
+
+```ini
+[BotSettings]
+monitor = 1
+resolution = 1920x1080
+logs = True
+location = Felwood
+mode = Normal
+level = 25
+preferelite = False
+notificationurl =
+GameDir = C:\\Program Files (x86)\\Hearthstone
+preferbooncaster = False
+preferboonfighter = False
+preferboonprotector = False
+preferprotector = False
+preferfighter = False
+prefercaster = False
+waitForEXP = True
+quitBeforeBossFight = False
+stopAtBossFight = False
+preferPassiveTreasures = True
+```
+</details>
+
 
 * "combo.ini" is to configure Mercenary attack rotations.
-<details><summary><i>Click here for a default combo.ini file<\i><\summary>
-[Mercenary]<br>
-Alexstrasza=1,3<br>
-Anduin Wrynn=1,2<br>
-Antonidas=1<br>
-Aranna Starseeker=2,3,1<br>
-Archimonde=1,3,2,1<br>
-Baine Bloodhoof=1<br>
-Balinda Stonehearth=1,2,3:chooseone=2<br>
-Baron Geddon=2<br>
-Blademaster Samuro=1,3<br>
-Blink Fox=1,1,2<br>
-Brann Bronzebeard=1,2,3<br>
-Brightwing=1<br>
-Bru'kan=1,1,3<br>
-C'Thun=1,2<br>
-Cairne Bloodhoof=1<br>
-Captain Galvangar=1,3,2<br>
-Captain Hooktusk=1,2,3<br>
-Cariel Roame=2,1<br>
-Chi-Ji=1,1,3<br>
-Cookie, the Cook=1<br>
-Cornelius Roame=1,2,2<br>
-Deathwing=1,2,3<br>
-Diablo=1,2,3,2,3,2,3<br>
-Edwin, Defias Kingpin=1,2,3<br>
-Elise Starseeker=1,2,3<br>
-Eudora=1,2<br>
-Fathom-Lord Karathress=1,2<br>
-Kazakus, golem shaper=1<br>
-Garona Halforcen=1,2,3<br>
-Garrosh Hellscream=1,3<br>
-Genn Greymane=2,3,1<br>
-Gruul=1,2,3<br>
-Grommash Hellscream=2,3<br>
-Guff Runetotem=2<br>
-Illidan Stormrage=1,3,2<br>
-Jaina Proudmoore=1,3,2<br>
-King Krush=1,2,3<br>
-King Mukla=1,3<br>
-Kurtrus Ashfallen=1,3,2,3,2<br>
-Lady Anacondra=1<br>
-Lady Vashj=1,2,3<br>
-Leeroy Jenkins=1,2,3<br>
-Lokholar the Ice Lord=1<br>
-Long'xin=1<br>
-Lord Jaraxxus=3,2,1<br>
-Lord Slitherspear=1,2,3<br>
-Lorewalker Cho=1,2,3<br>
-Malfurion=1<br>
-Mannoroth=1,3<br>
-Millhouse Manastorm=1,1,2<br>
-Morgl the Oracle=1,2<br>
-Mr. Smite=1<br>
-Murky=1,3<br>
-Mutanus=1,2,2,2,2,2,2,2<br>
-Natalie Seline=1,3<br>
-Neeru Fireblade=1,1,3<br>
-Nefarian=1,3<br>
-Nemsy Necrofizzle=1,3,2<br>
-Niuzao=1,3<br>
-Patches the Pirate=1,2,3<br>
-Prince Malchezaar=1,3,2<br>
-Old Murk-Eye=1,2,3,2,3,2,3<br>
-Onyxia=1,3<br>
-Prophet Velen=1,3<br>
-Queen Azshara=1,2,3<br>
-Ragnaros=2<br>
-Rathorian=1,2,2,3<br>
-Rattlegore=1,2,3<br>
-Rokara=1,3<br>
-Scabbs Cutterbutter=1,2:chooseone=2<br>
-Sir Finley=1,3,2<br>
-Sinestra=1,3,2<br>
-Sky Admiral Rogers=1,3<br>
-Sneed=1,2<br>
-Sylvanas Windrunner=1,1,3<br>
-Tamsin Roame=1<br>
-Tavish Stormpike=1<br>
-Tess Greymane=1,2,3<br>
-The lich king=1,2<br>
-Thrall=1<br>
-Tidemistress Athissa=1,1,3,3<br>
-Trigore the Lasher=2<br>
-Tyrael=1,3,2<br>
-Tyrande Whisperwind=1,2<br>
-Valeera Sanguinar=1,2,3<br>
-Vanessa VanCleef=1<br>
-Vanndar Stormpike=1,1,3<br>
-Varden Dawngrasp=1<br>
-Varian Wrynn=3<br>
-Varok Saurfang=1,2<br>
-Vol'jin=1,2<br>
-War Master Voone=1,2,3<br>
-Wrathion=1,2,3<br>
-Yogg-Saron=1,2<br>
-Yu'lon=1,2<br>
-Xuen=1,3<br>
-Xyrella=1,3<br>
-Yrel=1,2,3<br>
-Ysera=1,2,3<br>
-Y'Shaarj=1,2<br>
-Uther Lightbringer=1,3,2<br>
-Zar'jira, the Sea Witch=1,3,2<br>
 
-[Neutral]<br>
-Bladehand Berserker=1<br>
-Boggy=1<br>
-Devilsaur=1<br>
-Dragonmaw Poacher=1<br>
-Drakonid=1<br>
-Drakonid 3=1<br>
-Eudora's Cannon=1<br>
-Elementium Terror=1<br>
-Fathom Guard=1<br>
-Fel Infernal=1<br>
-Felfin Navigator=1<br>
-Giantfin=1<br>
-Greater Golem=1<br>
-Grounding Totem=1<br>
-Hozen Troublemaker=1<br>
-Huffer=1<br>
-Hulking Overfiend=1<br>
-Hungry Naga=1<br>
-Imp Familiar=2<br>
-Jade Golem=1<br>
-Lesser Fire Elemental=2<br>
-Lesser Water Elemental=1<br>
-Marching Murlocs=1<br>
-Misha=1<br>
-Mogu Conqueror=1<br>
-Mukla's big brother=1<br>
-Nightmare Viper=1<br>
-Nightmare Viper 5=1<br>
-Patchling=1<br>
-Pufferfisher=1<br>
-Rescued Student=1<br>
-Saurok Raider=1<br>
-Spawn of N'Zoth=1<br>
-Spud M.E.=1<br>
-Stonemaul Banner=2<br>
-Superior Golem=1<br>
-Void Consumer=1<br>
-Water Elemental=1<br>
-Warlord Parjesh=1<br>
-Wavethrasher=1<br>
+<details>
+<summary>Click here for a default combo.ini file</summary>
 
-\# below, specific boss fight (ex: Air Elemental)
-\#[Air Elemental]<br>
-\#_handselection=Balinda Stonehearth+Baron Geddon+Ragnaros<br>
-\#Balinda Stonehearth=1<br>
-\#Baron Geddon=2<br>
-\#Ragnaros=2<br>
+```ini
+[Mercenary]
+Alexstrasza=1,3
+Anduin Wrynn=1,2
+Antonidas=1
+Aranna Starseeker=2,3,1
+Archimonde=1,3,2,1
+Baine Bloodhoof=1
+Balinda Stonehearth=1,2,3:chooseone=2
+Baron Geddon=2
+Blademaster Samuro=1,3
+Blink Fox=1,1,2
+Brann Bronzebeard=1,2,3
+Brightwing=1
+Bru'kan=1,1,3
+C'Thun=1,2
+Cairne Bloodhoof=1
+Captain Galvangar=1,3,2
+Captain Hooktusk=1,2,3
+Cariel Roame=2,1
+Chi-Ji=1,1,3
+Cookie, the Cook=1
+Cornelius Roame=1,2,2
+Deathwing=1,2,3
+Diablo=1,2,3,2,3,2,3
+Edwin, Defias Kingpin=1,2,3
+Elise Starseeker=1,2,3
+Eudora=1,2
+Fathom-Lord Karathress=1,2
+Kazakus, golem shaper=1
+Garona Halforcen=1,2,3
+Garrosh Hellscream=1,3
+Genn Greymane=2,3,1
+Gruul=1,2,3
+Grommash Hellscream=2,3
+Guff Runetotem=2
+Illidan Stormrage=1,3,2
+Jaina Proudmoore=1,3,2
+King Krush=1,2,3
+King Mukla=1,3
+Kurtrus Ashfallen=1,3,2,3,2
+Lady Anacondra=1
+Lady Vashj=1,2,3
+Leeroy Jenkins=1,2,3
+Lokholar the Ice Lord=1
+Long'xin=1
+Lord Jaraxxus=3,2,1
+Lord Slitherspear=1,2,3
+Lorewalker Cho=1,2,3
+Malfurion=1
+Mannoroth=1,3
+Millhouse Manastorm=1,1,2
+Morgl the Oracle=1,2
+Mr. Smite=1
+Murky=1,3
+Mutanus=1,2,2,2,2,2,2,2
+Natalie Seline=1,3
+Neeru Fireblade=1,1,3
+Nefarian=1,3
+Nemsy Necrofizzle=1,3,2
+Niuzao=1,3
+Patches the Pirate=1,2,3
+Prince Malchezaar=1,3,2
+Old Murk-Eye=1,2,3,2,3,2,3
+Onyxia=1,3
+Prophet Velen=1,3
+Queen Azshara=1,2,3
+Ragnaros=2
+Rathorian=1,2,2,3
+Rattlegore=1,2,3
+Rokara=1,3
+Scabbs Cutterbutter=1,2:chooseone=2
+Sir Finley=1,3,2
+Sinestra=1,3,2
+Sky Admiral Rogers=1,3
+Sneed=1,2
+Sylvanas Windrunner=1,1,3
+Tamsin Roame=1
+Tavish Stormpike=1
+Tess Greymane=1,2,3
+The lich king=1,2
+Thrall=1
+Tidemistress Athissa=1,1,3,3
+Trigore the Lasher=2
+Tyrael=1,3,2
+Tyrande Whisperwind=1,2
+Valeera Sanguinar=1,2,3
+Vanessa VanCleef=1
+Vanndar Stormpike=1,1,3
+Varden Dawngrasp=1
+Varian Wrynn=3
+Varok Saurfang=1,2
+Vol'jin=1,2
+War Master Voone=1,2,3
+Wrathion=1,2,3
+Yogg-Saron=1,2
+Yu'lon=1,2
+Xuen=1,3
+Xyrella=1,3
+Yrel=1,2,3
+Ysera=1,2,3
+Y'Shaarj=1,2
+Uther Lightbringer=1,3,2
+Zar'jira, the Sea Witch=1,3,2
 
-<\details>
+[Neutral]
+Bladehand Berserker=1
+Boggy=1
+Devilsaur=1
+Dragonmaw Poacher=1
+Drakonid=1
+Drakonid 3=1
+Eudora's Cannon=1
+Elementium Terror=1
+Fathom Guard=1
+Fel Infernal=1
+Felfin Navigator=1
+Giantfin=1
+Greater Golem=1
+Grounding Totem=1
+Hozen Troublemaker=1
+Huffer=1
+Hulking Overfiend=1
+Hungry Naga=1
+Imp Familiar=2
+Jade Golem=1
+Lesser Fire Elemental=2
+Lesser Water Elemental=1
+Marching Murlocs=1
+Misha=1
+Mogu Conqueror=1
+Mukla's big brother=1
+Nightmare Viper=1
+Nightmare Viper 5=1
+Patchling=1
+Pufferfisher=1
+Rescued Student=1
+Saurok Raider=1
+Spawn of N'Zoth=1
+Spud M.E.=1
+Stonemaul Banner=2
+Superior Golem=1
+Void Consumer=1
+Water Elemental=1
+Warlord Parjesh=1
+Wavethrasher=1
+
+below, specific boss fight (ex: Air Elemental)
+#[Air Elemental]
+#_handselection=Balinda Stonehearth+Baron Geddon+Ragnaros
+#Balinda Stonehearth=1
+#Baron Geddon=2
+#Ragnaros=2
+```
+</details>
 
 * "log.config" helps us track what's on the board.
-<details><summary><i>Click here for a default log.config file<\i><\summary>
-[Power]<br>
-LogLevel=1<br>
-FilePrinting=True<br>
-ConsolePrinting=False<br>
-ScreenPrinting=False<br>
-Verbose=True<br>
-[Achievements]<br>
-LogLevel=1<br>
-FilePrinting=True<br>
-ConsolePrinting=False<br>
-ScreenPrinting=False<br>
-Verbose=False<br>
-[Arena]<br>
-LogLevel=1<br>
-FilePrinting=True<br>
-ConsolePrinting=False<br>
-ScreenPrinting=False<br>
-Verbose=False<br>
-[FullScreenFX]<br>
-LogLevel=1<br>
-FilePrinting=True<br>
-ConsolePrinting=False<br>
-ScreenPrinting=False<br>
-Verbose=False<br>
-[LoadingScreen]<br>
-LogLevel=1<br>
-FilePrinting=True<br>
-ConsolePrinting=False<br>
-ScreenPrinting=False<br>
-Verbose=False<br>
-[Gameplay]<br>
-LogLevel=1<br>
-FilePrinting=True<br>
-ConsolePrinting=False<br>
-ScreenPrinting=False<br>
-Verbose=False<br>
-[Zone]<br>
-LogLevel=1<br>
-FilePrinting=true<br>
-ConsolePrinting=false<br>
-ScreenPrinting=false<br>
-<\details>
 
+<details>
+<summary>Click here for a default log.config file</summary>
+
+```ini
+[Power]
+LogLevel=1
+FilePrinting=True
+ConsolePrinting=False
+ScreenPrinting=False
+Verbose=True
+
+[Achievements]
+LogLevel=1
+FilePrinting=True
+ConsolePrinting=False
+ScreenPrinting=False
+Verbose=False
+
+[Arena]
+LogLevel=1
+FilePrinting=True
+ConsolePrinting=False
+ScreenPrinting=False
+Verbose=False
+
+[FullScreenFX]
+LogLevel=1
+FilePrinting=True
+ConsolePrinting=False
+ScreenPrinting=False
+Verbose=False
+
+[LoadingScreen]
+LogLevel=1
+FilePrinting=True
+ConsolePrinting=False
+ScreenPrinting=False
+Verbose=False
+
+[Gameplay]
+LogLevel=1
+FilePrinting=True
+ConsolePrinting=False
+ScreenPrinting=False
+Verbose=False
+
+[Zone]
+LogLevel=1
+FilePrinting=True
+ConsolePrinting=False
+ScreenPrinting=False
+```
+</details>
 
 ## Starting the bot
 

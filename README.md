@@ -43,7 +43,7 @@ MFB-Realive : https:\\github.com\Blixxky\MFB-Realive
    - `xdotool`: Window manipulation tool
 2. Download the project: MFB-Realive (https://github.com/Blixxky/MFB-Realive)
 3. Run *`Runonce.sh`* for initial venv setup and dependency installation tasks.
-4. Run *`Launch.py`* or `*Launch.pyw*` and set your preferences.
+4. Run *`Launch.py`* or *`Launch.pyw`* and set your preferences.
 5. Set GameDir by browsing in the GUI or putting the path in settings.ini under "GameDir". This is where *`hearthstone.exe`* is located.
 6. Create or edit your Hearthstone *`log.config`* file (https://github.com/Efemache/Mercenaries-Farm-bot/wiki/Settings#logconfig).
 7. Start Hearthstone with the same resolution as set in *`conf\user\settings.ini`*. The default resolution is 1920x1080.

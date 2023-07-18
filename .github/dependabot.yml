@@ -1,12 +1,9 @@
 version: 2
 updates:
-  - package-ecosystem: "poetry"
+  - package-ecosystem: "pip"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "saturday"
-      time: "21:00"
-      timezone: "America/New_York"
+      interval: "daily"
     allow:
       - dependency-type: "direct"
         update-types: ["security", "non-security"]

@@ -3,10 +3,12 @@ updates:
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+      day: "saturday"
+      time: "21:00"
+      timezone: "America/New_York"
     allow:
       - dependency-type: "direct"
         update-types: ["security", "non-security"]
       - dependency-type: "indirect"
         update-types: ["security", "non-security"]
-

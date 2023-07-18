@@ -1,0 +1,60 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "MFB-Realive"
+version = "1.0.8"
+description = "Mercenaries Farm Bot Realive project"
+authors = ["Josh <Blixxky@proton.me>"]
+license = "GPL/MIT"
+readme = "README.md"
+repository = "https://github.com/Blixxky/MFB-Realive"
+include = ["mfb_realive/**/*"]
+
+
+
+[tool.poetry.dependencies]
+python = "^3.11"
+mouseinfo = { version = "0.1.3", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+mss = { version = "6.1.0", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+numpy = { version = "1.23.2", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+opencv-python = { version = "4.6.0.66", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+pillow = { version = "9.4.0", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+pgi = { version = "0.0.11.2", markers = "sys_platform == 'linux'" }
+pyautogui = { version = "0.9.53", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+pygetwindow = { version = "0.0.9", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+pymsgbox = { version = "1.0.9", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+pyperclip = { version = "1.8.2", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+pyrect = { version = "0.2.0", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+pyscreeze = { version = "0.1.28", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+python3-xlib = { version = "0.15", markers = "sys_platform == 'linux'" }
+pytweening = { version = "1.0.4", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+ttkthemes = { version = "3.2.2", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+configparser = { version = "5.3.0", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+types-ttkthemes = { version = "3.2.4.5", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+psutil = { version = "5.9.5", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+pywin32 = { version = "305", markers = "sys_platform == 'win32'" }
+
+[tool.poetry.dev-dependencies]
+black = { version = "22.3.0", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+click = { version = "8.1.3", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+flake8 = { version = "4.0.1", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+mccabe = { version = "0.6.1", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+mypy-extensions = { version = "0.4.3", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+pathspec = { version = "0.9.0", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+platformdirs = { version = "2.5.1", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+pycodestyle = { version = "2.8.0", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+pyflakes = { version = "2.4.0", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+tomli = { version = "2.0.1", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+typed-ast = { version = "1.5.2", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+typing-extensions = { version = "4.1.1", markers = "sys_platform == 'linux' or sys_platform == 'win32'" }
+importlib-metadata = { version = "4.2.0", markers = "sys_platform == 'win32'" }
+colorama = { version = "0.4.4", markers = "sys_platform == 'win32'" }
+zipp = { version = "3.7.0", markers = "sys_platform == 'win32'" }
+build = { version = "0.8.0", markers = "sys_platform == 'linux'" }
+packaging = { version = "21.3", markers = "sys_platform == 'linux'" }
+pep517 = { version = "0.13.0", markers = "sys_platform == 'linux'" }
+pip-tools = { version = "6.8.0", markers = "sys_platform == 'linux'" }
+pyparsing = { version = "3.0.9", markers = "sys_platform == 'linux'" }
+wheel = { version = "0.38.4", markers = "sys_platform == 'linux'" }

@@ -17,7 +17,7 @@ from ttkthemes import ThemedStyle
 
 log = logging.getLogger(__name__)
 venv_path = os.path.join('MFB')
-activate_script = os.path.join(venv_path, 'Scripts', 'activate' if platform.system() == 'Windows' else 'activate')
+activate_script = os.path.join(venv_path, 'Scripts', 'activate' if platform.system( ) == 'Windows' else 'activate')
 
 if os.path.exists(activate_script):
     try:
@@ -28,14 +28,13 @@ if os.path.exists(activate_script):
         sys.exit(1)
 else:
     # Create venv
-    if platform.system() == 'Windows':
+    if platform.system( ) == 'Windows':
         subprocess.run(["py", "-3.11", "-m", "venv", "MFB"], check=True)
-    elif platform.system() == 'Linux':
+    elif platform.system( ) == 'Linux':
         subprocess.run(["python3.11", "-m", "venv", "MFB"], check=True)
     else:
         print("Unsupported platform.")
         sys.exit(1)
-
 
 # Initialize variables
 SETTINGS_INI_CREATED = False
@@ -49,38 +48,8 @@ hearthstone_dir = os.path.join(
     "Blizzard",
     "Hearthstone",
 )
+
 log_config_file = os.path.join(hearthstone_dir, "log.config")
-
-settings_ini_path = os.path.join('conf', 'user', 'settings.ini')
-
-if not os.path.isfile(settings_ini_path):
-    SETTINGS_INI_CREATED = True
-    print("settings.ini was not found and created with default values.")
-    # Create the settings.ini file with default content
-    with open(settings_ini_path, "w", encoding="utf-8") as settingsfile:
-        settingsfile.write(
-            """[BotSettings]
-monitor=1
-resolution=1920x1080
-logs=true
-location=
-mode=
-level=
-preferelite=false
-notificationurl=
-gamedir=
-preferbooncaster=false
-preferboonfighter=false
-preferboonprotector=false
-preferprotector=false
-preferfighter=false
-prefercaster=false
-waitforexp=0
-quitbeforebossfight=false
-stopatbossfight=false
-preferpassivetreasures=true
-"""
-        )
 
 # Check if the directory exists
 if os.path.isdir(hearthstone_dir):
@@ -153,169 +122,7 @@ ConsolePrinting=false
 ScreenPrinting=false"""
                 )
 
-# Check if combo.ini file exists
-combo_ini_path = os.path.join('conf', 'user', 'combo.ini')
-
-if not os.path.isfile(combo_ini_path):
-    print("combo.ini was not found and was created with default values.")
-    COMBO_INI_CREATED = True
-    # Create the combo.ini file with default content
-    with open(combo_ini_path, "w", encoding="utf-8") as configfile:
-        configfile.write(
-            """[Mercenary]
-Alexstrasza=1,3
-Anduin Wrynn=1,2
-Antonidas=1
-Aranna Starseeker=2,3,1
-Archimonde=1,3,2,1
-Baine Bloodhoof=1
-Balinda Stonehearth=1,2,3:chooseone=2
-Baron Geddon=2
-Blademaster Samuro=1,3
-Blink Fox=1,1,2
-Brann Bronzebeard=1,2,3
-Brightwing=1
-Bru'kan=1,1,3
-C'Thun=1,2
-Cairne Bloodhoof=1
-Captain Galvangar=1,3,2
-Captain Hooktusk=1,2,3
-Cariel Roame=2,1
-Chi-Ji=1,1,3
-Cookie, the Cook=1
-Cornelius Roame=1,2,2
-Deathwing=1,2,3
-Diablo=1,2,3,2,3,2,3
-Edwin, Defias Kingpin=1,2,3
-Elise Starseeker=1,2,3
-Eudora=1,2
-Fathom-Lord Karathress=1,2
-Kazakus, golem shaper=1
-Garona Halforcen=1,2,3
-Garrosh Hellscream=1,3
-Genn Greymane=2,3,1
-Gruul=1,2,3
-Grommash Hellscream=2,3
-Guff Runetotem=2
-Illidan Stormrage=1,3,2
-Jaina Proudmoore=1,3,2
-King Krush=1,2,3
-King Mukla=1,3
-Kurtrus Ashfallen=1,3,2,3,2
-Lady Anacondra=1
-Lady Vashj=1,2,3
-Leeroy Jenkins=1,2,3
-Lokholar the Ice Lord=1
-Long'xin=1
-Lord Jaraxxus=3,2,1
-Lord Slitherspear=1,2,3
-Lorewalker Cho=1,2,3
-Malfurion=1
-Mannoroth=1,3
-Millhouse Manastorm=1,1,2
-Morgl the Oracle=1,2
-Mr. Smite=1
-Murky=1,3
-Mutanus=1,2,2,2,2,2,2,2
-Natalie Seline=1,3
-Neeru Fireblade=1,1,3
-Nefarian=1,3
-Nemsy Necrofizzle=1,3,2
-Niuzao=1,3
-Patches the Pirate=1,2,3
-Prince Malchezaar=1,3,2
-Old Murk-Eye=1,2,3,2,3,2,3
-Onyxia=1,3
-Prophet Velen=1,3
-Queen Azshara=1,2,3
-Ragnaros=2
-Rathorian=1,2,2,3
-Rattlegore=1,2,3
-Rokara=1,3
-Scabbs Cutterbutter=1,2:chooseone=2
-Sir Finley=1,3,2
-Sinestra=1,3,2
-Sky Admiral Rogers=1,3
-Sneed=1,2
-Sylvanas Windrunner=1,1,3
-Tamsin Roame=1
-Tavish Stormpike=1
-Tess Greymane=1,2,3
-The lich king=1,2
-Thrall=1
-Tidemistress Athissa=1,1,3,3
-Trigore the Lasher=2
-Tyrael=1,3,2
-Tyrande Whisperwind=1,2
-Valeera Sanguinar=1,2,3
-Vanessa VanCleef=1
-Vanndar Stormpike=1,1,3
-Varden Dawngrasp=1
-Varian Wrynn=3
-Varok Saurfang=1,2
-Vol'jin=1,2
-War Master Voone=1,2,3
-Wrathion=1,2,3
-Yogg-Saron=1,2
-Yu'lon=1,2
-Xuen=1,3
-Xyrella=1,3
-Yrel=1,2,3
-Ysera=1,2,3
-Y'Shaarj=1,2
-Uther Lightbringer=1,3,2
-Zar'jira, the Sea Witch=1,3,2
-
-[Neutral]
-Bladehand Berserker=1
-Boggy=1
-Devilsaur=1
-Dragonmaw Poacher=1
-Drakonid=1
-Drakonid 3=1
-Eudora's Cannon=1
-Elementium Terror=1
-Fathom Guard=1
-Fel Infernal=1
-Felfin Navigator=1
-Giantfin=1
-Greater Golem=1
-Grounding Totem=1
-Hozen Troublemaker=1
-Huffer=1
-Hulking Overfiend=1
-Hungry Naga=1
-Imp Familiar=2
-Jade Golem=1
-Lesser Fire Elemental=2
-Lesser Water Elemental=1
-Marching Murlocs=1
-Misha=1
-Mogu Conqueror=1
-Mukla's big brother=1
-Nightmare Viper=1
-Nightmare Viper 5=1
-Patchling=1
-Pufferfisher=1
-Rescued Student=1
-Saurok Raider=1
-Spawn of N'Zoth=1
-Spud M.E.=1
-Stonemaul Banner=2
-Superior Golem=1
-Void Consumer=1
-Water Elemental=1
-Warlord Parjesh=1
-Wavethrasher=1
-
-# below, specific boss fight (ex: Air Elemental)
-#[Air Elemental]
-#_handselection=Balinda Stonehearth+Baron Geddon+Ragnaros
-#Balinda Stonehearth=1
-#Baron Geddon=2
-#Ragnaros=2
-"""
-        )
+settings_ini_path = os.path.join('conf', 'user', 'settings.ini')
 
 
 def update_settings():
@@ -584,7 +391,7 @@ def toggle_start_stop():
 
     if script_running:
         # If script is already running, stop it
-        main_process.kill()
+        main_process.kill( )
         script_running = False
         status_var.set("Start")
     else:
@@ -593,18 +400,18 @@ def toggle_start_stop():
         status_var.set("Stop")
 
         # Define the commands based on the system platform
-        if platform.system() == "Windows":
+        if platform.system( ) == "Windows":
             # This is a Windows machine
             python_command = ["py", "-3.11", "-m", "venv", "MFB"]
             python_interpreter = os.path.join("MFB", "Scripts", "python.exe")
             main_command = [python_interpreter, "main.py"]
-        elif platform.system() == "Linux":
+        elif platform.system( ) == "Linux":
             # This is a Linux machine
             python_command = ["python3.11", "-m", "venv", "MFB"]
             python_interpreter = os.path.join("MFB", "bin", "python")
             main_command = [python_interpreter, "main.py"]
         else:
-            print(f"Unsupported platform: {platform.system()}")
+            print(f"Unsupported platform: {platform.system( )}")
             return
 
         # Run the Python command to create/activate the venv if needed
@@ -612,7 +419,6 @@ def toggle_start_stop():
 
         # Start the main script within the activated venv and keep track of the process
         main_process = subprocess.Popen(main_command)
-
 
 
 # Create the button that will run toggle_start_stop when pressed

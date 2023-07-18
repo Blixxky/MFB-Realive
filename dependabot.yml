@@ -1,0 +1,12 @@
+version: 2
+updates:
+  - package-ecosystem: "python"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    allow:
+      - dependency-type: "direct"
+        update-types: ["security", "non-security"]
+      - dependency-type: "indirect"
+        update-types: ["security", "non-security"]
+

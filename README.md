@@ -36,7 +36,7 @@ MFB-Realive : https:\\github.com\Blixxky\MFB-Realive
 
 ### Linux
 1. *`sudo apt install python3.11-venv && sudo apt install gir1.2-wnck-3.0 && sudo apt install libharfbuzz-gobject0 && sudo apt install wmctrl xdotool`*
-   - `python3.11-venv`: Python 3.11 venv package
+   - `python3-venv`: Python 3 venv package
    - `gir1.2-wnck-3.0`: Gir package for Wnck 3.0
    - `libharfbuzz-gobject0`: OpenType text shaping engine package
    - `wmctrl`: Window manipulation tool

@@ -18,7 +18,7 @@ from modules.settings import jposition
 from modules.mouse_utils import move_mouse
 from modules.platforms import windowMP
 from modules.resolution import check_resolution
-from modules.reconnects import click_wipe_button, click_reconnect, choose_mode
+from modules.reconnects import click_wipe_button, click_reconnect, choose_mode, game_closed
 
 log = logging.getLogger(__name__)
 

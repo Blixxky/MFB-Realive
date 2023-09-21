@@ -1,6 +1,6 @@
 # Mercenaries Farm Bot Realive
 MFB-Realive : https:\\github.com\Blixxky\MFB-Realive
-# Join us in **[Discord](https://discord.gg/ePghxaUBEK)**
+
 ![Image](rejoice.jpg)
 
 

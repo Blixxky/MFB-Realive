@@ -66,9 +66,9 @@ def game_closed():
     First it attempts to use psutil to kill the process;
     then it attempts OS specific commands before trying to relaunch the game.
     """
-    process_name = "hearthstone.exe"
+    process_name = "Hearthstone.exe"
     for proc in psutil.process_iter(['pid', 'name']):
-        if proc.info['name'] == process_name:
+        if proc.info['name'] == process_name or proc.info['name'] == process_name.lower():
             pid = proc.info["pid"]
             try:
                 proc.kill()

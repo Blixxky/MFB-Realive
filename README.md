@@ -1,3 +1,15 @@
+# Unfortunately as of 11.16.23 Mercenaries mode has been nerfed and provides very little experience now. This project is considered abandoned.
+## If you are looking to grind experience without affecting other players, use my [HS Boombot](https://github.com/Blixxky/hsboombot) (Free)
+## If you are looking to grind experience and allow other players to benefit from it as well, use my [HS BGBot](https://github.com/Blixxky/hsbgbot) (Free)
+## If you want to grind Wild/Twist rankings, or run Tavern Brawl/Arena but potentially ruin other players experiences, use [Hearthranger](https://www.hearthranger.com) ($5 BTC/monthly)
+
+### Please note that Battlegrounds bots are regularly banned. HS BGBot just idles and allows other players to beat it. So everyone benefits, but is probably the riskiest option to farm exp.
+
+### The page below and the project has been left up for archive and legacy purposes. 
+
+
+
+
 # Mercenaries Farm Bot Realive
 MFB-Realive : https:\\github.com\Blixxky\MFB-Realive
 
